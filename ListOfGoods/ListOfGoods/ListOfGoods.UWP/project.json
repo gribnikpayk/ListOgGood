@@ -1,7 +1,9 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "Xamarin.Forms": "2.0.0.6482"
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+    "sqlite-net-pcl": "1.3.1",
+    "Unity": "4.0.1",
+    "Xamarin.Forms": "2.3.4.231"
   },
   "frameworks": {
     "uap10.0": {}

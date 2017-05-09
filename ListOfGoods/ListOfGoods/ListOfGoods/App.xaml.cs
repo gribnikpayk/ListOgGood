@@ -2,18 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using ListOfGoods.DataManagers.Local.Purchase;
+using ListOfGoods.Views.MasterDetailPage;
+using Microsoft.Practices.Unity;
 using Xamarin.Forms;
 
 namespace ListOfGoods
 {
     public partial class App : Application
     {
+        public static UnityContainer Container { get; set; }
         public App()
         {
             InitializeComponent();
+            ResolveDependency();
+            MainPage = new MainPage();
+        }
 
-            MainPage = new ListOfGoods.MainPage();
+        private static void ResolveDependency()
+        {
+            Container = new UnityContainer();
+            Container.RegisterType<IPurchaseRepository, PurchaseRepository>();
         }
 
         protected override void OnStart()

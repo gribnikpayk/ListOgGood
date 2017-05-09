@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ListOfGoods.Views.PurchasesListView"
+             xmlns:commonResorces="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
+             BackgroundImage="{x:Static commonResorces:BackgroundResourses.CommonBackground}">
+  <Label Text="You do not have any lists."
+         HorizontalOptions="Center"
+         IsVisible="{Binding NoListsMessageIsVisible}"
+         TextColor="White"
+         FontSize="Large"></Label>
+  <Label Text="Press '+', or 'Add a new list' to create a new list"
+         HorizontalOptions="Center"
+         IsVisible="{Binding NoListsMessageIsVisible}"
+         TextColor="White"
+         FontSize="Large"></Label>
+  <Button Text="Add a new list"
+          HorizontalOptions="Center"
+          TextColor="{x:Static commonResorces:ColorResourses.Grey}"
+          FontSize="Medium"
+          BackgroundColor="White"
+          Command="{Binding AddNewList}">
+  </Button>
+</ContentPage>
