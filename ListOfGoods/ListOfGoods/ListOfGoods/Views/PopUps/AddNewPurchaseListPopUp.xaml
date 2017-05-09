@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
+             xmlns:commonColor="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="ListOfGoods.Views.PopUps.AddNewPurchaseListPopUp">
+
+  <customControls:CustomFrame HorizontalOptions="FillAndExpand"
+                              VerticalOptions="Center"
+                              InlineColor="{x:Static commonColor:ColorResourses.FrameBackground}">
+    <customControls:CustomFrame.Margin>
+      <Thickness>20,0,20,0</Thickness>
+    </customControls:CustomFrame.Margin>
+    <StackLayout>
+      <Label Text="List Name"
+             TextColor="White"></Label>
+      <Entry Placeholder="Daily list"
+           PlaceholderColor="White"
+           TextColor="{x:Static commonColor:ColorResourses.EntryText}"
+           FontSize="Medium"
+           Text="{Binding ListName}"></Entry>
+      <Label Text="This field must be filled"
+             TextColor="{x:Static commonColor:ColorResourses.ErrorMessageText}"
+             IsVisible="{Binding ErrorMessageIsVisible}"></Label>
+      <Button TextColor="{x:Static commonColor:ColorResourses.ButtonText}"
+              Command="{Binding AddNewListCommand}"
+              Text="Create"
+              BackgroundColor="White"
+              HorizontalOptions="End"
+              FontSize="Medium"></Button>
+    </StackLayout>
+  </customControls:CustomFrame>
+</pages:PopupPage>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ListOfGoods.DataManagers.Local.Purchase;
+using ListOfGoods.Services.Purchase;
 using ListOfGoods.Views.MasterDetailPage;
 using Microsoft.Practices.Unity;
 using Xamarin.Forms;
@@ -23,6 +24,8 @@ namespace ListOfGoods
         {
             Container = new UnityContainer();
             Container.RegisterType<IPurchaseRepository, PurchaseRepository>();
+            Container.RegisterType<IPurchasesListRepository, PurchasesListRepository>();
+            Container.RegisterType<IPurchaseService, PurchaseService>();
         }
 
         protected override void OnStart()
