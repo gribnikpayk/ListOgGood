@@ -3,3 +3,10 @@
 ################################################################################
 
 /ListOfGoods/packages
+/ListOfGoods/.vs/ListOfGoods/v14
+/ListOfGoods/ListOfGoods/ListOfGoods/obj/Debug
+/ListOfGoods/ListOfGoods/ListOfGoods.Droid/obj/Debug
+/ListOfGoods/ListOfGoods/ListOfGoods.iOS
+/ListOfGoods/ListOfGoods/ListOfGoods.UWP/obj/x86/Debug
+/ListOfGoods/ListOfGoods/ListOfGoods.Windows/obj/Debug
+/ListOfGoods/ListOfGoods/ListOfGoods.WinPhone/obj/Debug
