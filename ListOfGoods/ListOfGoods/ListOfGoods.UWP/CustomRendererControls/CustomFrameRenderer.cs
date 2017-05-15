@@ -24,12 +24,15 @@ namespace ListOfGoods.UWP.CustomRendererControls
         {
             base.OnElementChanged(e);
             _control = e.NewElement as CustomFrame;
-            var border = new Border { Background = new SolidColorBrush(ToMediaColor(_control.InlineColor)) };
+            if (_control != null)
+            {
+                var border = new Border {Background = new SolidColorBrush(ToMediaColor(_control.InlineColor))};
 
-            base.SetNativeControl(border);
-            this.PackChild();
+                base.SetNativeControl(border);
+                this.PackChild();
 
-            this.UpdateBorder(_control.BorderWidth, _control.BorderRadius);
+                this.UpdateBorder(_control.BorderWidth, _control.BorderRadius);
+            }
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)

@@ -38,19 +38,30 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\CustomEntry.cs" />
     <Compile Include="CustomControls\CustomFrame.cs" />
+    <Compile Include="CustomControls\CustomImage.cs" />
+    <Compile Include="CustomControls\ListFrame.cs" />
     <Compile Include="DataManagers\Local\Base\BaseEntity.cs" />
     <Compile Include="DataManagers\Local\Base\BaseRepository.cs" />
     <Compile Include="DataManagers\Local\Base\IBaseRepository.cs" />
     <Compile Include="DataManagers\Local\Purchase\IPurchaseRepository.cs" />
     <Compile Include="DataManagers\Local\Purchase\IPurchasesListRepository.cs" />
     <Compile Include="DataManagers\Local\Purchase\PurchaseEntity.cs" />
+    <Compile Include="DataManagers\Local\Purchase\PurchaseImageEntity.cs" />
     <Compile Include="DataManagers\Local\Purchase\PurchaseRepository.cs" />
     <Compile Include="DataManagers\Local\Purchase\PurchasesListEntity.cs" />
     <Compile Include="DataManagers\Local\Purchase\PurchasesListRepository.cs" />
+    <Compile Include="Infrastructure\Animations\AnimationExtensions.cs" />
+    <Compile Include="Infrastructure\Constants\CommonNameConstants.cs" />
     <Compile Include="Infrastructure\Constants\MessagingCenterConstants.cs" />
     <Compile Include="Infrastructure\DependencyService\ISQLite.cs" />
+    <Compile Include="Infrastructure\Extensions\CustomControlsExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\DateTimeExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\ImageSourceExtensions.cs" />
+    <Compile Include="Infrastructure\Helpers\LocalDbDeploymentHelper.cs" />
+    <Compile Include="Infrastructure\Models\AutocompletePurchaseModel.cs" />
+    <Compile Include="Infrastructure\Navigation\INavigationService.cs" />
     <Compile Include="Infrastructure\Navigation\NaviagationService.cs" />
     <Compile Include="Infrastructure\Resourses\BackgroundResourses.cs" />
     <Compile Include="Infrastructure\Resourses\ColorResourses.cs" />
@@ -59,7 +70,9 @@
     <Compile Include="Services\Purchase\PurchaseService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\PopUps\AddNewPurchaseListPopUpViewModel.cs" />
+    <Compile Include="ViewModels\PopUps\ListActionsPopUpViewModel.cs" />
     <Compile Include="ViewModels\PurchasesListViewModel.cs" />
+    <Compile Include="ViewModels\PurchasesViewModel.cs" />
     <Compile Include="Views\PopUps\AddNewPurchaseListPopUp.xaml.cs">
       <DependentUpon>AddNewPurchaseListPopUp.xaml</DependentUpon>
     </Compile>
@@ -67,8 +80,14 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterDetailPage\MasterPageItem.cs" />
+    <Compile Include="Views\PopUps\ListActions.xaml.cs">
+      <DependentUpon>ListActions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PurchasesListView.xaml.cs">
       <DependentUpon>PurchasesListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PurchasesView.xaml.cs">
+      <DependentUpon>PurchasesView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -129,7 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataManagers\API\" />
-    <Folder Include="Infrastructure\Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\MasterDetailPage\MainPage.xaml">
@@ -145,6 +163,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\PopUps\AddNewPurchaseListPopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PopUps\ListActions.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PurchasesView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

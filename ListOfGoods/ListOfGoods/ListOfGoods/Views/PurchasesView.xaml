@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:commonResorces="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
+             xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
+             x:Class="ListOfGoods.Views.PurchasesView"
+             Title = "Shopping list"
+             BackgroundColor="{x:Static commonResorces:ColorResourses.Background}">
+  <StackLayout Spacing="0">
+    <StackLayout BackgroundColor="{x:Static commonResorces:ColorResourses.Grey}"
+                 Orientation="Horizontal"
+                 Spacing="0">
+      <StackLayout.Padding>
+        <Thickness>10</Thickness>
+      </StackLayout.Padding>
+      <customControls:CustomEntry BackgroundColor="{x:Static commonResorces:ColorResourses.LiteGreyEntryBackground}"
+             VerticalOptions="Center"
+             HeightRequest="40"
+             HorizontalOptions="FillAndExpand"
+             FontSize="Medium"
+             PlaceholderColor="{x:Static commonResorces:ColorResourses.Placeholder}"
+             Placeholder="Click to add"
+             Text="{Binding NewPurchase}"
+             TextColor="{x:Static commonResorces:ColorResourses.EntryText}">
+      </customControls:CustomEntry>
+      <Image Source="Assets/acceptIcon.png"
+             BackgroundColor="{x:Static commonResorces:ColorResourses.Green}"
+             VerticalOptions="Center"
+             HeightRequest="40"
+             HorizontalOptions="End">
+      </Image>
+    </StackLayout>
+    <AbsoluteLayout VerticalOptions="FillAndExpand">
+      <ScrollView AbsoluteLayout.LayoutFlags="All"
+                  AbsoluteLayout.LayoutBounds="0,0,1,1">
+        <StackLayout>
+
+        </StackLayout>
+      </ScrollView>
+      <StackLayout AbsoluteLayout.LayoutFlags="All"
+                   AbsoluteLayout.LayoutBounds="0,0,1,1"
+                   IsVisible="{Binding AutoCompleteIsVisible}">
+        <ListView VerticalOptions="Start"
+                  CachingStrategy="RecycleElement"
+                  ItemsSource="{Binding AutocompleteItems}">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <ViewCell.View>
+                  <StackLayout BackgroundColor="{x:Static commonResorces:ColorResourses.Grey}">
+                    <StackLayout.Padding>
+                      <Thickness>10</Thickness>
+                    </StackLayout.Padding>
+                    <Label HorizontalOptions="Start"
+                           Text="{Binding Name}"
+                           VerticalOptions="CenterAndExpand"
+                           TextColor="{x:Static commonResorces:ColorResourses.EntryText}"
+                           FontSize="Medium"/>
+                  </StackLayout>
+                </ViewCell.View>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+
+        </ListView>
+
+      </StackLayout>
+    </AbsoluteLayout>
+  </StackLayout>
+</ContentPage>

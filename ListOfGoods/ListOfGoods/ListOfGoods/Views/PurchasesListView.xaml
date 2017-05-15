@@ -3,33 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ListOfGoods.Views.PurchasesListView"
              xmlns:commonResorces="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
-             BackgroundImage="{x:Static commonResorces:BackgroundResourses.CommonBackground}">
-  <StackLayout VerticalOptions="Start">
-    <Label Text="You do not have any lists."
-           HorizontalOptions="Center"
-           IsVisible="{Binding NoListsMessageIsVisible}"
-           TextColor="White"
-           FontSize="Large">
-      <Label.Margin>
-        <Thickness>0,20,0,0</Thickness>
-      </Label.Margin>
-    </Label>
-    <Label Text="Press '+', or 'Add a new list' to create a new list"
-           HorizontalOptions="Center"
-           IsVisible="{Binding NoListsMessageIsVisible}"
-           TextColor="White"
-           FontSize="Medium"></Label>
-    <Button Text="Add a new list"
-            HorizontalOptions="Center"
-            IsVisible="{Binding NoListsMessageIsVisible}"
-            TextColor="{x:Static commonResorces:ColorResourses.ButtonText}"
-            FontSize="Medium"
-            BackgroundColor="White"
-            Command="{Binding AddNewList}"
-            WidthRequest="250">
-      <Button.Margin>
-        <Thickness>0,15,0,0</Thickness>
-      </Button.Margin>
-    </Button>
-  </StackLayout>
+             Title="All lists"
+             BackgroundColor="{x:Static commonResorces:ColorResourses.Background}">
+  <ScrollView>
+    <StackLayout x:Name="ContentWrapper">
+      <StackLayout.Padding>
+        <Thickness>20</Thickness>
+      </StackLayout.Padding>
+      <Label Text="Loading"
+             HorizontalOptions="Center"
+             IsVisible="{Binding IsBusy}"
+             TextColor="White"
+             FontSize="Large"
+             VerticalOptions="Center"></Label>
+      <Label Text="You do not have any lists."
+             HorizontalOptions="Center"
+             IsVisible="{Binding NoListsMessageIsVisible}"
+             TextColor="White"
+             FontSize="Large">
+        <Label.Margin>
+          <Thickness>0,20,0,0</Thickness>
+        </Label.Margin>
+      </Label>
+      <Label Text="Press '+', or 'Add a new list' to create a new list"
+             HorizontalOptions="Center"
+             IsVisible="{Binding NoListsMessageIsVisible}"
+             TextColor="White"
+             FontSize="Medium"></Label>
+      <Button Text="Add a new list"
+              HorizontalOptions="End"
+              IsVisible="{Binding NoListsMessageIsVisible}"
+              TextColor="{x:Static commonResorces:ColorResourses.ButtonText}"
+              FontSize="Medium"
+              BackgroundColor="{x:Static commonResorces:ColorResourses.ButtonBackground}"
+              Command="{Binding AddNewList}"
+              WidthRequest="250">
+        <Button.Margin>
+          <Thickness>0,15,0,0</Thickness>
+        </Button.Margin>
+      </Button>
+    </StackLayout>
+  </ScrollView>
 </ContentPage>

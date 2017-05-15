@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ListOfGoods.DataManagers.Local.Purchase;
+using ListOfGoods.Infrastructure.Models;
 
 namespace ListOfGoods.Services.Purchase
 {
@@ -23,6 +24,20 @@ namespace ListOfGoods.Services.Purchase
         public List<PurchasesListEntity> GetAllPurchasesLists()
         {
             return _purchasesListRepository.GetQuery().ToList();
-        } 
+        }
+
+        public void DeleteList(int id)
+        {
+            _purchasesListRepository.Delete(id);
+        }
+
+        public List<AutocompletePurchaseModel> FindAutocompletePurchases(string searchKey)
+        {
+            var purchases = _purchaseRepository.GetQuery(x => x.Name.Contains(searchKey)).Take(5);
+            return purchases.Select(x => new AutocompletePurchaseModel
+            {
+                Name = x.Name
+            }).ToList();
+        }
     }
 }

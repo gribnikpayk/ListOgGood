@@ -8,8 +8,15 @@ namespace ListOfGoods.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private bool _isBusy;
         public BaseViewModel()
         {
+        }
+
+        public bool IsBusy
+        {
+            set { SetProperty(ref _isBusy, value); }
+            get { return _isBusy; }
         }
         protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {

@@ -1,19 +1,27 @@
 ﻿using System;
+using System.Threading.Tasks;
 using ListOfGoods.Infrastructure.Resourses;
 using Xamarin.Forms;
 
 namespace ListOfGoods.Infrastructure.Navigation
 {
-    public class NaviagationService
+    public class NaviagationService : INavigationService
     {
+        private static NavigationPage _navPage;
         public static NavigationPage CreateNavigationPage(Type pageType)
         {
-            return new NavigationPage((Page)Activator.CreateInstance(pageType))
+            _navPage = new NavigationPage((Page)Activator.CreateInstance(pageType))
             {
-                BarBackgroundColor = ColorResourses.Grey,
+                BarBackgroundColor = ColorResourses.Green,
                 HeightRequest = 50,
-                BarTextColor = Color.White
+                BarTextColor = ColorResourses.White
             };
+            return _navPage;
+        }
+
+        public async Task PushAsync(Page page)
+        {
+            await _navPage.Navigation.PushAsync(page, false);
         }
     }
 }

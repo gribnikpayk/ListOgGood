@@ -8,7 +8,7 @@
 
   <customControls:CustomFrame HorizontalOptions="FillAndExpand"
                               VerticalOptions="Center"
-                              InlineColor="{x:Static commonColor:ColorResourses.FrameBackground}">
+                              InlineColor="{x:Static commonColor:ColorResourses.Grey}">
     <customControls:CustomFrame.Margin>
       <Thickness>20,0,20,0</Thickness>
     </customControls:CustomFrame.Margin>
@@ -16,7 +16,8 @@
       <Label Text="List Name"
              TextColor="White"></Label>
       <Entry Placeholder="Daily list"
-           PlaceholderColor="White"
+             BackgroundColor="{x:Static commonColor:ColorResourses.LiteGrey}"
+           PlaceholderColor="{x:Static commonColor:ColorResourses.Placeholder}"
            TextColor="{x:Static commonColor:ColorResourses.EntryText}"
            FontSize="Medium"
            Text="{Binding ListName}"></Entry>
@@ -25,8 +26,8 @@
              IsVisible="{Binding ErrorMessageIsVisible}"></Label>
       <Button TextColor="{x:Static commonColor:ColorResourses.ButtonText}"
               Command="{Binding AddNewListCommand}"
-              Text="Create"
-              BackgroundColor="White"
+              Text="{Binding ButtonName}"
+              BackgroundColor="{x:Static commonColor:ColorResourses.ButtonBackground}"
               HorizontalOptions="End"
               FontSize="Medium"></Button>
     </StackLayout>

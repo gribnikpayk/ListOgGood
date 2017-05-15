@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using ListOfGoods.CustomControls;
 using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Constants;
 using Rg.Plugins.Popup.Services;
@@ -9,10 +11,12 @@ namespace ListOfGoods.ViewModels.PopUps
 {
     public class AddNewPurchaseListPopUpViewModel : BaseViewModel
     {
-        private string _listName;
+        private string _listName, _buttonName;
         private bool _errorMessageIsVisible;
         public ICommand AddNewListCommand { get; set; }
         private IPurchasesListRepository _purchasesListRepository;
+
+        public PurchasesListEntity SelectedPurchasesListEntity { get; set; }
 
         public AddNewPurchaseListPopUpViewModel(IPurchasesListRepository purchasesListRepository)
         {
@@ -20,6 +24,11 @@ namespace ListOfGoods.ViewModels.PopUps
             AddNewListCommand = new Command(AddNewList);
         }
 
+        public string ButtonName
+        {
+            set { SetProperty(ref _buttonName, value); }
+            get { return SelectedPurchasesListEntity == null ? "Create" : "OK"; }
+        }
         public bool ErrorMessageIsVisible
         {
             set { SetProperty(ref _errorMessageIsVisible, value); }
@@ -39,16 +48,27 @@ namespace ListOfGoods.ViewModels.PopUps
             else
             {
                 ErrorMessageIsVisible = false;
-                var newList = new PurchasesListEntity
+                if (SelectedPurchasesListEntity == null)
                 {
-                    Name = ListName
-                };
-                var newListId = _purchasesListRepository.Create(newList);
-                newList.Id = newListId;
+                    var newList = new PurchasesListEntity
+                    {
+                        Name = ListName,
+                        CreationDate = DateTime.Now
+                    };
+                    _purchasesListRepository.Create(newList);
+                    MessagingCenter.Send<AddNewPurchaseListPopUpViewModel, PurchasesListEntity>(this,
+                    MessagingCenterConstants.NewListWasCreated, newList);
+                }
+                else
+                {
+                    SelectedPurchasesListEntity.Name = ListName;
+                    _purchasesListRepository.Update(SelectedPurchasesListEntity);
+                    MessagingCenter.Send<AddNewPurchaseListPopUpViewModel, PurchasesListEntity>(this,
+                    MessagingCenterConstants.NewListWasCreated, SelectedPurchasesListEntity);
+                }
 
                 Device.BeginInvokeOnMainThread(async () => { await PopupNavigation.PopAllAsync(); });
-                MessagingCenter.Send<AddNewPurchaseListPopUpViewModel, PurchasesListEntity>(this,
-                    MessagingCenterConstants.NewListWasCreated, newList);
+
             }
         }
     }

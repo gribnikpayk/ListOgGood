@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ListOfGoods.DataManagers.Local.Purchase;
+using ListOfGoods.Infrastructure.Helpers;
+using ListOfGoods.Infrastructure.Navigation;
 using ListOfGoods.Services.Purchase;
 using ListOfGoods.Views.MasterDetailPage;
 using Microsoft.Practices.Unity;
@@ -23,9 +25,11 @@ namespace ListOfGoods
         private static void ResolveDependency()
         {
             Container = new UnityContainer();
+            Container.RegisterType<INavigationService, NaviagationService>();
             Container.RegisterType<IPurchaseRepository, PurchaseRepository>();
             Container.RegisterType<IPurchasesListRepository, PurchasesListRepository>();
             Container.RegisterType<IPurchaseService, PurchaseService>();
+            var deploymentHelper = Container.Resolve<LocalDbDeploymentHelper>();
         }
 
         protected override void OnStart()
