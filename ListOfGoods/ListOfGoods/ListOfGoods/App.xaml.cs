@@ -5,6 +5,7 @@ using System.Text;
 using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Helpers;
 using ListOfGoods.Infrastructure.Navigation;
+using ListOfGoods.Services.Media;
 using ListOfGoods.Services.Purchase;
 using ListOfGoods.Views.MasterDetailPage;
 using Microsoft.Practices.Unity;
@@ -29,6 +30,7 @@ namespace ListOfGoods
             Container.RegisterType<IPurchaseRepository, PurchaseRepository>();
             Container.RegisterType<IPurchasesListRepository, PurchasesListRepository>();
             Container.RegisterType<IPurchaseService, PurchaseService>();
+            Container.RegisterType<IMediaService, MediaService>();
             var deploymentHelper = Container.Resolve<LocalDbDeploymentHelper>();
         }
 

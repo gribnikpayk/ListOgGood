@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using ListOfGoods.DataManagers.Local.Purchase;
+using ListOfGoods.Infrastructure.Extensions;
 using ListOfGoods.Infrastructure.Models;
+using Xamarin.Forms;
 
 namespace ListOfGoods.Services.Purchase
 {
-    public class PurchaseService:IPurchaseService
+    public class PurchaseService : IPurchaseService
     {
         private IPurchaseRepository _purchaseRepository;
         private IPurchasesListRepository _purchasesListRepository;
-        public PurchaseService(IPurchaseRepository purchaseRepository,IPurchasesListRepository purchasesListRepository)
+        public PurchaseService(IPurchaseRepository purchaseRepository, IPurchasesListRepository purchasesListRepository)
         {
             _purchaseRepository = purchaseRepository;
             _purchasesListRepository = purchasesListRepository;
@@ -33,9 +35,12 @@ namespace ListOfGoods.Services.Purchase
 
         public List<AutocompletePurchaseModel> FindAutocompletePurchases(string searchKey)
         {
-            var purchases = _purchaseRepository.GetQuery(x => x.Name.Contains(searchKey)).Take(5);
+            var purchases = _purchaseRepository.GetQuery(x => x.Name.Contains(searchKey)).Take(5).ToList();
             return purchases.Select(x => new AutocompletePurchaseModel
             {
+                ImageSource = !x.IsCustomProduct
+                        ? ImageSource.FromFile(x.Name.ToAutocompleteImagePath())
+                        : ImageSource.FromFile(""),
                 Name = x.Name
             }).ToList();
         }

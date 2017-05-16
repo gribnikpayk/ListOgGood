@@ -99,6 +99,7 @@
     <Compile Include="CustomRendererControls\CustomEntryRenderer.cs" />
     <Compile Include="CustomRendererControls\CustomFrameRenderer.cs" />
     <Compile Include="CustomRendererControls\CustomImageRenderer.cs" />
+    <Compile Include="DependencyServices\CropImage.cs" />
     <Compile Include="DependencyServices\SQLite.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

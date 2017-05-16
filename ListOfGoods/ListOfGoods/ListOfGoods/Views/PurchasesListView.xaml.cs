@@ -6,6 +6,7 @@ using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Animations;
 using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Infrastructure.Extensions;
+using ListOfGoods.Infrastructure.Helpers;
 using ListOfGoods.ViewModels;
 using ListOfGoods.ViewModels.PopUps;
 using ListOfGoods.Views.PopUps;
@@ -26,8 +27,7 @@ namespace ListOfGoods.Views
             ToolbarItems.Add(new ToolbarItem
             {
                 Text = "Add a new list",
-                Icon = "addIcon.png".ToPlatformImagePath(),
-                Command = _viewModel.AddNewList
+                Icon = "addIcon.png".ToPlatformImagePath()
             });
         }
 

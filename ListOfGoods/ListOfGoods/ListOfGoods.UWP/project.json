@@ -1,9 +1,14 @@
 ﻿{
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+    "Plugin.Permissions": "1.3.1.20-beta",
     "Rg.Plugins.Popup": "1.0.4",
     "sqlite-net-pcl": "1.3.1",
     "Unity": "4.0.1",
+    "Xam.Plugin.Media": "2.6.3.14-beta",
+    "Xamarin.FFImageLoading": "2.2.10-pre-391",
+    "Xamarin.FFImageLoading.Forms": "2.2.10-pre-391",
+    "Xamarin.FFImageLoading.Transformations": "2.2.10-pre-391",
     "Xamarin.Forms": "2.3.4.231"
   },
   "frameworks": {

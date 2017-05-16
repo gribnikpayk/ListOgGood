@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:commonResorces="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
              xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="ListOfGoods.Views.PurchasesView"
              Title = "Shopping list"
              BackgroundColor="{x:Static commonResorces:ColorResourses.Background}">
-  <StackLayout Spacing="0">
+  <StackLayout Spacing="1">
     <StackLayout BackgroundColor="{x:Static commonResorces:ColorResourses.Grey}"
                  Orientation="Horizontal"
                  Spacing="0">
@@ -34,7 +36,12 @@
       <ScrollView AbsoluteLayout.LayoutFlags="All"
                   AbsoluteLayout.LayoutBounds="0,0,1,1">
         <StackLayout>
-
+          <Button Text="Camera" Command="{Binding TakePhotoFromCamera}"></Button>
+          <Button Text="Gallery" Command="{Binding TakePhotoFromGallery}"></Button>
+          <Image WidthRequest="50"
+                 HeightRequest="50"
+                 BackgroundColor="Green"
+                 Source="{Binding Test}"></Image>
         </StackLayout>
       </ScrollView>
       <StackLayout AbsoluteLayout.LayoutFlags="All"
@@ -47,10 +54,16 @@
             <DataTemplate>
               <ViewCell>
                 <ViewCell.View>
-                  <StackLayout BackgroundColor="{x:Static commonResorces:ColorResourses.Grey}">
+                  <StackLayout BackgroundColor="{x:Static commonResorces:ColorResourses.Grey}"
+                               Orientation="Horizontal"
+                               Spacing="10">
                     <StackLayout.Padding>
                       <Thickness>10</Thickness>
                     </StackLayout.Padding>
+                    <forms:CachedImage Source="{Binding ImageSource}"
+                                       IsOpaque="False"
+                                       BitmapOptimizations="True">
+                    </forms:CachedImage>
                     <Label HorizontalOptions="Start"
                            Text="{Binding Name}"
                            VerticalOptions="CenterAndExpand"

@@ -1,9 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using ListOfGoods.Infrastructure.DependencyService;
 using ListOfGoods.Infrastructure.Models;
+using ListOfGoods.Services.Media;
 using ListOfGoods.Services.Purchase;
+using Xamarin.Forms;
 
 namespace ListOfGoods.ViewModels
 {
@@ -18,11 +23,47 @@ namespace ListOfGoods.ViewModels
         private const short _minValueForAutocomplete = 2;
 
         private IPurchaseService _purchaseService;
+        private IMediaService _mediaService;
 
-        public PurchasesViewModel(IPurchaseService purchaseService)
+        private ImageSource _test;
+
+        public ICommand TakePhotoFromGallery => new Command(async () =>
+        {
+            var s = await _mediaService.TakePhotoFromGalleryAsync();
+            var ss = s;
+        });
+
+        public ICommand TakePhotoFromCamera => new Command(async () =>
+        {
+            var s = await _mediaService.TakePhotoFromCameraAsync();
+            var base64 = await DependencyService.Get<ICropImage>().GetCroppedBitmapAsync(s, 100, 100);
+            //var bytes = ReadFully(stream);
+            //Test = ImageSource.FromStream(() => new MemoryStream(bytes));
+            var ss = s;
+        });
+
+        public static byte[] ReadFully(Stream input)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                input.CopyTo(ms);
+                return ms.ToArray();
+            }
+
+        }
+
+        public PurchasesViewModel(IPurchaseService purchaseService, IMediaService mediaService)
         {
             _purchaseService = purchaseService;
+            _mediaService = mediaService;
         }
+
+        public ImageSource Test
+        {
+            set { SetProperty(ref _test, value); }
+            get { return _test; }
+        }
+
         public List<AutocompletePurchaseModel> AutocompleteItems
         {
             set { SetProperty(ref _autocompleteItems, value); }

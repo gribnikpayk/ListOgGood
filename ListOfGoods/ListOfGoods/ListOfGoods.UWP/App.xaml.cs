@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using FFImageLoading.Forms.WinUWP;
 
 namespace ListOfGoods.UWP
 {
@@ -57,6 +58,7 @@ namespace ListOfGoods.UWP
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
+                CachedImageRenderer.Init();
                 Xamarin.Forms.Forms.Init(e, Rg.Plugins.Popup.Windows.Popup.GetExtraAssemblies());
                 Xamarin.Forms.Forms.Init(e);
 
