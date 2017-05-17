@@ -10,24 +10,24 @@ namespace ListOfGoods.Services.Media
 {
     public class MediaService:IMediaService
     {
-        public async Task<string> TakePhotoFromGalleryAsync()
+        public async Task<MediaFile> TakePhotoFromGalleryAsync()
         {
             if (await PermissionProccesAsync(Permission.Storage) == PermissionStatus.Granted)
             {
                 MediaFile mediaFile = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions { CompressionQuality = 70, PhotoSize = PhotoSize.Medium });
-                return mediaFile?.Path;
+                return mediaFile;
             }
             return string.Empty;
         }
 
-        public async Task<string> TakePhotoFromCameraAsync()
+        public async Task<MediaFile> TakePhotoFromCameraAsync()
         {
             if (await PermissionProccesAsync(Permission.Camera) == PermissionStatus.Granted)
             {
                 try
                 {
                     MediaFile mediaFile = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions { AllowCropping = true, CompressionQuality = 70, PhotoSize = PhotoSize.Medium });
-                    return mediaFile?.Path;
+                    return mediaFile;
                 }
                 catch (Exception e)
                 {

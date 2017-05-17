@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
+using Plugin.Media.Abstractions;
 
 namespace ListOfGoods.Services.Media
 {
     public interface IMediaService
     {
-        Task<string> TakePhotoFromGalleryAsync();
-        Task<string> TakePhotoFromCameraAsync();
+        Task<MediaFile> TakePhotoFromGalleryAsync();
+        Task<MediaFile> TakePhotoFromCameraAsync();
     }
 }

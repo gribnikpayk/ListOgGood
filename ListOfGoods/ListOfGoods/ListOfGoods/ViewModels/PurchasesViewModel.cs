@@ -29,42 +29,28 @@ namespace ListOfGoods.ViewModels
 
         public ICommand TakePhotoFromGallery => new Command(async () =>
         {
-            var s = await _mediaService.TakePhotoFromGalleryAsync();
-            var path = await DependencyService.Get<IImageProcessor>().GetCroppedImagePathAsync(s, "test", 50);
-            Test = ImageSource.FromFile(path);
+            //var s = await _mediaService.TakePhotoFromGalleryAsync();
+            //var path = await DependencyService.Get<IImageProcessor>().GetCroppedImagePathAsync(s, "test", 50);
+            //Test = ImageSource.FromFile(path);
+            //DependencyService.Get<IImageProcessor>().DeleteFile(s);
         });
 
         public ICommand TakePhotoFromCamera => new Command(async () =>
         {
-            var s = await _mediaService.TakePhotoFromCameraAsync();
-            var path = await DependencyService.Get<IImageProcessor>().GetCroppedImagePathAsync(s, "test", 50);
-            Test = ImageSource.FromFile(path);
-            //var bytes = ReadFully(stream);
-            //Test = ImageSource.FromStream(() => new MemoryStream(bytes));
-            var ss = s;
-            //BitmapIma
+            //var s = await _mediaService.TakePhotoFromCameraAsync();
+            //var path = await DependencyService.Get<IImageProcessor>().GetCroppedImagePathAsync(s, "test", 50);
+            //DependencyService.Get<IImageProcessor>().DeleteFile(path);
+            //Test = ImageSource.FromFile(path);
+            ////var bytes = ReadFully(stream);
+            ////Test = ImageSource.FromStream(() => new MemoryStream(bytes));
+            //var ss = s;
+            ////BitmapIma
         });
-
-        public static byte[] ReadFully(Stream input)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                input.CopyTo(ms);
-                return ms.ToArray();
-            }
-
-        }
 
         public PurchasesViewModel(IPurchaseService purchaseService, IMediaService mediaService)
         {
             _purchaseService = purchaseService;
             _mediaService = mediaService;
-        }
-
-        public ImageSource Test
-        {
-            set { SetProperty(ref _test, value); }
-            get { return _test; }
         }
 
         public List<AutocompletePurchaseModel> AutocompleteItems

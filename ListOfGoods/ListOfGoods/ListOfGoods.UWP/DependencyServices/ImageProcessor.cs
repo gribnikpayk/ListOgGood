@@ -75,6 +75,11 @@ namespace ListOfGoods.UWP.DependencyServices
                 }
             }
         }
+
+        public void DeleteFile(string filePath)
+        {
+            File.Delete(filePath);
+        }
     }
 }
 

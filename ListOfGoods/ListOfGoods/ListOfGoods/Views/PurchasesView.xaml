@@ -36,12 +36,6 @@
       <ScrollView AbsoluteLayout.LayoutFlags="All"
                   AbsoluteLayout.LayoutBounds="0,0,1,1">
         <StackLayout>
-          <Button Text="Camera" Command="{Binding TakePhotoFromCamera}"></Button>
-          <Button Text="Gallery" Command="{Binding TakePhotoFromGallery}"></Button>
-          <Image WidthRequest="50"
-                 HeightRequest="50"
-                 BackgroundColor="Green"
-                 Source="{Binding Test}"></Image>
         </StackLayout>
       </ScrollView>
       <StackLayout AbsoluteLayout.LayoutFlags="All"

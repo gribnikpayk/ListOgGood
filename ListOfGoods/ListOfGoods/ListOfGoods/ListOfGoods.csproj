@@ -76,6 +76,9 @@
     <Compile Include="ViewModels\PopUps\ListActionsPopUpViewModel.cs" />
     <Compile Include="ViewModels\PurchasesListViewModel.cs" />
     <Compile Include="ViewModels\PurchasesViewModel.cs" />
+    <Compile Include="Views\PopUps\AddNewPurchase.xaml.cs">
+      <DependentUpon>AddNewPurchase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PopUps\AddNewPurchaseListPopUp.xaml.cs">
       <DependentUpon>AddNewPurchaseListPopUp.xaml</DependentUpon>
     </Compile>
@@ -210,6 +213,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\PurchasesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PopUps\AddNewPurchase.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
