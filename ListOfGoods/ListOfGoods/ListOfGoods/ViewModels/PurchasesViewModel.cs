@@ -30,16 +30,19 @@ namespace ListOfGoods.ViewModels
         public ICommand TakePhotoFromGallery => new Command(async () =>
         {
             var s = await _mediaService.TakePhotoFromGalleryAsync();
-            var ss = s;
+            var path = await DependencyService.Get<IImageProcessor>().GetCroppedImagePathAsync(s, "test", 50);
+            Test = ImageSource.FromFile(path);
         });
 
         public ICommand TakePhotoFromCamera => new Command(async () =>
         {
             var s = await _mediaService.TakePhotoFromCameraAsync();
-            var base64 = await DependencyService.Get<ICropImage>().GetCroppedBitmapAsync(s, 100, 100);
+            var path = await DependencyService.Get<IImageProcessor>().GetCroppedImagePathAsync(s, "test", 50);
+            Test = ImageSource.FromFile(path);
             //var bytes = ReadFully(stream);
             //Test = ImageSource.FromStream(() => new MemoryStream(bytes));
             var ss = s;
+            //BitmapIma
         });
 
         public static byte[] ReadFully(Stream input)
