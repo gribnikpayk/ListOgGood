@@ -40,7 +40,6 @@
     </Compile>
     <Compile Include="CustomControls\CustomEntry.cs" />
     <Compile Include="CustomControls\CustomFrame.cs" />
-    <Compile Include="CustomControls\CustomImage.cs" />
     <Compile Include="CustomControls\ListFrame.cs" />
     <Compile Include="DataManagers\Local\Base\BaseEntity.cs" />
     <Compile Include="DataManagers\Local\Base\BaseRepository.cs" />
@@ -57,6 +56,8 @@
     <Compile Include="Infrastructure\Constants\MessagingCenterConstants.cs" />
     <Compile Include="Infrastructure\DependencyService\IImageProcessor.cs" />
     <Compile Include="Infrastructure\DependencyService\ISQLite.cs" />
+    <Compile Include="Infrastructure\Enums\Categories.cs" />
+    <Compile Include="Infrastructure\Enums\Measurements.cs" />
     <Compile Include="Infrastructure\Extensions\CustomControlsExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\DateTimeExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\ImageSourceExtensions.cs" />

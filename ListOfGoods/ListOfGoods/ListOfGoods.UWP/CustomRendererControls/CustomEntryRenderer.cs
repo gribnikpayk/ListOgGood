@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media;
 using ListOfGoods.CustomControls;
 using ListOfGoods.UWP.CustomRendererControls;
 using Xamarin.Forms.Platform.UWP;

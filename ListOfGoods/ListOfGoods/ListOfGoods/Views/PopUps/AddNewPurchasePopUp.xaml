@@ -37,17 +37,24 @@
       </StackLayout>
       <Label Text="Category"
              TextColor="{x:Static commonColor:ColorResourses.EntryText}"></Label>
-      <Picker></Picker>
+      <Picker SelectedItem="{Binding SelectedCategory}"
+              ItemsSource="{Binding CategorySource}"
+              TextColor="{x:Static commonColor:ColorResourses.EntryText}"
+              BackgroundColor="Black"></Picker>
       <Label Text="Quantity"
              TextColor="{x:Static commonColor:ColorResourses.EntryText}"></Label>
       <StackLayout Orientation="Horizontal">
         <customControls:CustomEntry Text="{Binding Quantity}"
+                                    Placeholder="0.0"
+                                    PlaceholderColor="{x:Static commonColor:ColorResourses.Placeholder}"
                                     BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
                                     TextColor="{x:Static commonColor:ColorResourses.Green}"
                                     Keyboard="Numeric">
 
         </customControls:CustomEntry>
-        <Picker></Picker>
+        <Picker SelectedItem="{Binding SelectedMesurement}"
+                ItemsSource="{Binding MesurementSource}"
+                TextColor="{x:Static commonColor:ColorResourses.EntryText}"></Picker>
       </StackLayout>
       <Label Text="Price"
              TextColor="{x:Static commonColor:ColorResourses.EntryText}"></Label>
