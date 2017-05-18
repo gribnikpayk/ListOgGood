@@ -43,6 +43,7 @@
                    IsVisible="{Binding AutoCompleteIsVisible}">
         <ListView VerticalOptions="Start"
                   CachingStrategy="RecycleElement"
+                  ItemSelected="ListView_OnItemSelected"
                   ItemsSource="{Binding AutocompleteItems}">
           <ListView.ItemTemplate>
             <DataTemplate>

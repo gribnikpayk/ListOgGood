@@ -17,7 +17,7 @@ namespace ListOfGoods.Services.Media
                 MediaFile mediaFile = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions { CompressionQuality = 70, PhotoSize = PhotoSize.Medium });
                 return mediaFile;
             }
-            return string.Empty;
+            return null;
         }
 
         public async Task<MediaFile> TakePhotoFromCameraAsync()
@@ -31,10 +31,10 @@ namespace ListOfGoods.Services.Media
                 }
                 catch (Exception e)
                 {
-                    return string.Empty;
+                    return null;
                 }
             }
-            return string.Empty;
+            return null;
         }
 
         private async Task<PermissionStatus> PermissionProccesAsync(Permission permission)

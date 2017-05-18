@@ -62,6 +62,7 @@
     <Compile Include="Infrastructure\Extensions\ImageSourceExtensions.cs" />
     <Compile Include="Infrastructure\Helpers\LocalDbDeploymentHelper.cs" />
     <Compile Include="Infrastructure\Models\AutocompletePurchaseModel.cs" />
+    <Compile Include="Infrastructure\Models\NewPurchaseModel.cs" />
     <Compile Include="Infrastructure\Navigation\INavigationService.cs" />
     <Compile Include="Infrastructure\Navigation\NaviagationService.cs" />
     <Compile Include="Infrastructure\Resourses\BackgroundResourses.cs" />
@@ -73,12 +74,10 @@
     <Compile Include="Services\Purchase\PurchaseService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\PopUps\AddNewPurchaseListPopUpViewModel.cs" />
+    <Compile Include="ViewModels\PopUps\AddNewPurchasePopUpViewModel.cs" />
     <Compile Include="ViewModels\PopUps\ListActionsPopUpViewModel.cs" />
     <Compile Include="ViewModels\PurchasesListViewModel.cs" />
     <Compile Include="ViewModels\PurchasesViewModel.cs" />
-    <Compile Include="Views\PopUps\AddNewPurchase.xaml.cs">
-      <DependentUpon>AddNewPurchase.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\PopUps\AddNewPurchaseListPopUp.xaml.cs">
       <DependentUpon>AddNewPurchaseListPopUp.xaml</DependentUpon>
     </Compile>
@@ -86,6 +85,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterDetailPage\MasterPageItem.cs" />
+    <Compile Include="Views\PopUps\AddNewPurchasePopUp.xaml.cs">
+      <DependentUpon>AddNewPurchasePopUp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PopUps\ListActions.xaml.cs">
       <DependentUpon>ListActions.xaml</DependentUpon>
     </Compile>
@@ -218,7 +220,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\PopUps\AddNewPurchase.xaml">
+    <EmbeddedResource Include="Views\PopUps\AddNewPurchasePopUp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -8,6 +8,8 @@ using ListOfGoods.Infrastructure.DependencyService;
 using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.Services.Media;
 using ListOfGoods.Services.Purchase;
+using ListOfGoods.Views.PopUps;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace ListOfGoods.ViewModels
@@ -78,6 +80,17 @@ namespace ListOfGoods.ViewModels
             get { return _autoCompleteIsVisible; }
         }
 
+        public async Task SelectedAutocompleteItemProcess(AutocompletePurchaseModel purchase)
+        {
+            AutoCompleteIsVisible = false;
+            NewPurchase = purchase.Name;
+            var newPurchaseModel = new NewPurchaseModel
+            {
+                PurchaseName = purchase.Name,
+                ImageSource = purchase.ImageSource
+            };
+            await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel));
+        }
         private void SearchTextChanged(CancellationToken token)
         {
             Task.Delay(50, token).ContinueWith(tsk =>

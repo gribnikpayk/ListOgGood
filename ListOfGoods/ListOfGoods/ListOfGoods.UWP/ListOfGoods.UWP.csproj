@@ -152,6 +152,7 @@
     <Content Include="Assets\mozzarella.jpg" />
     <Content Include="Assets\mushrooms.jpg" />
     <Content Include="Assets\napkins.jpg" />
+    <Content Include="Assets\new_purchase_Icon.png" />
     <Content Include="Assets\nuts.jpg" />
     <Content Include="Assets\oil.jpg" />
     <Content Include="Assets\olives.jpg" />

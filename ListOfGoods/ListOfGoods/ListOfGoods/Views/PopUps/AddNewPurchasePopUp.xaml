@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:commonColor="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
+             xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
+             x:Class="ListOfGoods.Views.PopUps.AddNewPurchasePopUp">
+  <customControls:CustomFrame HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Center"
+                             InlineColor="{x:Static commonColor:ColorResourses.Grey}">
+    <customControls:CustomFrame.Margin>
+      <Thickness>20,0,20,0</Thickness>
+    </customControls:CustomFrame.Margin>
+    <StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <customControls:CustomEntry Text="{Binding NewPurchase}"
+                                    BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
+                                    TextColor="{x:Static commonColor:ColorResourses.Green}"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="Large">
+        </customControls:CustomEntry>
+        <AbsoluteLayout WidthRequest="50"
+                        HeightRequest="50"
+                        HorizontalOptions="End">
+          <Image Source="{Binding PurchaseIconSource}"
+                 AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All"></Image>
+          <Label Text="edit"
+                 HorizontalTextAlignment="Center"
+                 VerticalTextAlignment="Center"
+                 FontSize="Micro"
+                 TextColor="White"
+                 BackgroundColor="{x:Static commonColor:ColorResourses.BlackWithOpacity}"
+                 AbsoluteLayout.LayoutFlags="All"
+                 AbsoluteLayout.LayoutBounds="0,1,1,0.4"></Label>
+        </AbsoluteLayout>
+      </StackLayout>
+      <Label Text="Category"
+             TextColor="{x:Static commonColor:ColorResourses.EntryText}"></Label>
+      <Picker></Picker>
+      <Label Text="Quantity"
+             TextColor="{x:Static commonColor:ColorResourses.EntryText}"></Label>
+      <StackLayout Orientation="Horizontal">
+        <customControls:CustomEntry Text="{Binding Quantity}"
+                                    BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
+                                    TextColor="{x:Static commonColor:ColorResourses.Green}"
+                                    Keyboard="Numeric">
+
+        </customControls:CustomEntry>
+        <Picker></Picker>
+      </StackLayout>
+      <Label Text="Price"
+             TextColor="{x:Static commonColor:ColorResourses.EntryText}"></Label>
+      <StackLayout Orientation="Horizontal">
+        <customControls:CustomEntry Text="{Binding Price}"
+                                    BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
+                                    TextColor="{x:Static commonColor:ColorResourses.Green}"
+                                    Keyboard="Numeric">
+        </customControls:CustomEntry>
+      </StackLayout>
+      <Button BackgroundColor="{x:Static commonColor:ColorResourses.ButtonBackground}"
+              TextColor="{x:Static commonColor:ColorResourses.ButtonText}"
+              Text="Add"
+              WidthRequest="250"
+              FontSize="Medium"
+              Command="{Binding AddCommand}"></Button>
+    </StackLayout>
+  </customControls:CustomFrame>
+</pages:PopupPage>

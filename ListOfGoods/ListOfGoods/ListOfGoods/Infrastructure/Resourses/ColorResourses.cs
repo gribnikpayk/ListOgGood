@@ -17,5 +17,6 @@ namespace ListOfGoods.Infrastructure.Resourses
         public static readonly Color EntryText = Color.FromHex("#fcfdff");
         public static readonly Color ErrorMessageText = Color.FromHex("#db5742");
         public static readonly Color TextColorWithOpacity = Color.FromRgba(255, 255, 255, 0.6);
+        public static readonly Color BlackWithOpacity = Color.FromRgba(0, 0, 0, 0.5);
     }
 }
