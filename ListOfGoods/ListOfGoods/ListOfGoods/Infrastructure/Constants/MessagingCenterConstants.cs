@@ -5,5 +5,6 @@
         public static readonly string NewListWasCreated = "NewListWasCreated";
         public static readonly string InitLists = "InitLists";
         public static readonly string NavigateTo = "NavigateTo";
+        public static readonly string SearchControlIsReady = "SearchControlIsReady";
     }
 }

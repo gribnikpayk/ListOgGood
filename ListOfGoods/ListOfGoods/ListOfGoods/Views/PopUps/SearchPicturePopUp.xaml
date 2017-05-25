@@ -4,7 +4,15 @@
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:commonColor="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
              xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
+             xmlns:converters="clr-namespace:ListOfGoods.Infrastructure.Converters;assembly=ListOfGoods"
              x:Class="ListOfGoods.Views.PopUps.SearchPicturePopUp">
+
+  <pages:PopupPage.Resources>
+    <ResourceDictionary>
+      <converters:BoolInverseConverter x:Key="boolConverter"></converters:BoolInverseConverter>
+    </ResourceDictionary>
+  </pages:PopupPage.Resources>
+
   <customControls:CustomFrame HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand"
                              InlineColor="{x:Static commonColor:ColorResourses.Grey}">
@@ -13,19 +21,36 @@
     </customControls:CustomFrame.Margin>
 
     <StackLayout>
-      <customControls:CustomEntry Text="{Binding PictureName}"
-                                    BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
-                                    TextColor="{x:Static commonColor:ColorResourses.Green}"
+      <StackLayout Orientation="Horizontal"
+                   Spacing="0">
+        <customControls:CustomEntry Text="{Binding PictureName}"
+                                    BackgroundColor="{x:Static commonColor:ColorResourses.LiteGreyEntryBackground}"
+                                    VerticalOptions="Center"
+                                    HeightRequest="40"
                                     HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="Start"
-                                    FontSize="Large">
-      </customControls:CustomEntry>
+                                    FontSize="Medium"
+                                    PlaceholderColor="{x:Static commonColor:ColorResourses.Placeholder}"
+                                    Placeholder="Search"
+                                    TextColor="{x:Static commonColor:ColorResourses.EntryText}">
+        </customControls:CustomEntry>
+        <Image Source="Assets/search_icon.png"
+               BackgroundColor="{x:Static commonColor:ColorResourses.Green}"
+               VerticalOptions="Center"
+               HeightRequest="40"
+               HorizontalOptions="End">
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding SearchCommand}"></TapGestureRecognizer>
+          </Image.GestureRecognizers>
+        </Image>
+      </StackLayout>
       <ActivityIndicator VerticalOptions="Center"
                          HorizontalOptions="Center"
                          Color="{x:Static commonColor:ColorResourses.Green}"
                          IsRunning="True"
-                         IsVisible="{Binding IsBusy}"></ActivityIndicator>
+                         IsVisible="true"></ActivityIndicator>
+      <StackLayout VerticalOptions="FillAndExpand"
+                   x:Name="ContentWrapper"
+                   IsVisible="{Binding IsBusy, Converter={StaticResource boolConverter}}"></StackLayout>
     </StackLayout>
-
   </customControls:CustomFrame>
 </pages:PopupPage>

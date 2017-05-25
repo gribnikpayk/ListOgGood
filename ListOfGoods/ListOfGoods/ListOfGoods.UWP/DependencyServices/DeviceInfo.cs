@@ -32,7 +32,7 @@ using System.Windows.Media;
 using Size = System.Windows.Size;
 #endif
 
-namespace ListOfGoods.UWP
+namespace ListOfGoods.UWP.DependencyServices
 {
     /// <summary>
     /// This class implements methods to resolve harware supported by the

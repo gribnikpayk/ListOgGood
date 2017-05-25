@@ -19,13 +19,15 @@
 // ***********************************************************************
 // 
 
+using System;
 using Windows.Graphics.Display;
 using Windows.UI.ViewManagement;
-using ListOfGoods.UWP;
+using ListOfGoods.Infrastructure.DependencyService;
+using ListOfGoods.UWP.DependencyServices;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(Display))]
-namespace ListOfGoods.UWP
+namespace ListOfGoods.UWP.DependencyServices
 {
     /// <summary>
     /// Windows Phone 8 Display.
@@ -61,7 +63,8 @@ namespace ListOfGoods.UWP
         /// Gets the screen width in pixels
         /// </summary>
         /// <value>The width.</value>
-        public double Width {
+        public double Width
+        {
             get
             {
                 return ApplicationView.GetForCurrentView().VisibleBounds.Width;

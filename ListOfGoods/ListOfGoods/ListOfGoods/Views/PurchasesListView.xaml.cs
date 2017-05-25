@@ -5,11 +5,13 @@ using ListOfGoods.CustomControls;
 using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Animations;
 using ListOfGoods.Infrastructure.Constants;
+using ListOfGoods.Infrastructure.DependencyService;
 using ListOfGoods.Infrastructure.Extensions;
 using ListOfGoods.Infrastructure.Helpers;
 using ListOfGoods.ViewModels;
 using ListOfGoods.ViewModels.PopUps;
 using ListOfGoods.Views.PopUps;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -56,7 +58,9 @@ namespace ListOfGoods.Views
              });
             MessagingCenter.Subscribe<ListFrame, int>(this, MessagingCenterConstants.NavigateTo, async (sender, id) =>
             {
-                await _viewModel.NavigateToPurchasePage(id);
+                //await _viewModel.NavigateToPurchasePage(id);
+                var deviceWidth = DependencyService.Get<IDisplay>().Width;
+                await PopupNavigation.PushAsync(new SearchPicturePopUp("tomato", deviceWidth));
             });
             Task.Run(() => { _viewModel.SetPageState(); });
         }

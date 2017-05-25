@@ -9,32 +9,38 @@ namespace ListOfGoods.CustomControls
         private int _pictureWidth_Mobile = 100;
         private int _pictureWidth_Desctop = 200;
         private int _maxDisplayWidth = 500;
-        public SearchPictureResultsControl(List<string> images)
+        private double _deviceWidth;
+        private int _margin = 50;
+        public SearchPictureResultsControl(List<string> images, double deviceWidth)
         {
             VerticalOptions = LayoutOptions.FillAndExpand;
+            _deviceWidth = deviceWidth - (_margin * 2);
 
             var countOfColumn = getCountOfColumn();
+
             var countOfRow = getCountOfRow(countOfColumn, images.Count);
             var grid = getGrid(countOfRow, countOfColumn);
 
             var imageIndex = 0;
-            var imageWidth = getImageWidth(DependencyService.Get<IDisplay>().Width);
+            var imageWidth = _deviceWidth;
             for (int i = 0; i < countOfRow; i++)
             {
                 for (int j = 0; j < countOfColumn; j++)
                 {
                     var image = getImage(images, imageIndex, imageWidth);
-                    if (image == null) { break; }
+                    if (image == null)
+                    {
+                        break;
+                    }
 
                     grid.Children.Add(image, j, i);
                     imageIndex++;
                 }
             }
-
             Content = grid;
         }
 
-        private Image getImage(List<string> images, int index, int width)
+        private Image getImage(List<string> images, int index, double width)
         {
             var image = new Image
             {
@@ -51,10 +57,9 @@ namespace ListOfGoods.CustomControls
 
         private int getCountOfColumn()
         {
-            var displayWidth = DependencyService.Get<IDisplay>().Width;
-            var imageWidth = getImageWidth(displayWidth);
+            var imageWidth = getImageWidth(_deviceWidth);
 
-            var countOfColumn = (int)displayWidth / imageWidth;
+            var countOfColumn = (int)_deviceWidth / imageWidth;
             return countOfColumn;
         }
 

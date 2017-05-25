@@ -23,7 +23,9 @@ namespace ListOfGoods.Services.Search
             var document = await BrowsingContext.New(config).OpenAsync(requestUri);
             var cellSelector = "img";
             var cells = document.QuerySelectorAll(cellSelector);
-            List<string> imageSrc = cells.Select(m => m.GetAttribute("src")).ToList();
+            List<string> imageSrc = cells.Select(m => m.GetAttribute("src"))
+                .Where(src => !string.IsNullOrEmpty(src) && src.IndexOf("http", StringComparison.Ordinal) >= 0)
+                .ToList();
             return imageSrc;
         }
     }

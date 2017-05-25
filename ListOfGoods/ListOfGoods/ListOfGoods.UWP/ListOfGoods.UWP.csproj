@@ -101,8 +101,8 @@
     <Compile Include="CustomRendererControls\CustomImageRenderer.cs" />
     <Compile Include="DependencyServices\ImageProcessor.cs" />
     <Compile Include="DependencyServices\SQLite.cs" />
-    <Compile Include="DeviceInfo.cs" />
-    <Compile Include="Display.cs" />
+    <Compile Include="DependencyServices\DeviceInfo.cs" />
+    <Compile Include="DependencyServices\Display.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -172,6 +172,7 @@
     <Content Include="Assets\rice.jpg" />
     <Content Include="Assets\salad.jpg" />
     <Content Include="Assets\sausage.jpg" />
+    <Content Include="Assets\search_icon.png" />
     <Content Include="Assets\shrimp.jpg" />
     <Content Include="Assets\soap.jpg" />
     <Content Include="Assets\spice.jpg" />
