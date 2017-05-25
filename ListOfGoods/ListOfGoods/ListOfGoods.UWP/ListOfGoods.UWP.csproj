@@ -101,6 +101,8 @@
     <Compile Include="CustomRendererControls\CustomImageRenderer.cs" />
     <Compile Include="DependencyServices\ImageProcessor.cs" />
     <Compile Include="DependencyServices\SQLite.cs" />
+    <Compile Include="DeviceInfo.cs" />
+    <Compile Include="Display.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

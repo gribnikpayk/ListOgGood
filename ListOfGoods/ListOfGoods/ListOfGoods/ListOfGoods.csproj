@@ -41,6 +41,7 @@
     <Compile Include="CustomControls\CustomEntry.cs" />
     <Compile Include="CustomControls\CustomFrame.cs" />
     <Compile Include="CustomControls\ListFrame.cs" />
+    <Compile Include="CustomControls\SearchPictureResultsControl.cs" />
     <Compile Include="DataManagers\Local\Base\BaseEntity.cs" />
     <Compile Include="DataManagers\Local\Base\BaseRepository.cs" />
     <Compile Include="DataManagers\Local\Base\IBaseRepository.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Infrastructure\Animations\AnimationExtensions.cs" />
     <Compile Include="Infrastructure\Constants\CommonNameConstants.cs" />
     <Compile Include="Infrastructure\Constants\MessagingCenterConstants.cs" />
+    <Compile Include="Infrastructure\DependencyService\IDisplay.cs" />
     <Compile Include="Infrastructure\DependencyService\IImageProcessor.cs" />
     <Compile Include="Infrastructure\DependencyService\ISQLite.cs" />
     <Compile Include="Infrastructure\Enums\Categories.cs" />
@@ -61,6 +63,9 @@
     <Compile Include="Infrastructure\Extensions\CustomControlsExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\DateTimeExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\ImageSourceExtensions.cs" />
+    <Compile Include="Infrastructure\GoogleSearch\SearchResponse.cs" />
+    <Compile Include="Services\Search\ISearchService.cs" />
+    <Compile Include="Services\Search\SearchService.cs" />
     <Compile Include="Infrastructure\Helpers\LocalDbDeploymentHelper.cs" />
     <Compile Include="Infrastructure\Models\AutocompletePurchaseModel.cs" />
     <Compile Include="Infrastructure\Models\NewPurchaseModel.cs" />
@@ -77,6 +82,7 @@
     <Compile Include="ViewModels\PopUps\AddNewPurchaseListPopUpViewModel.cs" />
     <Compile Include="ViewModels\PopUps\AddNewPurchasePopUpViewModel.cs" />
     <Compile Include="ViewModels\PopUps\ListActionsPopUpViewModel.cs" />
+    <Compile Include="ViewModels\PopUps\SearchPicturePopUpViewModel.cs" />
     <Compile Include="ViewModels\PurchasesListViewModel.cs" />
     <Compile Include="ViewModels\PurchasesViewModel.cs" />
     <Compile Include="Views\PopUps\AddNewPurchaseListPopUp.xaml.cs">
@@ -92,6 +98,9 @@
     <Compile Include="Views\PopUps\ListActions.xaml.cs">
       <DependentUpon>ListActions.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PopUps\SearchPicturePopUp.xaml.cs">
+      <DependentUpon>SearchPicturePopUp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PurchasesListView.xaml.cs">
       <DependentUpon>PurchasesListView.xaml</DependentUpon>
     </Compile>
@@ -106,10 +115,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AngleSharp.0.9.9\lib\portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch\AngleSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FFImageLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.FFImageLoading.2.2.10-pre-391\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
       <Private>True</Private>
@@ -132,6 +146,10 @@
     </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ModernHttpClient, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\modernhttpclient.2.4.2\lib\Portable-Net45+WinRT45+WP8+WPA81\ModernHttpClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Plugin.Media, Version=2.6.3.14, Culture=neutral, processorArchitecture=MSIL">
@@ -173,6 +191,9 @@
     <Reference Include="SQLitePCLRaw.core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SQLitePCLRaw.core.1.1.2\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.231\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
@@ -222,6 +243,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\PopUps\AddNewPurchasePopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PopUps\SearchPicturePopUp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -7,6 +7,7 @@ using ListOfGoods.Infrastructure.Helpers;
 using ListOfGoods.Infrastructure.Navigation;
 using ListOfGoods.Services.Media;
 using ListOfGoods.Services.Purchase;
+using ListOfGoods.Services.Search;
 using ListOfGoods.Views.MasterDetailPage;
 using Microsoft.Practices.Unity;
 using Xamarin.Forms;
@@ -31,6 +32,7 @@ namespace ListOfGoods
             Container.RegisterType<IPurchasesListRepository, PurchasesListRepository>();
             Container.RegisterType<IPurchaseService, PurchaseService>();
             Container.RegisterType<IMediaService, MediaService>();
+            Container.RegisterType<ISearchService, SearchService>();
             var deploymentHelper = Container.Resolve<LocalDbDeploymentHelper>();
         }
 

@@ -3,6 +3,14 @@
   "version": 1,
   "targets": {
     "UAP,Version=v10.0": {
+      "AngleSharp/0.9.9": {
+        "compile": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        },
+        "runtime": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        }
+      },
       "CommonServiceLocator/1.3.0": {
         "compile": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
@@ -304,6 +312,14 @@
         },
         "compile": {
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "modernhttpclient/2.4.2": {
+        "compile": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
+        },
+        "runtime": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
         }
       },
       "NETStandard.Library/1.6.0": {
@@ -2318,6 +2334,14 @@
       }
     },
     "UAP,Version=v10.0/win10-arm": {
+      "AngleSharp/0.9.9": {
+        "compile": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        },
+        "runtime": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        }
+      },
       "CommonServiceLocator/1.3.0": {
         "compile": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
@@ -2567,6 +2591,14 @@
         },
         "compile": {
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "modernhttpclient/2.4.2": {
+        "compile": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
+        },
+        "runtime": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
         }
       },
       "NETStandard.Library/1.6.0": {
@@ -4711,6 +4743,14 @@
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
+      "AngleSharp/0.9.9": {
+        "compile": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        },
+        "runtime": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        }
+      },
       "CommonServiceLocator/1.3.0": {
         "compile": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
@@ -4961,6 +5001,14 @@
         },
         "compile": {
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "modernhttpclient/2.4.2": {
+        "compile": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
+        },
+        "runtime": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
         }
       },
       "NETStandard.Library/1.6.0": {
@@ -7143,6 +7191,14 @@
       }
     },
     "UAP,Version=v10.0/win10-x64": {
+      "AngleSharp/0.9.9": {
+        "compile": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        },
+        "runtime": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        }
+      },
       "CommonServiceLocator/1.3.0": {
         "compile": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
@@ -7396,6 +7452,14 @@
         },
         "compile": {
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "modernhttpclient/2.4.2": {
+        "compile": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
+        },
+        "runtime": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
         }
       },
       "NETStandard.Library/1.6.0": {
@@ -9541,6 +9605,14 @@
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
+      "AngleSharp/0.9.9": {
+        "compile": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        },
+        "runtime": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        }
+      },
       "CommonServiceLocator/1.3.0": {
         "compile": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
@@ -9795,6 +9867,14 @@
         },
         "compile": {
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "modernhttpclient/2.4.2": {
+        "compile": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
+        },
+        "runtime": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
         }
       },
       "NETStandard.Library/1.6.0": {
@@ -11978,6 +12058,14 @@
       }
     },
     "UAP,Version=v10.0/win10-x86": {
+      "AngleSharp/0.9.9": {
+        "compile": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        },
+        "runtime": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        }
+      },
       "CommonServiceLocator/1.3.0": {
         "compile": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
@@ -12231,6 +12319,14 @@
         },
         "compile": {
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "modernhttpclient/2.4.2": {
+        "compile": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
+        },
+        "runtime": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
         }
       },
       "NETStandard.Library/1.6.0": {
@@ -14380,6 +14476,14 @@
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
+      "AngleSharp/0.9.9": {
+        "compile": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        },
+        "runtime": {
+          "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll": {}
+        }
+      },
       "CommonServiceLocator/1.3.0": {
         "compile": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
@@ -14634,6 +14738,14 @@
         },
         "compile": {
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "modernhttpclient/2.4.2": {
+        "compile": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
+        },
+        "runtime": {
+          "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll": {}
         }
       },
       "NETStandard.Library/1.6.0": {
@@ -16822,6 +16934,24 @@
     }
   },
   "libraries": {
+    "AngleSharp/0.9.9": {
+      "sha512": "z3h0p8u7p7QFSStWaC+u9cx7+IaRvMmLXqczx5WYW5V9t58kGQg3xMyb4iRI2mIEnePQq2pp2sQAadEl4GhmBg==",
+      "type": "package",
+      "files": [
+        "AngleSharp.0.9.9.nupkg.sha512",
+        "AngleSharp.nuspec",
+        "lib/net40/AngleSharp.dll",
+        "lib/net40/AngleSharp.xml",
+        "lib/net45/AngleSharp.dll",
+        "lib/net45/AngleSharp.xml",
+        "lib/netstandard1.0/AngleSharp.dll",
+        "lib/netstandard1.0/AngleSharp.xml",
+        "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.dll",
+        "lib/portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch/AngleSharp.xml",
+        "lib/sl50/AngleSharp.dll",
+        "lib/sl50/AngleSharp.xml"
+      ]
+    },
     "CommonServiceLocator/1.3.0": {
       "sha512": "fbjO0SNwbOFPdwVfyqv+B7gIJ2CVBOFPKqn1mDDECK7KER8jFaOdcvroFYoAHa0ktPbxi5s+15qOLnA96f8GSA==",
       "type": "package",
@@ -17295,6 +17425,24 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "modernhttpclient/2.4.2": {
+      "sha512": "Srkrjz2wBCh7af+AGqpPkJ3FSSFSruzg9mHVwwXiklf9gx2L1Ss2M+p2Mf4Fw17AOe6yPuJwdu4AAoslc6zP+w==",
+      "type": "package",
+      "files": [
+        "lib/ModernHttpClient-2.4.1.zip",
+        "lib/MonoAndroid/ModernHttpClient.dll",
+        "lib/MonoAndroid/ModernHttpClient.dll.mdb",
+        "lib/MonoAndroid/OkHttp.dll",
+        "lib/MonoTouch/ModernHttpClient.dll",
+        "lib/MonoTouch/ModernHttpClient.dll.mdb",
+        "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll",
+        "lib/Portable-Net45+WinRT45+WP8+WPA81/ModernHttpClient.dll.mdb",
+        "lib/Xamarin.iOS10/ModernHttpClient.dll",
+        "lib/Xamarin.iOS10/ModernHttpClient.dll.mdb",
+        "modernhttpclient.2.4.2.nupkg.sha512",
+        "modernhttpclient.nuspec"
       ]
     },
     "NETStandard.Library/1.6.0": {
@@ -23612,6 +23760,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "AngleSharp >= 0.9.9",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.2",
       "Plugin.Permissions >= 1.3.1.20-beta",
       "Rg.Plugins.Popup >= 1.0.4",
@@ -23621,6 +23770,7 @@
       "Xamarin.FFImageLoading.Forms >= 2.2.10-pre-391",
       "Xamarin.FFImageLoading.Transformations >= 2.2.10-pre-391",
       "Xamarin.Forms >= 2.3.4.231",
+      "modernhttpclient >= 2.4.2",
       "sqlite-net-pcl >= 1.3.1"
     ],
     "UAP,Version=v10.0": []

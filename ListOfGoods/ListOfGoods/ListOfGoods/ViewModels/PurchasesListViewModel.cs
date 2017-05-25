@@ -6,6 +6,7 @@ using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Infrastructure.Navigation;
 using ListOfGoods.Services.Purchase;
+using ListOfGoods.Services.Search;
 using ListOfGoods.Views;
 using ListOfGoods.Views.PopUps;
 using Rg.Plugins.Popup.Extensions;
@@ -22,12 +23,16 @@ namespace ListOfGoods.ViewModels
 
         private IPurchaseService _purchaseService;
         private INavigationService _navigation;
+        private ISearchService _searchService;
         
-        public PurchasesListViewModel(INavigationService navigation, IPurchaseService purchaseService)
+        public PurchasesListViewModel(INavigationService navigation, IPurchaseService purchaseService, ISearchService searchService)
         {
             _navigation = navigation;
             _purchaseService = purchaseService;
+            _searchService = searchService;
             AddNewList = new Command(async ()=> { await PopupNavigation.PushAsync(new AddNewPurchaseListPopUp()); });
+
+            _searchService.SearchImagesAsync("фасоль");
         }
 
         public void SetPageState()

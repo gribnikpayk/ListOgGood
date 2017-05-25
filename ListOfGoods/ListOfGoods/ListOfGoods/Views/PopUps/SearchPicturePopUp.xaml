@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:commonColor="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
+             xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
+             x:Class="ListOfGoods.Views.PopUps.SearchPicturePopUp">
+  <customControls:CustomFrame HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             InlineColor="{x:Static commonColor:ColorResourses.Grey}">
+    <customControls:CustomFrame.Margin>
+      <Thickness>50</Thickness>
+    </customControls:CustomFrame.Margin>
+
+    <StackLayout>
+      <customControls:CustomEntry Text="{Binding PictureName}"
+                                    BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
+                                    TextColor="{x:Static commonColor:ColorResourses.Green}"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Start"
+                                    FontSize="Large">
+      </customControls:CustomEntry>
+      <ActivityIndicator VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Color="{x:Static commonColor:ColorResourses.Green}"
+                         IsRunning="True"
+                         IsVisible="{Binding IsBusy}"></ActivityIndicator>
+    </StackLayout>
+
+  </customControls:CustomFrame>
+</pages:PopupPage>
