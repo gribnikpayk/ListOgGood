@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ListOfGoods.Infrastructure.DependencyService;
 using Xamarin.Forms;
 
@@ -22,7 +23,7 @@ namespace ListOfGoods.CustomControls
             var grid = getGrid(countOfRow, countOfColumn);
 
             var imageIndex = 0;
-            var imageWidth = _deviceWidth;
+            var imageWidth = getImageWidth(_deviceWidth);
             for (int i = 0; i < countOfRow; i++)
             {
                 for (int j = 0; j < countOfColumn; j++)
@@ -42,17 +43,21 @@ namespace ListOfGoods.CustomControls
 
         private Image getImage(List<string> images, int index, double width)
         {
-            var image = new Image
+            if (images.Count > index)
             {
-                IsOpaque = false,
-                Source = ImageSource.FromFile("Assets/lemon.jpg"),
-                WidthRequest = width,
-                HeightRequest = width,
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center,
-                Aspect = Aspect.AspectFill
-            };
-            return image;
+                var image = new Image
+                {
+                    IsOpaque = false,
+                    Source = ImageSource.FromUri(new Uri(images[index])),
+                    WidthRequest = width,
+                    HeightRequest = width,
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.Center,
+                    Aspect = Aspect.AspectFill
+                };
+                return image;
+            }
+            return null;
         }
 
         private int getCountOfColumn()
