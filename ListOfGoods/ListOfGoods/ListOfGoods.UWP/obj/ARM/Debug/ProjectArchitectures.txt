@@ -1,0 +1,2 @@
+D:\Work Folder\ListOfGoods\ListOfGoods\ListOfGoods\ListOfGoods.UWP\ListOfGoods.UWP.csproj;arm
+D:\Work Folder\ListOfGoods\ListOfGoods\ListOfGoods\ListOfGoods\ListOfGoods.csproj;neutral

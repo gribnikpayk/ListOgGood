@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ListOfGoods.Views.PurchasesListView"
              xmlns:commonResorces="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
+             xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
              Title="All lists"
              BackgroundColor="{x:Static commonResorces:ColorResourses.Background}">
   <ScrollView>
@@ -30,7 +31,7 @@
              IsVisible="{Binding NoListsMessageIsVisible}"
              TextColor="White"
              FontSize="Medium"></Label>
-      <Button Text="Add a new list"
+      <customControls:RoundedButton Text="Add a new list"
               HorizontalOptions="End"
               IsVisible="{Binding NoListsMessageIsVisible}"
               TextColor="{x:Static commonResorces:ColorResourses.ButtonText}"
@@ -41,7 +42,7 @@
         <Button.Margin>
           <Thickness>0,15,0,0</Thickness>
         </Button.Margin>
-      </Button>
+      </customControls:RoundedButton>
     </StackLayout>
   </ScrollView>
 </ContentPage>

@@ -29,7 +29,8 @@ namespace ListOfGoods.Views
             ToolbarItems.Add(new ToolbarItem
             {
                 Text = "Add a new list",
-                Icon = "addIcon.png".ToPlatformImagePath()
+                Icon = "addIcon.png".ToPlatformImagePath(),
+                Command = _viewModel.AddNewList
             });
         }
 
@@ -58,9 +59,7 @@ namespace ListOfGoods.Views
              });
             MessagingCenter.Subscribe<ListFrame, int>(this, MessagingCenterConstants.NavigateTo, async (sender, id) =>
             {
-                //await _viewModel.NavigateToPurchasePage(id);
-                var deviceWidth = DependencyService.Get<IDisplay>().Width;
-                await PopupNavigation.PushAsync(new SearchPicturePopUp("tomato", deviceWidth));
+                await _viewModel.NavigateToPurchasePage(id);
             });
             Task.Run(() => { _viewModel.SetPageState(); });
         }

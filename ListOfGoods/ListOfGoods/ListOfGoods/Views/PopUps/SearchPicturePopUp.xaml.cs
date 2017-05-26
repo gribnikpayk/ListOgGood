@@ -22,20 +22,33 @@ namespace ListOfGoods.Views.PopUps
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<SearchPicturePopUpViewModel,SearchPictureResultsControl>(this,MessagingCenterConstants.SearchControlIsReady,
-                (sender, control) =>
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        ContentWrapper.Children.Add(control);
-                    });
-                });
+            MessagingCenter.Subscribe<SearchPicturePopUpViewModel, SearchPictureResultsControl>(this, MessagingCenterConstants.SearchControlIsReady, DrawSearchPicControl);
+            MessagingCenter.Subscribe<SearchPicturePopUpViewModel>(this, MessagingCenterConstants.RemoveSearchControl, ClearSearchPicControl);
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<SearchPicturePopUpViewModel, SearchPictureResultsControl>(this, MessagingCenterConstants.SearchControlIsReady);
+            MessagingCenter.Unsubscribe<SearchPicturePopUpViewModel>(this, MessagingCenterConstants.RemoveSearchControl);
         }
+
+        #region privateMethods
+        private void DrawSearchPicControl(SearchPicturePopUpViewModel sender, SearchPictureResultsControl control)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                ContentWrapper.Children.Add(control);
+            });
+        }
+
+        private void ClearSearchPicControl(SearchPicturePopUpViewModel sender)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                ContentWrapper.Children.Clear();
+            });
+        }
+        #endregion
     }
 }

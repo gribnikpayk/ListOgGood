@@ -98,7 +98,8 @@
     </Compile>
     <Compile Include="CustomRendererControls\CustomEntryRenderer.cs" />
     <Compile Include="CustomRendererControls\CustomFrameRenderer.cs" />
-    <Compile Include="CustomRendererControls\CustomImageRenderer.cs" />
+    <Compile Include="CustomRendererControls\CustomPickerRenderer.cs" />
+    <Compile Include="CustomRendererControls\RoundedButtonRenderer.cs" />
     <Compile Include="DependencyServices\ImageProcessor.cs" />
     <Compile Include="DependencyServices\SQLite.cs" />
     <Compile Include="DependencyServices\DeviceInfo.cs" />

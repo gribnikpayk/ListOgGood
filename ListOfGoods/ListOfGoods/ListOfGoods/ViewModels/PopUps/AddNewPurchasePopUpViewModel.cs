@@ -13,6 +13,12 @@ namespace ListOfGoods.ViewModels.PopUps
         private List<string> _categorySource, _mesurementSource;
         public ICommand AddCommand { get; set; }
 
+        public AddNewPurchasePopUpViewModel()
+        {
+            SelectedCategory = CategorySource.FirstOrDefault();
+            SelectedMesurement = MesurementSource.FirstOrDefault();
+        }
+
         public string NewPurchase
         {
             set { SetProperty(ref _newPurchase, value); }

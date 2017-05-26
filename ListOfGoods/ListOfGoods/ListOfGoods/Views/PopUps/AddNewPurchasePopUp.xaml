@@ -12,16 +12,21 @@
       <Thickness>20,0,20,0</Thickness>
     </customControls:CustomFrame.Margin>
     <StackLayout>
-      <StackLayout Orientation="Horizontal">
+      <StackLayout Orientation="Horizontal"
+                   Spacing="0">
         <customControls:CustomEntry Text="{Binding NewPurchase}"
-                                    BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
-                                    TextColor="{x:Static commonColor:ColorResourses.Green}"
+                                    BackgroundColor="{x:Static commonColor:ColorResourses.LiteGreyEntryBackground}"
+                                    VerticalOptions="Center"
+                                    HeightRequest="50"
                                     HorizontalOptions="FillAndExpand"
-                                    FontSize="Large">
+                                    FontSize="Large"
+                                    PlaceholderColor="{x:Static commonColor:ColorResourses.Placeholder}"
+                                    Placeholder="Product name"
+                                    TextColor="{x:Static commonColor:ColorResourses.EntryText}">
         </customControls:CustomEntry>
         <AbsoluteLayout WidthRequest="50"
-                        HeightRequest="50"
-                        HorizontalOptions="End">
+                      HeightRequest="50"
+                      HorizontalOptions="End">
           <Image Source="{Binding PurchaseIconSource}"
                  AbsoluteLayout.LayoutBounds="0,0,1,1"
                  AbsoluteLayout.LayoutFlags="All"></Image>
@@ -35,42 +40,59 @@
                  AbsoluteLayout.LayoutBounds="0,1,1,0.4"></Label>
         </AbsoluteLayout>
       </StackLayout>
-      <Label Text="Category"
-             TextColor="{x:Static commonColor:ColorResourses.EntryText}"></Label>
-      <Picker SelectedItem="{Binding SelectedCategory}"
-              ItemsSource="{Binding CategorySource}"
-              TextColor="{x:Static commonColor:ColorResourses.EntryText}"
-              BackgroundColor="Black"></Picker>
+      <customControls:CustomPicker SelectedItem="{Binding SelectedCategory}"
+                                   ItemsSource="{Binding CategorySource}"
+                                   SelectedIndex="1"
+                                   HorizontalOptions="Start"
+                                   TextColor="{x:Static commonColor:ColorResourses.EntryText}"
+                                   BackgroundColor="{x:Static commonColor:ColorResourses.LiteGrey}">
+        <Picker.Margin>
+          <Thickness>0,20,0,0</Thickness>
+        </Picker.Margin>
+      </customControls:CustomPicker>
       <Label Text="Quantity"
              TextColor="{x:Static commonColor:ColorResourses.EntryText}"></Label>
-      <StackLayout Orientation="Horizontal">
+      <StackLayout Orientation="Horizontal"
+                   Spacing="0">
         <customControls:CustomEntry Text="{Binding Quantity}"
                                     Placeholder="0.0"
+                                    FontSize="Medium"
+                                    HorizontalOptions="FillAndExpand"
                                     PlaceholderColor="{x:Static commonColor:ColorResourses.Placeholder}"
-                                    BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
-                                    TextColor="{x:Static commonColor:ColorResourses.Green}"
+                                    TextColor="{x:Static commonColor:ColorResourses.EntryText}"
+                                    BackgroundColor="{x:Static commonColor:ColorResourses.LiteGreyEntryBackground}"
                                     Keyboard="Numeric">
-
         </customControls:CustomEntry>
-        <Picker SelectedItem="{Binding SelectedMesurement}"
+        <customControls:CustomPicker SelectedItem="{Binding SelectedMesurement}"
+                SelectedIndex="0"
+                HorizontalOptions="End"
                 ItemsSource="{Binding MesurementSource}"
-                TextColor="{x:Static commonColor:ColorResourses.EntryText}"></Picker>
+                BackgroundColor="{x:Static commonColor:ColorResourses.Green}"
+                TextColor="#f0fffb"></customControls:CustomPicker>
       </StackLayout>
       <Label Text="Price"
              TextColor="{x:Static commonColor:ColorResourses.EntryText}"></Label>
       <StackLayout Orientation="Horizontal">
         <customControls:CustomEntry Text="{Binding Price}"
-                                    BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
-                                    TextColor="{x:Static commonColor:ColorResourses.Green}"
+                                    WidthRequest="100"
+                                    Placeholder="0.0"
+                                    PlaceholderColor="{x:Static commonColor:ColorResourses.Placeholder}"
+                                    FontSize="Medium"
+                                    BackgroundColor="{x:Static commonColor:ColorResourses.LiteGreyEntryBackground}"
+                                    TextColor="{x:Static commonColor:ColorResourses.EntryText}"
                                     Keyboard="Numeric">
         </customControls:CustomEntry>
       </StackLayout>
-      <Button BackgroundColor="{x:Static commonColor:ColorResourses.ButtonBackground}"
+      <customControls:RoundedButton BackgroundColor="{x:Static commonColor:ColorResourses.ButtonBackground}"
               TextColor="{x:Static commonColor:ColorResourses.ButtonText}"
               Text="Add"
               WidthRequest="250"
               FontSize="Medium"
-              Command="{Binding AddCommand}"></Button>
+              Command="{Binding AddCommand}">
+        <customControls:RoundedButton.Margin>
+          <Thickness>0,20,0,0</Thickness>
+        </customControls:RoundedButton.Margin>
+    </customControls:RoundedButton>
     </StackLayout>
   </customControls:CustomFrame>
 </pages:PopupPage>

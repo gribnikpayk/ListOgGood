@@ -12,6 +12,7 @@ namespace ListOfGoods.ViewModels.PopUps
     {
         private string _pictureName;
         private SearchService _searchService;
+        private bool _noResultsMessageIsVisible;
 
         public double DeviceWidth;
 
@@ -29,9 +30,17 @@ namespace ListOfGoods.ViewModels.PopUps
             get { return _pictureName; }
         }
 
+        public bool NoResultsMessageIsVisible
+        {
+            set { SetProperty(ref _noResultsMessageIsVisible, value); }
+            get { return _noResultsMessageIsVisible; }
+        }
+
         public async void SearchAsync()
         {
             IsBusy = true;
+            NoResultsMessageIsVisible = false;
+            MessagingCenter.Send<SearchPicturePopUpViewModel>(this, MessagingCenterConstants.RemoveSearchControl);
             var pictures = await _searchService.SearchImagesAsync(PictureName);
             if (pictures.Any())
             {
@@ -41,6 +50,7 @@ namespace ListOfGoods.ViewModels.PopUps
                     MessagingCenter.Send<SearchPicturePopUpViewModel, SearchPictureResultsControl>(this, MessagingCenterConstants.SearchControlIsReady, picturesControl);
                 });
             }
+            NoResultsMessageIsVisible = !pictures.Any();
             IsBusy = false;
         }
     }

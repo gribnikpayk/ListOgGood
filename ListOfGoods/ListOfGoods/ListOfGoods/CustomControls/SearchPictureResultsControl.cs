@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Infrastructure.DependencyService;
 using Xamarin.Forms;
 
@@ -12,9 +13,11 @@ namespace ListOfGoods.CustomControls
         private int _maxDisplayWidth = 500;
         private double _deviceWidth;
         private int _margin = 50;
+        private int _grid_spacing = 10;
         public SearchPictureResultsControl(List<string> images, double deviceWidth)
         {
             VerticalOptions = LayoutOptions.FillAndExpand;
+            HorizontalOptions = LayoutOptions.CenterAndExpand;
             _deviceWidth = deviceWidth - (_margin * 2);
 
             var countOfColumn = getCountOfColumn();
@@ -50,11 +53,20 @@ namespace ListOfGoods.CustomControls
                     IsOpaque = false,
                     Source = ImageSource.FromUri(new Uri(images[index])),
                     WidthRequest = width,
-                    HeightRequest = width,
+                    HeightRequest = width - _grid_spacing,
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Center,
                     Aspect = Aspect.AspectFill
                 };
+                image.GestureRecognizers.Add(new TapGestureRecognizer
+                {
+                    Command = new Command(async () =>
+                    {
+                        MessagingCenter.Send<SearchPictureResultsControl, string>(this, MessagingCenterConstants.PictureSelected, images[index]);
+                        await image.ScaleTo(0.9, 100);
+                        await image.ScaleTo(1, 100);
+                    })
+                });
                 return image;
             }
             return null;
@@ -87,8 +99,8 @@ namespace ListOfGoods.CustomControls
             {
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                ColumnSpacing = 10,
-                RowSpacing = 10
+                ColumnSpacing = _grid_spacing,
+                RowSpacing = _grid_spacing
             };
             for (int i = 0; i < countOfColumn; i++)
             {

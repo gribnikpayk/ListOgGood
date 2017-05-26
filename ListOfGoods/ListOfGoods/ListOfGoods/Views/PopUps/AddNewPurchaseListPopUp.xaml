@@ -24,12 +24,13 @@
       <Label Text="This field must be filled"
              TextColor="{x:Static commonColor:ColorResourses.ErrorMessageText}"
              IsVisible="{Binding ErrorMessageIsVisible}"></Label>
-      <Button TextColor="{x:Static commonColor:ColorResourses.ButtonText}"
+      <customControls:RoundedButton TextColor="{x:Static commonColor:ColorResourses.ButtonText}"
               Command="{Binding AddNewListCommand}"
               Text="{Binding ButtonName}"
               BackgroundColor="{x:Static commonColor:ColorResourses.ButtonBackground}"
               HorizontalOptions="End"
-              FontSize="Medium"></Button>
+              WidthRequest="150"
+              FontSize="Medium"></customControls:RoundedButton>
     </StackLayout>
   </customControls:CustomFrame>
 </pages:PopupPage>

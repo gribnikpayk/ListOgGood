@@ -47,7 +47,15 @@
                          HorizontalOptions="Center"
                          Color="{x:Static commonColor:ColorResourses.Green}"
                          IsRunning="True"
-                         IsVisible="true"></ActivityIndicator>
+                         IsVisible="{Binding IsBusy}"
+                         WidthRequest="250"
+                         HeightRequest="250"></ActivityIndicator>
+      <Label VerticalOptions="Center"
+             HorizontalOptions="Center"
+             IsVisible="{Binding NoResultsMessageIsVisible}"
+             TextColor="{x:Static commonColor:ColorResourses.EntryText}"
+             FontSize="Medium"
+             Text="No results"></Label>
       <StackLayout VerticalOptions="FillAndExpand"
                    x:Name="ContentWrapper"
                    IsVisible="{Binding IsBusy, Converter={StaticResource boolConverter}}"></StackLayout>
