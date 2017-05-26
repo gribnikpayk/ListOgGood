@@ -28,26 +28,8 @@ namespace ListOfGoods.ViewModels
         private IMediaService _mediaService;
 
         private ImageSource _test;
-
-        public ICommand TakePhotoFromGallery => new Command(async () =>
-        {
-            //var s = await _mediaService.TakePhotoFromGalleryAsync();
-            //var path = await DependencyService.Get<IImageProcessor>().GetCroppedImagePathAsync(s, "test", 50);
-            //Test = ImageSource.FromFile(path);
-            //DependencyService.Get<IImageProcessor>().DeleteFile(s);
-        });
-
-        public ICommand TakePhotoFromCamera => new Command(async () =>
-        {
-            //var s = await _mediaService.TakePhotoFromCameraAsync();
-            //var path = await DependencyService.Get<IImageProcessor>().GetCroppedImagePathAsync(s, "test", 50);
-            //DependencyService.Get<IImageProcessor>().DeleteFile(path);
-            //Test = ImageSource.FromFile(path);
-            ////var bytes = ReadFully(stream);
-            ////Test = ImageSource.FromStream(() => new MemoryStream(bytes));
-            //var ss = s;
-            ////BitmapIma
-        });
+        
+        public ICommand AddNewPurchaseCommand => new Command(AddNewPurchaseAsync);
 
         public PurchasesViewModel(IPurchaseService purchaseService, IMediaService mediaService)
         {
@@ -88,6 +70,16 @@ namespace ListOfGoods.ViewModels
             {
                 PurchaseName = purchase.Name,
                 ImageSource = purchase.ImageSource
+            };
+            await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel));
+        }
+
+        private async void AddNewPurchaseAsync()
+        {
+            var newPurchaseModel = new NewPurchaseModel
+            {
+                PurchaseName = NewPurchase,
+                ImageSource = null
             };
             await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel));
         }

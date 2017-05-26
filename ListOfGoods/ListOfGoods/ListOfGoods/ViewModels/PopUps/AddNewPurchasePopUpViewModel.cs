@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Windows.Input;
 using ListOfGoods.Infrastructure.Constants;
+using ListOfGoods.Views.PopUps;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace ListOfGoods.ViewModels.PopUps
@@ -10,15 +12,30 @@ namespace ListOfGoods.ViewModels.PopUps
     {
         private string _newPurchase, _quantity, _price, _selectedCategory, _selectedMesurement;
         private ImageSource _purchaseIconSource;
+        private int _selectedIndexCategory, _selectedIndexMesurement;
         private List<string> _categorySource, _mesurementSource;
+
+        public bool ImageIconIsSeleted { get; set; }
         public ICommand AddCommand { get; set; }
+        public ICommand EditImageCommand => new Command(ShowEditImagePopUpAsync);
 
         public AddNewPurchasePopUpViewModel()
         {
-            SelectedCategory = CategorySource.FirstOrDefault();
-            SelectedMesurement = MesurementSource.FirstOrDefault();
+            SelectedIndexCategory = 0;
+            SelectedIndexMesurement = 3;
         }
 
+        public int SelectedIndexCategory
+        {
+            set { SetProperty(ref _selectedIndexCategory, value); }
+            get { return _selectedIndexCategory; }
+        }
+
+        public int SelectedIndexMesurement
+        {
+            set { SetProperty(ref _selectedIndexMesurement, value); }
+            get { return _selectedIndexMesurement; }
+        }
         public string NewPurchase
         {
             set { SetProperty(ref _newPurchase, value); }
@@ -63,6 +80,11 @@ namespace ListOfGoods.ViewModels.PopUps
         {
             set { SetProperty(ref _price, value); }
             get { return _price; }
+        }
+
+        private async void ShowEditImagePopUpAsync()
+        {
+            await PopupNavigation.PushAsync(new EditImageActions(NewPurchase));
         }
     }
 }

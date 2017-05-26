@@ -84,6 +84,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\PopUps\AddNewPurchaseListPopUpViewModel.cs" />
     <Compile Include="ViewModels\PopUps\AddNewPurchasePopUpViewModel.cs" />
+    <Compile Include="ViewModels\PopUps\EditImageActionsPopUpViewModel.cs" />
     <Compile Include="ViewModels\PopUps\ListActionsPopUpViewModel.cs" />
     <Compile Include="ViewModels\PopUps\SearchPicturePopUpViewModel.cs" />
     <Compile Include="ViewModels\PurchasesListViewModel.cs" />
@@ -97,6 +98,9 @@
     <Compile Include="Views\MasterDetailPage\MasterPageItem.cs" />
     <Compile Include="Views\PopUps\AddNewPurchasePopUp.xaml.cs">
       <DependentUpon>AddNewPurchasePopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUps\EditImageActions.xaml.cs">
+      <DependentUpon>EditImageActions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PopUps\ListActions.xaml.cs">
       <DependentUpon>ListActions.xaml</DependentUpon>
@@ -252,6 +256,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\PopUps\SearchPicturePopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PopUps\EditImageActions.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

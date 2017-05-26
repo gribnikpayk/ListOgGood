@@ -18,5 +18,16 @@ namespace ListOfGoods.Infrastructure.Extensions
                 ? $"Assets/{name}.jpg"
                 : $"{name}.jpg";
         }
+
+        public static string ToCategoryIconImageSource(this string categoryName)
+        {
+            if (!string.IsNullOrEmpty(categoryName))
+            {
+                categoryName = categoryName.Replace(" ", string.Empty);
+            }
+            return Device.OS == TargetPlatform.Windows || Device.OS == TargetPlatform.WinPhone
+                ? $"Assets/{categoryName}_icon.png"
+                : $"{categoryName}_icon.png";
+        }
     }
 }

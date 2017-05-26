@@ -29,7 +29,11 @@
                       HorizontalOptions="End">
           <Image Source="{Binding PurchaseIconSource}"
                  AbsoluteLayout.LayoutBounds="0,0,1,1"
-                 AbsoluteLayout.LayoutFlags="All"></Image>
+                 AbsoluteLayout.LayoutFlags="All">
+            <Image.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding EditImageCommand}"></TapGestureRecognizer>
+            </Image.GestureRecognizers>
+          </Image>
           <Label Text="edit"
                  HorizontalTextAlignment="Center"
                  VerticalTextAlignment="Center"
@@ -37,13 +41,18 @@
                  TextColor="White"
                  BackgroundColor="{x:Static commonColor:ColorResourses.BlackWithOpacity}"
                  AbsoluteLayout.LayoutFlags="All"
-                 AbsoluteLayout.LayoutBounds="0,1,1,0.4"></Label>
+                 AbsoluteLayout.LayoutBounds="0,1,1,0.4">
+            <Label.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding EditImageCommand}"></TapGestureRecognizer>
+            </Label.GestureRecognizers>
+          </Label>
         </AbsoluteLayout>
       </StackLayout>
       <customControls:CustomPicker SelectedItem="{Binding SelectedCategory}"
                                    ItemsSource="{Binding CategorySource}"
-                                   SelectedIndex="1"
+                                   SelectedIndex="{Binding SelectedIndexCategory}"
                                    HorizontalOptions="Start"
+                                   SelectedIndexChanged="Picker_OnCategorySelectedIndexChanged"
                                    TextColor="{x:Static commonColor:ColorResourses.EntryText}"
                                    BackgroundColor="{x:Static commonColor:ColorResourses.LiteGrey}">
         <Picker.Margin>
@@ -64,7 +73,7 @@
                                     Keyboard="Numeric">
         </customControls:CustomEntry>
         <customControls:CustomPicker SelectedItem="{Binding SelectedMesurement}"
-                SelectedIndex="0"
+                SelectedIndex="{Binding SelectedIndexMesurement}"
                 HorizontalOptions="End"
                 ItemsSource="{Binding MesurementSource}"
                 BackgroundColor="{x:Static commonColor:ColorResourses.Green}"

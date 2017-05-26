@@ -120,6 +120,7 @@
     <Content Include="Assets\addIcon.png" />
     <Content Include="Assets\apples.jpg" />
     <Content Include="Assets\background.jpg" />
+    <Content Include="Assets\Bakery_icon.png" />
     <Content Include="Assets\bananas.jpg" />
     <Content Include="Assets\beans.jpg" />
     <Content Include="Assets\beef.jpg" />
@@ -129,6 +130,7 @@
     <Content Include="Assets\carrot.jpg" />
     <Content Include="Assets\cheese.jpg" />
     <Content Include="Assets\chicken.jpg" />
+    <Content Include="Assets\Chicken_icon.png" />
     <Content Include="Assets\chips.jpg" />
     <Content Include="Assets\chocolate.jpg" />
     <Content Include="Assets\coffee.jpg" />
@@ -137,10 +139,14 @@
     <Content Include="Assets\corn.jpg" />
     <Content Include="Assets\cream.jpg" />
     <Content Include="Assets\cucumber.jpg" />
+    <Content Include="Assets\Dairy_icon.png" />
     <Content Include="Assets\diapers.jpg" />
+    <Content Include="Assets\Drinks_icon.png" />
     <Content Include="Assets\eggs.jpg" />
     <Content Include="Assets\fish.jpg" />
+    <Content Include="Assets\Fish_icon.png" />
     <Content Include="Assets\fruit.jpg" />
+    <Content Include="Assets\Fruit_icon.png" />
     <Content Include="Assets\grapes.jpg" />
     <Content Include="Assets\ham.jpg" />
     <Content Include="Assets\ice_cream.jpg" />
@@ -149,6 +155,7 @@
     <Content Include="Assets\lemon.jpg" />
     <Content Include="Assets\lemonade.jpg" />
     <Content Include="Assets\meat.jpg" />
+    <Content Include="Assets\Meat_icon.png" />
     <Content Include="Assets\melon.jpg" />
     <Content Include="Assets\milk.jpg" />
     <Content Include="Assets\more_icon.png" />
@@ -160,6 +167,7 @@
     <Content Include="Assets\oil.jpg" />
     <Content Include="Assets\olives.jpg" />
     <Content Include="Assets\oranges.jpg" />
+    <Content Include="Assets\Other_icon.png" />
     <Content Include="Assets\pasta.jpg" />
     <Content Include="Assets\pastry.jpg" />
     <Content Include="Assets\peaches.jpg" />
@@ -181,8 +189,11 @@
     <Content Include="Assets\tea.jpg" />
     <Content Include="Assets\tomatoes.jpg" />
     <Content Include="Assets\toothpaste.jpg" />
+    <Content Include="Assets\Vegetables_icon.png" />
     <Content Include="Assets\water.jpg" />
     <Content Include="Assets\watermelon.jpg" />
+    <Content Include="Assets\Withoutcategory_icon.png" />
+    <Content Include="Assets\Сosmetics_icon.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

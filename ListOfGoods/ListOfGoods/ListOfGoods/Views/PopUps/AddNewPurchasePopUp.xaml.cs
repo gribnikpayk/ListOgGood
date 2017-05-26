@@ -1,4 +1,5 @@
-﻿using ListOfGoods.Infrastructure.Extensions;
+﻿using System;
+using ListOfGoods.Infrastructure.Extensions;
 using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.ViewModels.PopUps;
 using Rg.Plugins.Popup.Pages;
@@ -13,11 +14,24 @@ namespace ListOfGoods.Views.PopUps
         {
             InitializeComponent();
             _viewModel = App.Container.Resolve(typeof(AddNewPurchasePopUpViewModel), "addNewPurchasePopUpViewModel") as AddNewPurchasePopUpViewModel;
+
             _viewModel.NewPurchase = newPurchaseModel.PurchaseName;
-            _viewModel.PurchaseIconSource = newPurchaseModel.ImageSource != null
-                ? newPurchaseModel.ImageSource
-                : ImageSource.FromFile("new_purchase_Icon.png".ToPlatformImagePath());
+            _viewModel.ImageIconIsSeleted = newPurchaseModel.ImageSource != null;
+            _viewModel.PurchaseIconSource = newPurchaseModel.ImageSource;
+
             BindingContext = _viewModel;
+        }
+
+        private void Picker_OnCategorySelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!_viewModel.ImageIconIsSeleted)
+            {
+                var picker = sender as Picker;
+                if (picker != null)
+                {
+                    _viewModel.PurchaseIconSource = (picker.SelectedItem as string).ToCategoryIconImageSource();
+                }
+            }
         }
     }
 }

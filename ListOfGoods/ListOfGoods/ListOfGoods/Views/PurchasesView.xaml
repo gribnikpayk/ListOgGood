@@ -30,6 +30,9 @@
              VerticalOptions="Center"
              HeightRequest="40"
              HorizontalOptions="End">
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding AddNewPurchaseCommand}"></TapGestureRecognizer>
+        </Image.GestureRecognizers>
       </Image>
     </StackLayout>
     <AbsoluteLayout VerticalOptions="FillAndExpand">

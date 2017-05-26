@@ -9,6 +9,10 @@ namespace ListOfGoods.Infrastructure.Constants
         public const string ShareActionName = "Share";
         public const string EditActionName = "Edit";
 
+        public const string GalleryActionName = "Gallery";
+        public const string CameraActionName = "Camera";
+        public const string InternetActionName = "Internet";
+
         public static Dictionary<Categories, string> CategoriesDictionary = new Dictionary<Categories, string>
         {
             [Categories.WithoutСategory] = "Without category",
