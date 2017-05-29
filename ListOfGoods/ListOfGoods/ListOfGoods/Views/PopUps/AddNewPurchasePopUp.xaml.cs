@@ -1,4 +1,5 @@
 ﻿using System;
+using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Infrastructure.Extensions;
 using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.ViewModels.PopUps;
@@ -31,6 +32,34 @@ namespace ListOfGoods.Views.PopUps
                 {
                     _viewModel.PurchaseIconSource = (picker.SelectedItem as string).ToCategoryIconImageSource();
                 }
+            }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<EditImageActionsPopUpViewModel, string>(this, MessagingCenterConstants.PictureSelected, SetPurchaseImage);
+            MessagingCenter.Subscribe<SearchPicturePopUpViewModel, string>(this, MessagingCenterConstants.PictureSelected, SetPurchaseImage);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<EditImageActionsPopUpViewModel, string>(this, MessagingCenterConstants.PictureSelected);
+            MessagingCenter.Unsubscribe<SearchPicturePopUpViewModel, string>(this, MessagingCenterConstants.PictureSelected);
+        }
+
+        private void SetPurchaseImage(object sender, string path)
+        {
+            if (!string.IsNullOrEmpty(path))
+            {
+                _viewModel.ImageIconIsSeleted = true;
+                _viewModel.PurchaseIconSource = path;
+            }
+            else
+            {
+                _viewModel.ImageIconIsSeleted = false;
+                _viewModel.PurchaseIconSource = _viewModel.SelectedCategory.ToCategoryIconImageSource();
             }
         }
     }

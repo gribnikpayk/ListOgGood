@@ -24,6 +24,7 @@ namespace ListOfGoods.Views.PopUps
             base.OnAppearing();
             MessagingCenter.Subscribe<SearchPicturePopUpViewModel, SearchPictureResultsControl>(this, MessagingCenterConstants.SearchControlIsReady, DrawSearchPicControl);
             MessagingCenter.Subscribe<SearchPicturePopUpViewModel>(this, MessagingCenterConstants.RemoveSearchControl, ClearSearchPicControl);
+            MessagingCenter.Subscribe<SearchPictureResultsControl, string>(this, MessagingCenterConstants.PictureSelected, SelectPictureProcess);
         }
 
         protected override void OnDisappearing()
@@ -31,6 +32,7 @@ namespace ListOfGoods.Views.PopUps
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<SearchPicturePopUpViewModel, SearchPictureResultsControl>(this, MessagingCenterConstants.SearchControlIsReady);
             MessagingCenter.Unsubscribe<SearchPicturePopUpViewModel>(this, MessagingCenterConstants.RemoveSearchControl);
+            MessagingCenter.Unsubscribe<SearchPictureResultsControl, string>(this, MessagingCenterConstants.PictureSelected);
         }
 
         #region privateMethods
@@ -48,6 +50,11 @@ namespace ListOfGoods.Views.PopUps
             {
                 ContentWrapper.Children.Clear();
             });
+        }
+
+        private async void SelectPictureProcess(object sender, string args)
+        {
+            await _viewModel.ImageProcess(args);
         }
         #endregion
     }

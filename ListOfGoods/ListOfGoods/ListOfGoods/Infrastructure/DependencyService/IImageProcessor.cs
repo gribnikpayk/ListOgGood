@@ -8,5 +8,6 @@ namespace ListOfGoods.Infrastructure.DependencyService
     {
         void DeleteFile(string filePath);
         Task<string> GetCroppedImagePathAsync(string filePath, string fileName, int requestedMinSide);
+        Task<string> CreateFileFromURIPath(string uriPath);
     }
 }

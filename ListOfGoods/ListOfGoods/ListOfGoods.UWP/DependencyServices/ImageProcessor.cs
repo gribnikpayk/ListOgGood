@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Windows.Graphics.Imaging;
 using Windows.Storage;
@@ -12,6 +14,22 @@ namespace ListOfGoods.UWP.DependencyServices
 {
     public class ImageProcessor : IImageProcessor
     {
+        public async Task<string> CreateFileFromURIPath(string uriPath)
+        {
+            try
+            {
+                HttpClient client = new HttpClient(); // Create HttpClient
+                byte[] buffer = await client.GetByteArrayAsync(uriPath); // Download file
+                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                var filePath = $"{storageFolder.Path}\\{Guid.NewGuid()}_temp";
+                File.WriteAllBytes(filePath, buffer);
+                return filePath;
+            }
+            catch (Exception e)
+            {
+                return string.Empty;
+            }
+        }
         public async Task<string> GetCroppedImagePathAsync(string filePath, string fileName, int requestedMinSide)
         {
             using (FileStream fileStream = new FileStream(filePath, FileMode.OpenOrCreate))
