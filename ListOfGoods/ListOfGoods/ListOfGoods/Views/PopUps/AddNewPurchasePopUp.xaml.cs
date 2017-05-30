@@ -17,7 +17,7 @@ namespace ListOfGoods.Views.PopUps
             _viewModel = App.Container.Resolve(typeof(AddNewPurchasePopUpViewModel), "addNewPurchasePopUpViewModel") as AddNewPurchasePopUpViewModel;
 
             _viewModel.NewPurchase = newPurchaseModel.PurchaseName;
-            _viewModel.ImageIconIsSeleted = newPurchaseModel.ImageSource != null;
+            _viewModel.PurchaseIconImagePath = newPurchaseModel.ImageSource.ToString();
             _viewModel.PurchaseIconSource = newPurchaseModel.ImageSource;
 
             BindingContext = _viewModel;
@@ -25,7 +25,7 @@ namespace ListOfGoods.Views.PopUps
 
         private void Picker_OnCategorySelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!_viewModel.ImageIconIsSeleted)
+            if (string.IsNullOrEmpty(_viewModel.PurchaseIconImagePath))
             {
                 var picker = sender as Picker;
                 if (picker != null)
@@ -53,12 +53,13 @@ namespace ListOfGoods.Views.PopUps
         {
             if (!string.IsNullOrEmpty(path))
             {
-                _viewModel.ImageIconIsSeleted = true;
+                _viewModel.PurchaseIconImagePath = path;
                 _viewModel.PurchaseIconSource = path;
+                _viewModel.ImageIconIsCustom = true;
             }
             else
             {
-                _viewModel.ImageIconIsSeleted = false;
+                _viewModel.PurchaseIconImagePath = string.Empty;
                 _viewModel.PurchaseIconSource = _viewModel.SelectedCategory.ToCategoryIconImageSource();
             }
         }

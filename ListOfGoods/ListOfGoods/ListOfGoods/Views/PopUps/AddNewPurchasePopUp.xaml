@@ -9,7 +9,7 @@
                              VerticalOptions="Center"
                              InlineColor="{x:Static commonColor:ColorResourses.Grey}">
     <customControls:CustomFrame.Margin>
-      <Thickness>20,0,20,0</Thickness>
+      <Thickness>10,0,20,0</Thickness>
     </customControls:CustomFrame.Margin>
     <StackLayout>
       <StackLayout Orientation="Horizontal"
@@ -73,11 +73,12 @@
                                     Keyboard="Numeric">
         </customControls:CustomEntry>
         <customControls:CustomPicker SelectedItem="{Binding SelectedMesurement}"
-                SelectedIndex="{Binding SelectedIndexMesurement}"
-                HorizontalOptions="End"
-                ItemsSource="{Binding MesurementSource}"
-                BackgroundColor="{x:Static commonColor:ColorResourses.Green}"
-                TextColor="#f0fffb"></customControls:CustomPicker>
+                                     ItemsSource="{Binding MesurementSource}"
+                                     SelectedIndex="{Binding SelectedIndexOfMesurement}"
+                                     HorizontalOptions="End"
+                                     TextColor="#f0fffb"
+                                     BackgroundColor="{x:Static commonColor:ColorResourses.Green}">
+        </customControls:CustomPicker>
       </StackLayout>
       <Label Text="Price"
              TextColor="{x:Static commonColor:ColorResourses.EntryText}"></Label>
@@ -101,7 +102,7 @@
         <customControls:RoundedButton.Margin>
           <Thickness>0,20,0,0</Thickness>
         </customControls:RoundedButton.Margin>
-    </customControls:RoundedButton>
+      </customControls:RoundedButton>
     </StackLayout>
   </customControls:CustomFrame>
 </pages:PopupPage>

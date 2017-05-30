@@ -4,6 +4,7 @@ using System.Windows.Input;
 using ListOfGoods.CustomControls;
 using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Constants;
+using ListOfGoods.Services.Purchase;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
@@ -14,13 +15,13 @@ namespace ListOfGoods.ViewModels.PopUps
         private string _listName, _buttonName;
         private bool _errorMessageIsVisible;
         public ICommand AddNewListCommand { get; set; }
-        private IPurchasesListRepository _purchasesListRepository;
+        private IPurchaseService _purchaseService;
 
         public PurchasesListEntity SelectedPurchasesListEntity { get; set; }
 
-        public AddNewPurchaseListPopUpViewModel(IPurchasesListRepository purchasesListRepository)
+        public AddNewPurchaseListPopUpViewModel(IPurchaseService purchaseService)
         {
-            _purchasesListRepository = purchasesListRepository;
+            _purchaseService = purchaseService;
             AddNewListCommand = new Command(AddNewList);
         }
 
@@ -55,14 +56,14 @@ namespace ListOfGoods.ViewModels.PopUps
                         Name = ListName,
                         CreationDate = DateTime.Now
                     };
-                    _purchasesListRepository.Create(newList);
+                    _purchaseService.SavePurchasesList(newList);
                     MessagingCenter.Send<AddNewPurchaseListPopUpViewModel, PurchasesListEntity>(this,
                     MessagingCenterConstants.NewListWasCreated, newList);
                 }
                 else
                 {
                     SelectedPurchasesListEntity.Name = ListName;
-                    _purchasesListRepository.Update(SelectedPurchasesListEntity);
+                    _purchaseService.SavePurchasesList(SelectedPurchasesListEntity);
                     MessagingCenter.Send<AddNewPurchaseListPopUpViewModel, PurchasesListEntity>(this,
                     MessagingCenterConstants.NewListWasCreated, SelectedPurchasesListEntity);
                 }

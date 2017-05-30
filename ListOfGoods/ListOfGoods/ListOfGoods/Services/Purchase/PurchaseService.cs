@@ -33,6 +33,13 @@ namespace ListOfGoods.Services.Purchase
             _purchasesListRepository.Delete(id);
         }
 
+        public PurchaseEntity FindPurchaseByName(string name)
+        {
+            return string.IsNullOrEmpty(name)
+                ? null
+                : _purchaseRepository.GetQuery(x => x.Name.ToLower() == name.ToLower()).FirstOrDefault();
+        }
+
         public List<AutocompletePurchaseModel> FindAutocompletePurchases(string searchKey)
         {
             var purchases = _purchaseRepository.GetQuery(x => x.Name.Contains(searchKey)).Take(5).ToList();
@@ -43,6 +50,29 @@ namespace ListOfGoods.Services.Purchase
                         : ImageSource.FromFile(""),
                 Name = x.Name
             }).ToList();
+        }
+
+        public void SavePurchasesList(PurchasesListEntity entity)
+        {
+            if (entity.Id != 0)
+            {
+                _purchasesListRepository.Update(entity);
+            }
+            else
+            {
+                _purchasesListRepository.Create(entity);
+            }
+        }
+        public void SavePurchase(PurchaseEntity entity)
+        {
+            if (entity.Id != 0)
+            {
+                _purchaseRepository.Update(entity);
+            }
+            else
+            {
+                _purchaseRepository.Create(entity);
+            }
         }
     }
 }

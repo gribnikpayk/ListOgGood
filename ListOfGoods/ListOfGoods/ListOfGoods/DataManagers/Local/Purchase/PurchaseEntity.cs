@@ -6,5 +6,6 @@ namespace ListOfGoods.DataManagers.Local.Purchase
     {
         public string Name { get; set; }
         public bool IsCustomProduct { get; set; }
+        public string ImagePath { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace ListOfGoods.ViewModels
         private List<AutocompletePurchaseModel> _autocompleteItems;
         private CancellationTokenSource _autoCompleteCancelTokenSource;
         private string _tempAutoCompleteSearchPhrase = string.Empty;
-
+        
         private const short _minValueForAutocomplete = 2;
 
         private IPurchaseService _purchaseService;
@@ -66,6 +66,8 @@ namespace ListOfGoods.ViewModels
         {
             AutoCompleteIsVisible = false;
             NewPurchase = purchase.Name;
+            _tempAutoCompleteSearchPhrase = NewPurchase; //для того чтобы не было поиска т.к. поиск срабатывает на изменение NewPurchase
+
             var newPurchaseModel = new NewPurchaseModel
             {
                 PurchaseName = purchase.Name,

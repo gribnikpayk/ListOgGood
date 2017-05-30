@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Constants;
+using ListOfGoods.Services.Purchase;
 using ListOfGoods.Views.PopUps;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -15,14 +18,18 @@ namespace ListOfGoods.ViewModels.PopUps
         private int _selectedIndexCategory, _selectedIndexMesurement;
         private List<string> _categorySource, _mesurementSource;
 
-        public bool ImageIconIsSeleted { get; set; }
-        public ICommand AddCommand { get; set; }
+        public string PurchaseIconImagePath { get; set; }
+        public bool ImageIconIsCustom { get; set; }
+        public ICommand AddCommand => new Command(AddPurchase);
         public ICommand EditImageCommand => new Command(ShowEditImagePopUpAsync);
 
-        public AddNewPurchasePopUpViewModel()
+        private IPurchaseService _purchaseService;
+
+        public AddNewPurchasePopUpViewModel(IPurchaseService purchaseService)
         {
             SelectedIndexCategory = 0;
-            SelectedIndexMesurement = 3;
+            SelectedIndexOfMesurement = 3;
+            _purchaseService = purchaseService;
         }
 
         public int SelectedIndexCategory
@@ -31,7 +38,7 @@ namespace ListOfGoods.ViewModels.PopUps
             get { return _selectedIndexCategory; }
         }
 
-        public int SelectedIndexMesurement
+        public int SelectedIndexOfMesurement
         {
             set { SetProperty(ref _selectedIndexMesurement, value); }
             get { return _selectedIndexMesurement; }
@@ -85,6 +92,22 @@ namespace ListOfGoods.ViewModels.PopUps
         private async void ShowEditImagePopUpAsync()
         {
             await PopupNavigation.PushAsync(new EditImageActions(NewPurchase));
+        }
+
+        private void AddPurchase()
+        {
+            Task.Run(() =>
+            {
+                var DB_Purchase = _purchaseService.FindPurchaseByName(NewPurchase);
+                var newPurchase = new PurchaseEntity
+                {
+                    Name = NewPurchase,
+                    IsCustomProduct = ImageIconIsCustom, //продукт считается кастомным если для него выбрана пользовательская иконка
+                    Id = DB_Purchase?.Id ?? 0,
+                    ImagePath = ImageIconIsCustom ? PurchaseIconImagePath : string.Empty
+                };
+                _purchaseService.SavePurchase(newPurchase); //добавить / обновить продукт в общую базу товаров 
+            });
         }
     }
 }

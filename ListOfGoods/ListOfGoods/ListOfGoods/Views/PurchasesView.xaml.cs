@@ -14,14 +14,14 @@ namespace ListOfGoods.Views
             BindingContext = _viewModel;
         }
 
-        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as AutocompletePurchaseModel;
+            (sender as ListView).SelectedItem = null;
             if (item != null)
             {
-                _viewModel.SelectedAutocompleteItemProcess(item);
+                await _viewModel.SelectedAutocompleteItemProcess(item);
             }
-            (sender as ListView).SelectedItem = null;
         }
     }
 }

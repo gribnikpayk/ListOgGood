@@ -10,5 +10,8 @@ namespace ListOfGoods.Services.Purchase
         List<PurchasesListEntity> GetAllPurchasesLists();
         void DeleteList(int id);
         List<AutocompletePurchaseModel> FindAutocompletePurchases(string searchKey);
+        PurchaseEntity FindPurchaseByName(string name);
+        void SavePurchasesList(PurchasesListEntity entity);
+        void SavePurchase(PurchaseEntity entity);
     }
 }
