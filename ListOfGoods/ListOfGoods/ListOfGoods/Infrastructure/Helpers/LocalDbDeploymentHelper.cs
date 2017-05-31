@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using ListOfGoods.DataManagers.Local.Purchase;
 
 namespace ListOfGoods.Infrastructure.Helpers
@@ -13,308 +12,370 @@ namespace ListOfGoods.Infrastructure.Helpers
             new PurchaseEntity
             {
                 Name = "apples",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "apples.jpg"
             },
             new PurchaseEntity
             {
                 Name = "bananas",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "bananas.jpg"
             },
             new PurchaseEntity
             {
                 Name = "beans",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "beans.jpg"
+
             },
             new PurchaseEntity
             {
                 Name = "beef",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "beef.jpg"
             },
             new PurchaseEntity
             {
                 Name = "bread",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "bread.jpg"
             },
             new PurchaseEntity
             {
                 Name = "cabbage",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "cabbage.jpg"
             },
             new PurchaseEntity
             {
                 Name = "candies",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "candies.jpg"
             },
             new PurchaseEntity
             {
                 Name = "carrot",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "carrot.jpg"
             },
             new PurchaseEntity
             {
                 Name = "cheese",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "cheese.jpg"
             },
             new PurchaseEntity
             {
                 Name = "chicken",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "chicken.jpg"
             },
             new PurchaseEntity
             {
                 Name = "chips",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "chips.jpg"
             },
             new PurchaseEntity
             {
                 Name = "chocolate",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "chocolate.jpg"
             },
             new PurchaseEntity
             {
                 Name = "coffee",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "coffee.jpg"
             },
             new PurchaseEntity
             {
                 Name = "cola",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "cola.jpg"
             },
             new PurchaseEntity
             {
                 Name = "cookies",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "cookies.jpg"
             },
             new PurchaseEntity
             {
                 Name = "corn",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "corn.jpg"
             },
             new PurchaseEntity
             {
                 Name = "cream",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "cream.jpg"
             },
             new PurchaseEntity
             {
                 Name = "cucumber",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "cucumber.jpg"
             },
             new PurchaseEntity
             {
                 Name = "diapers",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "diapers.jpg"
             },
             new PurchaseEntity
             {
                 Name = "eggs",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "eggs.jpg"
             },
             new PurchaseEntity
             {
                 Name = "fish",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "fish.jpg"
             },
             new PurchaseEntity
             {
                 Name = "fruit",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "fruit.jpg"
             },
             new PurchaseEntity
             {
                 Name = "grapes",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "grapes.jpg"
             },
             new PurchaseEntity
             {
                 Name = "ham",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "ham.jpg"
             },
             new PurchaseEntity
             {
                 Name = "ice cream",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "ice_cream.jpg"
             },
             new PurchaseEntity
             {
                 Name = "juice",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "juice.jpg"
             },
             new PurchaseEntity
             {
                 Name = "ketchup",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "ketchup.jpg"
             },
             new PurchaseEntity
             {
                 Name = "lemon",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "lemon.jpg"
             },
             new PurchaseEntity
             {
                 Name = "lemonade",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "lemonade.jpg"
             },
             new PurchaseEntity
             {
                 Name = "meat",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "meat.jpg"
             },
             new PurchaseEntity
             {
                 Name = "melon",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "melon.jpg"
             },
             new PurchaseEntity
             {
                 Name = "milk",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "milk.jpg"
             },
             new PurchaseEntity
             {
                 Name = "mozzarella",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "mozzarella.jpg"
             },
             new PurchaseEntity
             {
                 Name = "mushrooms",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "mushrooms.jpg"
             },new PurchaseEntity
             {
                 Name = "napkins",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "napkins.jpg"
             },
             new PurchaseEntity
             {
                 Name = "nuts",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "nuts.jpg"
             },
             new PurchaseEntity
             {
                 Name = "oil",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "oil.jpg"
             },
             new PurchaseEntity
             {
                 Name = "olives",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "olives.jpg"
             },
 
             new PurchaseEntity
             {
                 Name = "oranges",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "oranges.jpg"
             },
             new PurchaseEntity
             {
                 Name = "pasta",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "pasta.jpg"
             },
             new PurchaseEntity
             {
                 Name = "pastry",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "pastry.jpg"
             },
             new PurchaseEntity
             {
                 Name = "peaches",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "peaches.jpg"
             },
             new PurchaseEntity
             {
                 Name = "pears",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "pears.jpg"
             },
             new PurchaseEntity
             {
                 Name = "pepper",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "pepper.jpg"
             },
             new PurchaseEntity
             {
                 Name = "pineapple",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "pineapple.jpg"
             },
             new PurchaseEntity
             {
                 Name = "pork",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "pork.jpg"
             },
             new PurchaseEntity
             {
                 Name = "porridge",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "bananas.jpg"
             },
             new PurchaseEntity
             {
                 Name = "potatoes",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "potatoes.jpg"
             },
             new PurchaseEntity
             {
                 Name = "raisins",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "raisins.jpg"
             },
             new PurchaseEntity
             {
                 Name = "rice",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "rice.jpg"
             },
             new PurchaseEntity
             {
                 Name = "salad",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "salad.jpg"
             },
             new PurchaseEntity
             {
                 Name = "sausage",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "sausage.jpg"
             },
 
             new PurchaseEntity
             {
                 Name = "shrimp",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "shrimp.jpg"
             },
             new PurchaseEntity
             {
                 Name = "soap",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "bananas.jpg"
             },
             new PurchaseEntity
             {
                 Name = "spice",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "spice.jpg"
             },
             new PurchaseEntity
             {
                 Name = "sugar",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "sugar.jpg"
             },
             new PurchaseEntity
             {
                 Name = "tea",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "tea.jpg"
             },
             new PurchaseEntity
             {
                 Name = "tomatoes",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "tomatoes.jpg"
             },
             new PurchaseEntity
             {
                 Name = "toothpaste",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "toothpaste.jpg"
             },
             new PurchaseEntity
             {
                 Name = "water",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "water.jpg"
             },
             new PurchaseEntity
             {
                 Name = "watermelon",
-                IsCustomProduct = false
+                IsCustomImage = false,
+                ImagePath = "watermelon.jpg"
             }
         };
         #endregion

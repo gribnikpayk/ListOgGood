@@ -13,10 +13,9 @@ namespace ListOfGoods.Infrastructure.Extensions
 
         public static string ToAutocompleteImagePath(this string fileName)
         {
-            var name = fileName.Replace(' ', '_');
             return Device.OS == TargetPlatform.Windows || Device.OS == TargetPlatform.WinPhone
-                ? $"Assets/{name}.jpg"
-                : $"{name}.jpg";
+                ? $"Assets/{fileName}"
+                : $"{fileName}";
         }
 
         public static string ToCategoryIconImageSource(this string categoryName)

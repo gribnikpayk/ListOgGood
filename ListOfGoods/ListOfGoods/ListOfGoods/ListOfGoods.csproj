@@ -49,11 +49,14 @@
     <Compile Include="DataManagers\Local\Base\IBaseRepository.cs" />
     <Compile Include="DataManagers\Local\Purchase\IPurchaseRepository.cs" />
     <Compile Include="DataManagers\Local\Purchase\IPurchasesListRepository.cs" />
+    <Compile Include="DataManagers\Local\Purchase\IUsersPurchaseRepository.cs" />
     <Compile Include="DataManagers\Local\Purchase\PurchaseEntity.cs" />
     <Compile Include="DataManagers\Local\Purchase\PurchaseImageEntity.cs" />
     <Compile Include="DataManagers\Local\Purchase\PurchaseRepository.cs" />
     <Compile Include="DataManagers\Local\Purchase\PurchasesListEntity.cs" />
     <Compile Include="DataManagers\Local\Purchase\PurchasesListRepository.cs" />
+    <Compile Include="DataManagers\Local\Purchase\UsersPurchaseEntity.cs" />
+    <Compile Include="DataManagers\Local\Purchase\UsersPurchaseRepository.cs" />
     <Compile Include="Infrastructure\Animations\AnimationExtensions.cs" />
     <Compile Include="Infrastructure\Constants\CommonNameConstants.cs" />
     <Compile Include="Infrastructure\Constants\MessagingCenterConstants.cs" />

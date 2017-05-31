@@ -12,10 +12,14 @@ namespace ListOfGoods.Services.Purchase
     {
         private IPurchaseRepository _purchaseRepository;
         private IPurchasesListRepository _purchasesListRepository;
-        public PurchaseService(IPurchaseRepository purchaseRepository, IPurchasesListRepository purchasesListRepository)
+        private IUsersPurchaseRepository _usersPurchaseRepository;
+        public PurchaseService(IPurchaseRepository purchaseRepository, 
+            IPurchasesListRepository purchasesListRepository,
+            IUsersPurchaseRepository usersPurchaseRepository)
         {
             _purchaseRepository = purchaseRepository;
             _purchasesListRepository = purchasesListRepository;
+            _usersPurchaseRepository = usersPurchaseRepository;
         }
 
         public List<PurchaseEntity> GetAllPurchases()
@@ -33,11 +37,10 @@ namespace ListOfGoods.Services.Purchase
             _purchasesListRepository.Delete(id);
         }
 
-        public PurchaseEntity FindPurchaseByName(string name)
+        public PurchaseEntity FindPurchaseById(int id)
         {
-            return string.IsNullOrEmpty(name)
-                ? null
-                : _purchaseRepository.GetQuery(x => x.Name.ToLower() == name.ToLower()).FirstOrDefault();
+            if (id == 0) return null;
+            return _purchaseRepository.GetById(id);
         }
 
         public List<AutocompletePurchaseModel> FindAutocompletePurchases(string searchKey)
@@ -45,10 +48,11 @@ namespace ListOfGoods.Services.Purchase
             var purchases = _purchaseRepository.GetQuery(x => x.Name.Contains(searchKey)).Take(5).ToList();
             return purchases.Select(x => new AutocompletePurchaseModel
             {
-                ImageSource = !x.IsCustomProduct
-                        ? ImageSource.FromFile(x.Name.ToAutocompleteImagePath())
-                        : ImageSource.FromFile(""),
-                Name = x.Name
+                ImageSource = !x.IsCustomImage
+                        ? ImageSource.FromFile(x.ImagePath.ToAutocompleteImagePath())
+                        : ImageSource.FromFile(x.ImagePath),
+                Name = x.Name,
+                PurchaseId = x.Id
             }).ToList();
         }
 
@@ -63,16 +67,22 @@ namespace ListOfGoods.Services.Purchase
                 _purchasesListRepository.Create(entity);
             }
         }
-        public void SavePurchase(PurchaseEntity entity)
+        public int SavePurchase(PurchaseEntity entity)
         {
             if (entity.Id != 0)
             {
                 _purchaseRepository.Update(entity);
+                return entity.Id;
             }
             else
             {
-                _purchaseRepository.Create(entity);
+                return _purchaseRepository.Create(entity);
             }
+        }
+
+        public int SaveUsersPurchase(UsersPurchaseEntity entity)
+        {
+            return _usersPurchaseRepository.Create(entity);
         }
     }
 }

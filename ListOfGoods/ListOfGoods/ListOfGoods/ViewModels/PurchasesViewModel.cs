@@ -27,7 +27,7 @@ namespace ListOfGoods.ViewModels
         private IPurchaseService _purchaseService;
         private IMediaService _mediaService;
 
-        private ImageSource _test;
+        public int PurchasesListId { get; set; }
         
         public ICommand AddNewPurchaseCommand => new Command(AddNewPurchaseAsync);
 
@@ -71,7 +71,9 @@ namespace ListOfGoods.ViewModels
             var newPurchaseModel = new NewPurchaseModel
             {
                 PurchaseName = purchase.Name,
-                ImageSource = purchase.ImageSource
+                ImageSource = purchase.ImageSource,
+                PurchasesListId = PurchasesListId,
+                PurchaseId = purchase.PurchaseId
             };
             await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel));
         }
@@ -81,7 +83,9 @@ namespace ListOfGoods.ViewModels
             var newPurchaseModel = new NewPurchaseModel
             {
                 PurchaseName = NewPurchase,
-                ImageSource = null
+                ImageSource = null,
+                PurchaseId = 0,
+                PurchasesListId = PurchasesListId
             };
             await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel));
         }

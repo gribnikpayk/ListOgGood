@@ -30,6 +30,7 @@ namespace ListOfGoods
             Container.RegisterType<INavigationService, NaviagationService>();
             Container.RegisterType<IPurchaseRepository, PurchaseRepository>();
             Container.RegisterType<IPurchasesListRepository, PurchasesListRepository>();
+            Container.RegisterType<IUsersPurchaseRepository, UsersPurchaseRepository>();
             Container.RegisterType<IPurchaseService, PurchaseService>();
             Container.RegisterType<IMediaService, MediaService>();
             Container.RegisterType<ISearchService, SearchService>();

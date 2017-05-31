@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Constants;
+using ListOfGoods.Infrastructure.Extensions;
 using ListOfGoods.Services.Purchase;
 using ListOfGoods.Views.PopUps;
 using Rg.Plugins.Popup.Services;
@@ -20,6 +21,8 @@ namespace ListOfGoods.ViewModels.PopUps
 
         public string PurchaseIconImagePath { get; set; }
         public bool ImageIconIsCustom { get; set; }
+        public int PurchasesListId { get; set; }
+        public int PurchasesId { get; set; }
         public ICommand AddCommand => new Command(AddPurchase);
         public ICommand EditImageCommand => new Command(ShowEditImagePopUpAsync);
 
@@ -98,16 +101,30 @@ namespace ListOfGoods.ViewModels.PopUps
         {
             Task.Run(() =>
             {
-                var DB_Purchase = _purchaseService.FindPurchaseByName(NewPurchase);
+                var DB_Purchase = _purchaseService.FindPurchaseById(PurchasesId);
                 var newPurchase = new PurchaseEntity
                 {
                     Name = NewPurchase,
-                    IsCustomProduct = ImageIconIsCustom, //продукт считается кастомным если для него выбрана пользовательская иконка
+                    IsCustomImage = ImageIconIsCustom //если картинка была загружена пользователем , то сохр. ImageIsCustom 
+                        ? ImageIconIsCustom           //если нет - то проверить была ли картинка в базе сохранена с ImageIsCustom
+                        : DB_Purchase != null
+                            ? DB_Purchase.IsCustomImage
+                            : ImageIconIsCustom,
                     Id = DB_Purchase?.Id ?? 0,
-                    ImagePath = ImageIconIsCustom ? PurchaseIconImagePath : string.Empty
+                    ImagePath = ImageIconIsCustom  //если картинка загружена пользователем, то сохранить как есть
+                        ? PurchaseIconImagePath    //если нет - то загрузить либо иконку, либо картинку которая уже была в DB
+                        : string.IsNullOrEmpty(PurchaseIconImagePath)
+                                ? $"{SelectedCategory}_icon.png"
+                                : DB_Purchase?.ImagePath
                 };
-                _purchaseService.SavePurchase(newPurchase); //добавить / обновить продукт в общую базу товаров 
+                var purchaseId = _purchaseService.SavePurchase(newPurchase); //добавить / обновить продукт в общую базу товаров
+                _purchaseService.SaveUsersPurchase(new UsersPurchaseEntity
+                {
+                    PurchaseId = purchaseId,
+                    PurchasesListId = PurchasesListId
+                });
             });
+            PopupNavigation.PopAllAsync();
         }
     }
 }

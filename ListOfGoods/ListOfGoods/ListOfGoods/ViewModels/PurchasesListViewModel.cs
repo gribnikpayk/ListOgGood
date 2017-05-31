@@ -61,7 +61,7 @@ namespace ListOfGoods.ViewModels
 
         public async Task NavigateToPurchasePage(int id)
         {
-            await _navigation.PushAsync(new PurchasesView());
+            await _navigation.PushAsync(new PurchasesView(id));
         }
     }
 }

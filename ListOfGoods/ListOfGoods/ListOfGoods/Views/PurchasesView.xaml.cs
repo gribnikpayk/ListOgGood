@@ -7,11 +7,12 @@ namespace ListOfGoods.Views
     public partial class PurchasesView : ContentPage
     {
         private PurchasesViewModel _viewModel;
-        public PurchasesView()
+        public PurchasesView(int purchasesListId)
         {
             InitializeComponent();
             _viewModel = App.Container.Resolve(typeof(PurchasesViewModel), "purchasesViewModel") as PurchasesViewModel;
             BindingContext = _viewModel;
+            _viewModel.PurchasesListId = purchasesListId;
         }
 
         private async void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)

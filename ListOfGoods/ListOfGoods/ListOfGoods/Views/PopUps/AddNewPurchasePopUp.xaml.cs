@@ -15,10 +15,11 @@ namespace ListOfGoods.Views.PopUps
         {
             InitializeComponent();
             _viewModel = App.Container.Resolve(typeof(AddNewPurchasePopUpViewModel), "addNewPurchasePopUpViewModel") as AddNewPurchasePopUpViewModel;
-
+            _viewModel.PurchaseIconImagePath = newPurchaseModel.ImageSource?.ToString(); //путь будет пустым если картинки не было (нужно для проверки)
             _viewModel.NewPurchase = newPurchaseModel.PurchaseName;
-            _viewModel.PurchaseIconImagePath = newPurchaseModel.ImageSource.ToString();
             _viewModel.PurchaseIconSource = newPurchaseModel.ImageSource;
+            _viewModel.PurchasesListId = newPurchaseModel.PurchasesListId;
+            _viewModel.PurchasesId = newPurchaseModel.PurchaseId;
 
             BindingContext = _viewModel;
         }
@@ -60,6 +61,7 @@ namespace ListOfGoods.Views.PopUps
             else
             {
                 _viewModel.PurchaseIconImagePath = string.Empty;
+                _viewModel.ImageIconIsCustom = false;
                 _viewModel.PurchaseIconSource = _viewModel.SelectedCategory.ToCategoryIconImageSource();
             }
         }

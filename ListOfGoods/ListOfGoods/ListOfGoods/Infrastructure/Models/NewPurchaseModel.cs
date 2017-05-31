@@ -6,6 +6,7 @@ namespace ListOfGoods.Infrastructure.Models
     {
         public ImageSource ImageSource { get; set; }
         public string PurchaseName { get; set; }
-        public int Id { get; set; }
+        public int PurchaseId { get; set; }
+        public int PurchasesListId { get; set; }
     }
 }
