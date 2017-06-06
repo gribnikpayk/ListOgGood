@@ -114,7 +114,13 @@ namespace ListOfGoods.ViewModels.PopUps
                         ? PurchaseIconImagePath    //если нет - то загрузить либо иконку, либо картинку которая уже была в DB
                         : string.IsNullOrEmpty(PurchaseIconImagePath)
                                 ? $"{SelectedCategory}_icon.png"
-                                : DB_Purchase?.ImagePath,
+                                : DB_Purchase?.ImagePath
+                };
+                var purchaseId = _purchaseService.SavePurchase(newPurchase); //добавить / обновить продукт в общую базу товаров
+                _purchaseService.SaveUsersPurchase(new UsersPurchaseEntity
+                {
+                    PurchaseId = purchaseId,
+                    PurchasesListId = PurchasesListId,
                     QuantityDescription = string.IsNullOrEmpty(Quantity)
                         ? string.Empty
                         : $"{Quantity} {SelectedMesurement}",
@@ -122,12 +128,6 @@ namespace ListOfGoods.ViewModels.PopUps
                         ? string.Empty
                         : $"{Price} $",
                     CategoryType = (int)CommonNameConstants.CategoriesDictionary.FirstOrDefault(x => x.Value == SelectedCategory).Key
-                };
-                var purchaseId = _purchaseService.SavePurchase(newPurchase); //добавить / обновить продукт в общую базу товаров
-                _purchaseService.SaveUsersPurchase(new UsersPurchaseEntity
-                {
-                    PurchaseId = purchaseId,
-                    PurchasesListId = PurchasesListId
                 });
             });
             PopupNavigation.PopAllAsync();

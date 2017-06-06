@@ -9,13 +9,11 @@ namespace ListOfGoods.CustomControls
     public class PurchaseGrid : Grid
     {
         public bool IsAlreadyPurchased { get; set; }
-        public int Id { get; set; }
         public Categories Category { get; set; }
-        public PurchaseGrid(PurchaseEntity purchase)
+        public PurchaseGrid(PurchaseEntity purchase, UsersPurchaseEntity usersPurchase)
         {
-            Category = (Categories) purchase.CategoryType;
-            Id = purchase.Id;
-            IsAlreadyPurchased = purchase.IsAlreadyPurchased;
+            Category = (Categories)usersPurchase.CategoryType;
+            IsAlreadyPurchased = usersPurchase.IsAlreadyPurchased;
 
             ColumnDefinitions = new ColumnDefinitionCollection
             {
@@ -38,20 +36,20 @@ namespace ListOfGoods.CustomControls
                 VerticalOptions = LayoutOptions.Center,
                 Source = purchase.IsCustomImage ? purchase.ImagePath : purchase.ImagePath.ToPlatformImagePath()
             };
-            var count = string.IsNullOrEmpty(purchase.QuantityDescription)
+            var count = string.IsNullOrEmpty(usersPurchase.QuantityDescription)
                 ? null
                 : new Label
                 {
-                    Text = purchase.QuantityDescription,
+                    Text = usersPurchase.QuantityDescription,
                     TextColor = Color.White,
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.End
                 };
-            var priceDescription = string.IsNullOrEmpty(purchase.PriceDescription)
+            var priceDescription = string.IsNullOrEmpty(usersPurchase.PriceDescription)
                 ? null
                 : new Label
                 {
-                    Text = purchase.PriceDescription,
+                    Text = usersPurchase.PriceDescription,
                     TextColor = Color.White,
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Start
