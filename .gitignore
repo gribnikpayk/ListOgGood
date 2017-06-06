@@ -12,3 +12,7 @@
 /ListOfGoods/ListOfGoods/ListOfGoods.WinPhone/obj/Debug
 /ListOfGoods/ListOfGoods/ListOfGoods/bin/Debug
 /ListOfGoods/ListOfGoods/ListOfGoods.UWP/bin/x86/Debug
+/ListOfGoods/ListOfGoods/ListOfGoods.UWP/bin/ARM/Debug
+/ListOfGoods/ListOfGoods/ListOfGoods.UWP/obj/ARM/Debug
+/ListOfGoods/ListOfGoods/ListOfGoods.Windows/obj/ARM/Debug
+/ListOfGoods/ListOfGoods/ListOfGoods.WinPhone/obj/ARM/Debug

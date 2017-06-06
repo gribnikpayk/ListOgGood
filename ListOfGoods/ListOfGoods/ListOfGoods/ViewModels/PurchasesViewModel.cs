@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using ListOfGoods.Infrastructure.DependencyService;
 using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.Services.Media;
 using ListOfGoods.Services.Purchase;
@@ -17,18 +15,18 @@ namespace ListOfGoods.ViewModels
     public class PurchasesViewModel : BaseViewModel
     {
         private string _newPurchase;
-        private bool _autoCompleteIsVisible;
+        private bool _autoCompleteIsVisible, _purchasesFrameIsVisible, _alreadyPurchasedFrameIsVisible;
         private List<AutocompletePurchaseModel> _autocompleteItems;
         private CancellationTokenSource _autoCompleteCancelTokenSource;
         private string _tempAutoCompleteSearchPhrase = string.Empty;
-        
+
         private const short _minValueForAutocomplete = 2;
 
         private IPurchaseService _purchaseService;
         private IMediaService _mediaService;
 
         public int PurchasesListId { get; set; }
-        
+
         public ICommand AddNewPurchaseCommand => new Command(AddNewPurchaseAsync);
 
         public PurchasesViewModel(IPurchaseService purchaseService, IMediaService mediaService)
@@ -37,6 +35,7 @@ namespace ListOfGoods.ViewModels
             _mediaService = mediaService;
         }
 
+        #region BindableProperties
         public List<AutocompletePurchaseModel> AutocompleteItems
         {
             set { SetProperty(ref _autocompleteItems, value); }
@@ -62,6 +61,19 @@ namespace ListOfGoods.ViewModels
             get { return _autoCompleteIsVisible; }
         }
 
+        public bool PurchasesFrameIsVisible
+        {
+            set { SetProperty(ref _purchasesFrameIsVisible, value); }
+            get { return _purchasesFrameIsVisible; }
+        }
+
+        public bool AlreadyPurchasedFrameIsVisible
+        {
+            set { SetProperty(ref _alreadyPurchasedFrameIsVisible, value); }
+            get { return _alreadyPurchasedFrameIsVisible; }
+        }
+
+        #endregion
         public async Task SelectedAutocompleteItemProcess(AutocompletePurchaseModel purchase)
         {
             AutoCompleteIsVisible = false;
@@ -78,6 +90,7 @@ namespace ListOfGoods.ViewModels
             await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel));
         }
 
+        #region privateMethods
         private async void AddNewPurchaseAsync()
         {
             var newPurchaseModel = new NewPurchaseModel
@@ -109,5 +122,6 @@ namespace ListOfGoods.ViewModels
                 }
             });
         }
+        #endregion
     }
 }

@@ -39,6 +39,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\CustomPicker.cs" />
+    <Compile Include="CustomControls\PurchaseGrid.cs" />
     <Compile Include="CustomControls\RoundedButton.cs" />
     <Compile Include="CustomControls\CustomEntry.cs" />
     <Compile Include="CustomControls\CustomFrame.cs" />

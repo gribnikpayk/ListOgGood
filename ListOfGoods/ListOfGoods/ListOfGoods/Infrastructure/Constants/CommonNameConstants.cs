@@ -18,7 +18,7 @@ namespace ListOfGoods.Infrastructure.Constants
             [Categories.WithoutСategory] = "Without category",
             [Categories.Bakery] = "Bakery",
             [Categories.Chicken] = "Chicken",
-            [Categories.Сosmetics] = "Сosmetics",
+            [Categories.Cosmetics] = "Сosmetics",
             [Categories.Dairy] = "Dairy",
             [Categories.Drinks] = "Drinks",
             [Categories.Fish] = "Fish",

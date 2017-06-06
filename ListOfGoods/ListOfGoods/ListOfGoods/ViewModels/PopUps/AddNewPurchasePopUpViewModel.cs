@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Constants;
-using ListOfGoods.Infrastructure.Extensions;
 using ListOfGoods.Services.Purchase;
 using ListOfGoods.Views.PopUps;
 using Rg.Plugins.Popup.Services;
@@ -115,7 +114,14 @@ namespace ListOfGoods.ViewModels.PopUps
                         ? PurchaseIconImagePath    //если нет - то загрузить либо иконку, либо картинку которая уже была в DB
                         : string.IsNullOrEmpty(PurchaseIconImagePath)
                                 ? $"{SelectedCategory}_icon.png"
-                                : DB_Purchase?.ImagePath
+                                : DB_Purchase?.ImagePath,
+                    QuantityDescription = string.IsNullOrEmpty(Quantity)
+                        ? string.Empty
+                        : $"{Quantity} {SelectedMesurement}",
+                    PriceDescription = string.IsNullOrEmpty(Price)
+                        ? string.Empty
+                        : $"{Price} $",
+                    CategoryType = (int)CommonNameConstants.CategoriesDictionary.FirstOrDefault(x => x.Value == SelectedCategory).Key
                 };
                 var purchaseId = _purchaseService.SavePurchase(newPurchase); //добавить / обновить продукт в общую базу товаров
                 _purchaseService.SaveUsersPurchase(new UsersPurchaseEntity

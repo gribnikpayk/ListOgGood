@@ -5,7 +5,7 @@
         WithoutСategory,
         Bakery,
         Chicken,
-        Сosmetics,
+        Cosmetics,
         Dairy,
         Drinks,
         Fish,
