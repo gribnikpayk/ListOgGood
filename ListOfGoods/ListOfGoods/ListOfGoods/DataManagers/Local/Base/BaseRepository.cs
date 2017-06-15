@@ -10,20 +10,16 @@ namespace ListOfGoods.DataManagers.Local.Base
     {
         private static object _locker = new object();
 
-        protected SQLiteConnection Database;
-
         public BaseRepository()
         {
-            string databasePath = DependencyService.Get<ISQLite>().GetDatabasePath("ListOfGoods.db");
-            Database = new SQLiteConnection(databasePath);
-            Database.CreateTable<EntityType>();
+            App.Database.CreateTable<EntityType>();
         }
 
         public EntityType GetById(int id)
         {
             lock (_locker)
             {
-                return Database.Get<EntityType>(id);
+                return App.Database.Get<EntityType>(id);
             }
         }
 
@@ -31,7 +27,7 @@ namespace ListOfGoods.DataManagers.Local.Base
         {
             lock (_locker)
             {
-                return Database.DeleteAll<EntityType>();
+                return App.Database.DeleteAll<EntityType>();
             }
         }
 
@@ -39,7 +35,7 @@ namespace ListOfGoods.DataManagers.Local.Base
         {
             lock (_locker)
             {
-                return Database.Update(entity);
+                return App.Database.Update(entity);
             }
         }
 
@@ -47,7 +43,7 @@ namespace ListOfGoods.DataManagers.Local.Base
         {
             lock (_locker)
             {
-                return Database.Insert(entity);
+                return App.Database.Insert(entity);
             }
         }
 
@@ -55,7 +51,7 @@ namespace ListOfGoods.DataManagers.Local.Base
         {
             lock (_locker)
             {
-                return Database.Delete<EntityType>(id);
+                return App.Database.Delete<EntityType>(id);
             }
         }
 
@@ -63,7 +59,7 @@ namespace ListOfGoods.DataManagers.Local.Base
         {
             lock (_locker)
             {
-                return expression == null ? Database.Table<EntityType>() : Database.Table<EntityType>().Where(expression);
+                return expression == null ? App.Database.Table<EntityType>() : App.Database.Table<EntityType>().Where(expression);
             }
         }
     }

@@ -7,5 +7,6 @@ namespace ListOfGoods.DataManagers.Local.Purchase
         public string Name { get; set; }
         public bool IsCustomImage { get; set; }
         public string ImagePath { get; set; }
+        public int CategoryType { get; set; }
     }
 }

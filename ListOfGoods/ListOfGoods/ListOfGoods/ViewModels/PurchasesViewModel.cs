@@ -3,6 +3,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ListOfGoods.CustomControls;
+using ListOfGoods.Infrastructure.Constants;
+using ListOfGoods.Infrastructure.Enums;
 using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.Services.Media;
 using ListOfGoods.Services.Purchase;
@@ -74,6 +77,22 @@ namespace ListOfGoods.ViewModels
         }
 
         #endregion
+
+        public void MarkAsPurchased(int purchaseId, int listId)
+        {
+            Task.Run(() => { _purchaseService.MarkAsPurchased(purchaseId, listId); });
+        }
+        public async Task<List<PurchasesInListModel>> LoadPurchases()
+        {
+            IsBusy = true;
+            var userPurchases = new List<PurchasesInListModel>();
+            await Task.Run(() =>
+            {
+                userPurchases = _purchaseService.GetPurchasesByListId(PurchasesListId);
+            });
+            IsBusy = false;
+            return userPurchases;
+        }
         public async Task SelectedAutocompleteItemProcess(AutocompletePurchaseModel purchase)
         {
             AutoCompleteIsVisible = false;
@@ -85,7 +104,8 @@ namespace ListOfGoods.ViewModels
                 PurchaseName = purchase.Name,
                 ImageSource = purchase.ImageSource,
                 PurchasesListId = PurchasesListId,
-                PurchaseId = purchase.PurchaseId
+                PurchaseId = purchase.PurchaseId,
+                Category = purchase.Category
             };
             await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel));
         }
@@ -98,7 +118,8 @@ namespace ListOfGoods.ViewModels
                 PurchaseName = NewPurchase,
                 ImageSource = null,
                 PurchaseId = 0,
-                PurchasesListId = PurchasesListId
+                PurchasesListId = PurchasesListId,
+                Category = Categories.WithoutСategory
             };
             await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel));
         }

@@ -1,24 +1,30 @@
-﻿using FFImageLoading.Forms;
+﻿using System.Linq;
+using FFImageLoading.Forms;
 using ListOfGoods.DataManagers.Local.Purchase;
-using ListOfGoods.Infrastructure.Enums;
+using ListOfGoods.Infrastructure.Animations;
+using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Infrastructure.Extensions;
+using ListOfGoods.Infrastructure.Resourses;
+using ListOfGoods.Views.PopUps;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace ListOfGoods.CustomControls
 {
     public class PurchaseGrid : Grid
     {
-        public bool IsAlreadyPurchased { get; set; }
-        public Categories Category { get; set; }
+        public PurchaseEntity Purchase { get; set; }
+        public UsersPurchaseEntity UsersPurchase { get; set; }
         public PurchaseGrid(PurchaseEntity purchase, UsersPurchaseEntity usersPurchase)
         {
-            Category = (Categories)usersPurchase.CategoryType;
-            IsAlreadyPurchased = usersPurchase.IsAlreadyPurchased;
+            BackgroundColor = ColorResourses.Grey;
+            Purchase = purchase;
+            UsersPurchase = usersPurchase;
 
             ColumnDefinitions = new ColumnDefinitionCollection
             {
                 new ColumnDefinition {Width = 50},
-                new ColumnDefinition {Width = GridLength.Auto},
+                new ColumnDefinition {Width = GridLength.Star},
                 new ColumnDefinition {Width = 80},
                 new ColumnDefinition {Width = 50}
             };
@@ -36,20 +42,20 @@ namespace ListOfGoods.CustomControls
                 VerticalOptions = LayoutOptions.Center,
                 Source = purchase.IsCustomImage ? purchase.ImagePath : purchase.ImagePath.ToPlatformImagePath()
             };
-            var count = string.IsNullOrEmpty(usersPurchase.QuantityDescription)
+            var count = string.IsNullOrEmpty(usersPurchase.Quantity)
                 ? null
                 : new Label
                 {
-                    Text = usersPurchase.QuantityDescription,
+                    Text = $"{usersPurchase.Quantity} {CommonNameConstants.MeasurementsDictionary.FirstOrDefault(x => (int)x.Key == usersPurchase.MesurementType).Value}",
                     TextColor = Color.White,
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.End
                 };
-            var priceDescription = string.IsNullOrEmpty(usersPurchase.PriceDescription)
+            var priceDescription = string.IsNullOrEmpty(usersPurchase.Price)
                 ? null
                 : new Label
                 {
-                    Text = usersPurchase.PriceDescription,
+                    Text = $"{usersPurchase.Price} {CommonNameConstants.CurrencyDictionary.FirstOrDefault(x => (int)x.Key == usersPurchase.CurrencyType).Value}",
                     TextColor = Color.White,
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Start
@@ -66,8 +72,25 @@ namespace ListOfGoods.CustomControls
                 Source = "more_icon.png".ToPlatformImagePath(),
                 VerticalOptions = LayoutOptions.Center,
                 WidthRequest = 30,
-                HeightRequest = 30
+                HeightRequest = 30,
             };
+            moreIcon.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(async () =>
+                {
+                    moreIcon.ScaleEffect();
+                    await PopupNavigation.PushAsync(new PurchaseActionsPopUp(this));
+                })
+            });
+
+            this.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() =>
+                {
+                    MessagingCenter.Send<PurchaseGrid, PurchaseGrid>(this, MessagingCenterConstants.MarkAsPurchased, this);
+                })
+            });
+
             Children.Add(icon, 0, 0);
             SetRowSpan(icon, 2);
             Children.Add(name, 1, 0);

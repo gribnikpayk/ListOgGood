@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
+             xmlns:commonColor="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
+             x:Class="ListOfGoods.Views.PopUps.PurchaseActionsPopUp">
+  <customControls:CustomFrame HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Center"
+                             InlineColor="{x:Static commonColor:ColorResourses.Grey}">
+    <customControls:CustomFrame.Margin>
+      <Thickness>50,0,50,0</Thickness>
+    </customControls:CustomFrame.Margin>
+
+    <ListView  x:Name="ActionsListView"
+               RowHeight="60"
+               SeparatorVisibility="None"
+               ItemSelected="ListView_OnItemSelected">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <!-- Main design for our menu items -->
+            <StackLayout VerticalOptions="FillAndExpand"
+                         Orientation="Horizontal"
+                         Padding="20,10,0,10"
+                         Spacing="20">
+
+
+              <Label VerticalOptions="Center"
+                     TextColor="White"
+                     HorizontalOptions="Center"
+                     HorizontalTextAlignment="Center"
+                     FontSize="Medium"
+                     Text="{Binding Name}" />
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+
+  </customControls:CustomFrame>
+</pages:PopupPage>

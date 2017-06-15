@@ -1,5 +1,4 @@
-﻿using System;
-using ListOfGoods.Infrastructure.Constants;
+﻿using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Infrastructure.Extensions;
 using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.ViewModels.PopUps;
@@ -8,33 +7,16 @@ using Xamarin.Forms;
 
 namespace ListOfGoods.Views.PopUps
 {
-    public partial class AddNewPurchasePopUp : PopupPage
+
+    public partial class EditPurchasePopUp : PopupPage
     {
-        private AddNewPurchasePopUpViewModel _viewModel;
-        public AddNewPurchasePopUp(NewPurchaseModel newPurchaseModel)
+        private EditPurchasePopUpViewModel _viewModel;
+        public EditPurchasePopUp(EditPurchaseModel model)
         {
             InitializeComponent();
-            _viewModel = App.Container.Resolve(typeof(AddNewPurchasePopUpViewModel), "addNewPurchasePopUpViewModel") as AddNewPurchasePopUpViewModel;
-            _viewModel.PurchaseIconImagePath = newPurchaseModel.ImageSource?.ToString(); //путь будет пустым если картинки не было (нужно для проверки)
-            _viewModel.NewPurchase = newPurchaseModel.PurchaseName;
-            _viewModel.PurchaseIconSource = newPurchaseModel.ImageSource;
-            _viewModel.PurchasesListId = newPurchaseModel.PurchasesListId;
-            _viewModel.PurchasesId = newPurchaseModel.PurchaseId;
-            _viewModel.SelectedIndexCategory = (int) newPurchaseModel.Category;
-
+            _viewModel = App.Container.Resolve(typeof(EditPurchasePopUpViewModel), "editPurchasePopUpViewModel") as EditPurchasePopUpViewModel;
+            MapViewModels(_viewModel, model);
             BindingContext = _viewModel;
-        }
-
-        private void Picker_OnCategorySelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(_viewModel.PurchaseIconImagePath))
-            {
-                var picker = sender as Picker;
-                if (picker != null)
-                {
-                    _viewModel.PurchaseIconSource = (picker.SelectedItem as string).ToCategoryIconImageSource();
-                }
-            }
         }
 
         protected override void OnAppearing()
@@ -65,6 +47,27 @@ namespace ListOfGoods.Views.PopUps
                 _viewModel.ImageIconIsCustom = false;
                 _viewModel.PurchaseIconSource = _viewModel.SelectedCategory.ToCategoryIconImageSource();
             }
+        }
+
+        private void MapViewModels(EditPurchasePopUpViewModel viewModel, EditPurchaseModel source)
+        {
+            viewModel.PurchaseIconImagePath = source.PurchaseIconImagePath;
+            viewModel.ImageIconIsCustom = source.ImageIconIsCustom;
+            viewModel.PurchasesListId = source.PurchasesListId;
+            viewModel.PurchasesId = source.PurchasesId;
+            viewModel.SelectedIndexCategory = source.SelectedIndexCategory;
+            viewModel.SelectedIndexOfMesurement = source.SelectedIndexOfMesurement;
+            viewModel.NewPurchase = source.NewPurchase;
+            viewModel.SelectedCategory = source.SelectedCategory;
+            viewModel.SelectedMesurement = source.SelectedMesurement;
+            viewModel.Quantity = source.Quantity;
+            viewModel.Price = source.Price;
+            viewModel.Id = source.Id;
+            viewModel.SelectedCurrency = source.SelectedCurrency;
+            viewModel.SelectedIndexCurrency = source.SelectedIndexCurrency;
+            viewModel.PurchaseIconSource = ImageSource.FromFile(source.ImageIconIsCustom 
+                ? source.PurchaseIconImagePath
+                : source.PurchaseIconImagePath.ToPlatformImagePath());
         }
     }
 }

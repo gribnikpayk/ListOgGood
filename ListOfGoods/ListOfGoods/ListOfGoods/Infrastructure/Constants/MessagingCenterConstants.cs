@@ -8,5 +8,8 @@
         public static readonly string SearchControlIsReady = "SearchControlIsReady";
         public static readonly string RemoveSearchControl = "RemoveSearchControl";
         public static readonly string PictureSelected = "PictureSelected";
+        public static readonly string DeleteAction = "DeleteAction";
+        public static readonly string EditAction = "EditAction";
+        public static readonly string MarkAsPurchased = "MarkAsPurchased";
     }
 }

@@ -59,6 +59,7 @@
         <StackLayout VerticalOptions="Start">
           <Label TextColor="{x:Static commonResorces:ColorResourses.EntryText}"
                  FontSize="Large"
+                 IsVisible="{Binding PurchasesFrameIsVisible}"
                  Text="My Purchases">
             <Label.Margin>
               <Thickness>10,20,10,0</Thickness>
@@ -74,6 +75,12 @@
               <StackLayout x:Name="ChickenCategoryWrapper"
                            Style="{StaticResource CategoryWrapper}">
                 <Label Text="Chicken"
+                       Style="{StaticResource CategoryLabel}">
+                </Label>
+              </StackLayout>
+              <StackLayout x:Name="MeatCategoryWrapper"
+                           Style="{StaticResource CategoryWrapper}">
+                <Label Text="Meat"
                        Style="{StaticResource CategoryLabel}">
                 </Label>
               </StackLayout>
@@ -135,8 +142,9 @@
           </customControls:CustomFrame>
 
           <Label TextColor="{x:Static commonResorces:ColorResourses.EntryText}"
-                    FontSize="Large"
-                    Text="Card">
+                 FontSize="Large"
+                 IsVisible="{Binding AlreadyPurchasedFrameIsVisible}"
+                 Text="Card">
             <Label.Margin>
               <Thickness>10,20,0,10</Thickness>
             </Label.Margin>

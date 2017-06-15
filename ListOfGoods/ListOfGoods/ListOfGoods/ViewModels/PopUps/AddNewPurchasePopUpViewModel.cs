@@ -13,10 +13,10 @@ namespace ListOfGoods.ViewModels.PopUps
 {
     public class AddNewPurchasePopUpViewModel : BaseViewModel
     {
-        private string _newPurchase, _quantity, _price, _selectedCategory, _selectedMesurement;
+        private string _newPurchase, _quantity, _price, _selectedCategory, _selectedMesurement, _selectedCurrency;
         private ImageSource _purchaseIconSource;
-        private int _selectedIndexCategory, _selectedIndexMesurement;
-        private List<string> _categorySource, _mesurementSource;
+        private int _selectedIndexCategory, _selectedIndexMesurement, _selectedIndexCurrency;
+        private List<string> _categorySource, _mesurementSource, _currencySource;
 
         public string PurchaseIconImagePath { get; set; }
         public bool ImageIconIsCustom { get; set; }
@@ -29,9 +29,15 @@ namespace ListOfGoods.ViewModels.PopUps
 
         public AddNewPurchasePopUpViewModel(IPurchaseService purchaseService)
         {
-            SelectedIndexCategory = 0;
             SelectedIndexOfMesurement = 3;
+            SelectedIndexCurrency = 0;
             _purchaseService = purchaseService;
+        }
+
+        public int SelectedIndexCurrency
+        {
+            set { SetProperty(ref _selectedIndexCurrency, value); }
+            get { return _selectedIndexCurrency; }
         }
 
         public int SelectedIndexCategory
@@ -68,6 +74,17 @@ namespace ListOfGoods.ViewModels.PopUps
             get { return _selectedMesurement; }
         }
 
+        public List<string> CurrencySource
+        {
+            set { SetProperty(ref _currencySource, value); }
+            get { return CommonNameConstants.CurrencyDictionary.Select(x => x.Value).ToList(); }
+        }
+
+        public string SelectedCurrency
+        {
+            set { SetProperty(ref _selectedCurrency, value); }
+            get { return _selectedCurrency; }
+        }
         public List<string> MesurementSource
         {
             set { SetProperty(ref _mesurementSource, value); }
@@ -113,20 +130,19 @@ namespace ListOfGoods.ViewModels.PopUps
                     ImagePath = ImageIconIsCustom  //если картинка загружена пользователем, то сохранить как есть
                         ? PurchaseIconImagePath    //если нет - то загрузить либо иконку, либо картинку которая уже была в DB
                         : string.IsNullOrEmpty(PurchaseIconImagePath)
-                                ? $"{SelectedCategory}_icon.png"
-                                : DB_Purchase?.ImagePath
+                                ? $"{SelectedCategory.Replace(" ", string.Empty)}_icon.png"
+                                : DB_Purchase?.ImagePath,
+                    CategoryType = (int)CommonNameConstants.CategoriesDictionary.FirstOrDefault(x => x.Value == SelectedCategory).Key
                 };
-                var purchaseId = _purchaseService.SavePurchase(newPurchase); //добавить / обновить продукт в общую базу товаров
+                _purchaseService.SavePurchase(newPurchase); //добавить / обновить продукт в общую базу товаров
                 _purchaseService.SaveUsersPurchase(new UsersPurchaseEntity
                 {
-                    PurchaseId = purchaseId,
+                    PurchaseId = newPurchase.Id,
                     PurchasesListId = PurchasesListId,
-                    QuantityDescription = string.IsNullOrEmpty(Quantity)
-                        ? string.Empty
-                        : $"{Quantity} {SelectedMesurement}",
-                    PriceDescription = string.IsNullOrEmpty(Price)
-                        ? string.Empty
-                        : $"{Price} $",
+                    Quantity = Quantity,
+                    Price = Price,
+                    MesurementType = (int)CommonNameConstants.MeasurementsDictionary.FirstOrDefault(x => x.Value == SelectedMesurement).Key,
+                    CurrencyType = (int)CommonNameConstants.CurrencyDictionary.FirstOrDefault(x => x.Value == SelectedCurrency).Key,
                     CategoryType = (int)CommonNameConstants.CategoriesDictionary.FirstOrDefault(x => x.Value == SelectedCategory).Key
                 });
             });

@@ -13,6 +13,8 @@ namespace ListOfGoods.Infrastructure.Constants
         public const string CameraActionName = "Camera";
         public const string InternetActionName = "Internet";
 
+        public const string MarkAsPurchased = "Mark as purchased";
+
         public static Dictionary<Categories, string> CategoriesDictionary = new Dictionary<Categories, string>
         {
             [Categories.WithoutСategory] = "Without category",
@@ -37,6 +39,16 @@ namespace ListOfGoods.Infrastructure.Constants
             [Measurements.Pt] = "Pt.",
             [Measurements.Pkg] = "Pkg.",
             [Measurements.Piece] = "Piece"
+        };
+        public static Dictionary<Currency, string> CurrencyDictionary = new Dictionary<Currency, string>
+        {
+            [Currency.Dollar] = "$",
+            [Currency.Euro] = "€",
+            [Currency.JapaneseYen] = "JPY",
+            [Currency.GreatBritishPound] = "GBP",
+            [Currency.SwissFranc] = "CHF",
+            [Currency.CanadianDollar] = "CAD",
+            [Currency.RYB] = "RUB"
         };
     }
 }

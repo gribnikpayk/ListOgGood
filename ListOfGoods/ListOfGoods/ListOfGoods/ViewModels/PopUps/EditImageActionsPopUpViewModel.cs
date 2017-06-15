@@ -81,7 +81,6 @@ namespace ListOfGoods.ViewModels.PopUps
                 MessagingCenter.Send<EditImageActionsPopUpViewModel, string>(this,
                     MessagingCenterConstants.PictureSelected, string.Empty);
             }
-            await PopupNavigation.PopAsync();
         }
     }
 }

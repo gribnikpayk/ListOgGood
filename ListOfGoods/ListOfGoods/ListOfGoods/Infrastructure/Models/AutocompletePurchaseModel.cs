@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using ListOfGoods.Infrastructure.Enums;
+using Xamarin.Forms;
 
 namespace ListOfGoods.Infrastructure.Models
 {
@@ -8,5 +9,6 @@ namespace ListOfGoods.Infrastructure.Models
         public ImageSource ImageSource { get; set; }
 
         public int PurchaseId { get; set; }
+        public Categories Category { get; set; }
     }
 }

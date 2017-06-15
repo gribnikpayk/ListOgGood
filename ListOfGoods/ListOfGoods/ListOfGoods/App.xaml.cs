@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ListOfGoods.DataManagers.Local.Purchase;
+﻿using ListOfGoods.DataManagers.Local.Purchase;
+using ListOfGoods.Infrastructure.DependencyService;
 using ListOfGoods.Infrastructure.Helpers;
 using ListOfGoods.Infrastructure.Navigation;
 using ListOfGoods.Services.Media;
@@ -10,6 +7,7 @@ using ListOfGoods.Services.Purchase;
 using ListOfGoods.Services.Search;
 using ListOfGoods.Views.MasterDetailPage;
 using Microsoft.Practices.Unity;
+using SQLite;
 using Xamarin.Forms;
 
 namespace ListOfGoods
@@ -17,9 +15,13 @@ namespace ListOfGoods
     public partial class App : Application
     {
         public static UnityContainer Container { get; set; }
+        public static SQLiteConnection Database = null;
         public App()
         {
             InitializeComponent();
+            var databasePath = DependencyService.Get<ISQLite>().GetDatabasePath("ListOfGoods.db");
+            Database = new SQLiteConnection(databasePath);
+
             ResolveDependency();
             MainPage = new MainPage();
         }

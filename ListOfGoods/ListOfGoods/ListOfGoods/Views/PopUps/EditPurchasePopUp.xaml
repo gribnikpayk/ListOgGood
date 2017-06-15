@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-             xmlns:commonColor="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
-             xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
-             x:Class="ListOfGoods.Views.PopUps.AddNewPurchasePopUp">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
+                 xmlns:commonColor="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
+                 x:Class="ListOfGoods.Views.PopUps.EditPurchasePopUp">
+
   <customControls:CustomFrame HorizontalOptions="FillAndExpand"
                              VerticalOptions="Center"
                              InlineColor="{x:Static commonColor:ColorResourses.Grey}">
@@ -52,7 +52,6 @@
                                    ItemsSource="{Binding CategorySource}"
                                    SelectedIndex="{Binding SelectedIndexCategory}"
                                    HorizontalOptions="Start"
-                                   SelectedIndexChanged="Picker_OnCategorySelectedIndexChanged"
                                    TextColor="{x:Static commonColor:ColorResourses.EntryText}"
                                    BackgroundColor="{x:Static commonColor:ColorResourses.LiteGrey}">
         <Picker.Margin>
@@ -94,19 +93,19 @@
                                     Keyboard="Numeric">
         </customControls:CustomEntry>
         <customControls:CustomPicker SelectedItem="{Binding SelectedCurrency}"
-                                     ItemsSource="{Binding CurrencySource}"
-                                     SelectedIndex="{Binding SelectedIndexCurrency}"
-                                     HorizontalOptions="End"
-                                     TextColor="#f0fffb"
-                                     BackgroundColor="{x:Static commonColor:ColorResourses.Green}">
+                                    ItemsSource="{Binding CurrencySource}"
+                                    SelectedIndex="{Binding SelectedIndexCurrency}"
+                                    HorizontalOptions="End"
+                                    TextColor="#f0fffb"
+                                    BackgroundColor="{x:Static commonColor:ColorResourses.Green}">
         </customControls:CustomPicker>
       </StackLayout>
       <customControls:RoundedButton BackgroundColor="{x:Static commonColor:ColorResourses.ButtonBackground}"
               TextColor="{x:Static commonColor:ColorResourses.ButtonText}"
-              Text="Add"
+              Text="Save"
               WidthRequest="250"
               FontSize="Medium"
-              Command="{Binding AddCommand}">
+              Command="{Binding UpdateUsersPurchaseCommand}">
         <customControls:RoundedButton.Margin>
           <Thickness>0,20,0,0</Thickness>
         </customControls:RoundedButton.Margin>
