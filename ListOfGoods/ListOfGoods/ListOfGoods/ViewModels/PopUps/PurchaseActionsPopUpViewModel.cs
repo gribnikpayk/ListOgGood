@@ -3,7 +3,7 @@ using ListOfGoods.Services.Purchase;
 
 namespace ListOfGoods.ViewModels.PopUps
 {
-    public class PurchaseActionsPopUpViewModel:BaseViewModel
+    public class PurchaseActionsPopUpViewModel : BaseViewModel
     {
         private IPurchaseService _purchaseService;
         public PurchaseActionsPopUpViewModel(IPurchaseService purchaseService)
@@ -22,7 +22,15 @@ namespace ListOfGoods.ViewModels.PopUps
         {
             Task.Run(() =>
             {
-                _purchaseService.MarkAsPurchased(purchaseId, listId);
+                _purchaseService.MarkPurchasedStatus(purchaseId, listId, isAlreadyPurchased: true);
+            });
+        }
+
+        public void BackToTheList(int purchaseId, int listId)
+        {
+            Task.Run(() =>
+            {
+                _purchaseService.MarkPurchasedStatus(purchaseId, listId, isAlreadyPurchased: false);
             });
         }
     }

@@ -22,9 +22,13 @@ namespace ListOfGoods.Views.PopUps
             BindingContext = _viewModel;
             ActionsListView.ItemsSource = new List<object>
             {
-                new ListViewItem {Name=CommonNameConstants.EditActionName},
-                new ListViewItem {Name=CommonNameConstants.DeleteActionName},
-                new ListViewItem {Name=CommonNameConstants.MarkAsPurchased}
+                new ListViewItem {Name = CommonNameConstants.EditActionName},
+                new ListViewItem {Name = CommonNameConstants.DeleteActionName},
+                new ListViewItem {
+                    Name = grid.UsersPurchase.IsAlreadyPurchased
+                        ? CommonNameConstants.MarkAsPurchased
+                        : CommonNameConstants.BackToTheList
+                }
             };
         }
         private async void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -38,11 +42,15 @@ namespace ListOfGoods.Views.PopUps
                     MessagingCenter.Send<PurchaseActionsPopUp, PurchaseGrid>(this, MessagingCenterConstants.DeleteAction, _grid);
                     break;
                 case CommonNameConstants.EditActionName:
-                    await PopupNavigation.PushAsync(new EditPurchasePopUp(GetEditPurchaseModel()));
+                    await PopupNavigation.PushAsync(new EditPurchasePopUp(GetEditPurchaseModel(), _grid));
                     break;
                 case CommonNameConstants.MarkAsPurchased:
                     _viewModel.MarkAsPurchased(_grid.UsersPurchase.PurchaseId, _grid.UsersPurchase.PurchasesListId);
                     MessagingCenter.Send<PurchaseActionsPopUp, PurchaseGrid>(this, MessagingCenterConstants.MarkAsPurchased, _grid);
+                    break;
+                case CommonNameConstants.BackToTheList:
+                    _viewModel.BackToTheList(_grid.UsersPurchase.PurchaseId, _grid.UsersPurchase.PurchasesListId);
+                    MessagingCenter.Send<PurchaseActionsPopUp, PurchaseGrid>(this, MessagingCenterConstants.BackToList, _grid);
                     break;
                 default:
                     break;
@@ -62,7 +70,7 @@ namespace ListOfGoods.Views.PopUps
                 Id = _grid.UsersPurchase.Id,
                 PurchasesListId = _grid.UsersPurchase.PurchasesListId,
                 Quantity = _grid.UsersPurchase.Quantity,
-                SelectedMesurement = CommonNameConstants.MeasurementsDictionary.FirstOrDefault(x => (int) x.Key == _grid.UsersPurchase.MesurementType).Value,
+                SelectedMesurement = CommonNameConstants.MeasurementsDictionary.FirstOrDefault(x => (int)x.Key == _grid.UsersPurchase.MesurementType).Value,
                 Price = _grid.UsersPurchase.Price,
                 SelectedIndexOfMesurement = _grid.UsersPurchase.MesurementType,
                 SelectedIndexCategory = _grid.UsersPurchase.CategoryType,

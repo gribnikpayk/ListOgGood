@@ -80,7 +80,7 @@ namespace ListOfGoods.ViewModels
 
         public void MarkAsPurchased(int purchaseId, int listId)
         {
-            Task.Run(() => { _purchaseService.MarkAsPurchased(purchaseId, listId); });
+            Task.Run(() => { _purchaseService.MarkPurchasedStatus(purchaseId, listId, TODO); });
         }
         public async Task<List<PurchasesInListModel>> LoadPurchases()
         {

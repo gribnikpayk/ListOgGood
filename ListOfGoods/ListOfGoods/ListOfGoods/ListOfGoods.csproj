@@ -73,6 +73,7 @@
     <Compile Include="Infrastructure\Extensions\ImageSourceExtensions.cs" />
     <Compile Include="Infrastructure\GoogleSearch\SearchResponse.cs" />
     <Compile Include="Infrastructure\Models\EditPurchaseModel.cs" />
+    <Compile Include="Infrastructure\Models\EditPurchasePostActionModel.cs" />
     <Compile Include="Infrastructure\Models\PurchasesInListModel.cs" />
     <Compile Include="Services\Search\ISearchService.cs" />
     <Compile Include="Services\Search\SearchService.cs" />

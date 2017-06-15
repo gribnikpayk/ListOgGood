@@ -1,4 +1,6 @@
-﻿using ListOfGoods.Infrastructure.Constants;
+﻿using System.Linq;
+using ListOfGoods.CustomControls;
+using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Infrastructure.Extensions;
 using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.ViewModels.PopUps;
@@ -11,11 +13,12 @@ namespace ListOfGoods.Views.PopUps
     public partial class EditPurchasePopUp : PopupPage
     {
         private EditPurchasePopUpViewModel _viewModel;
-        public EditPurchasePopUp(EditPurchaseModel model)
+        public EditPurchasePopUp(EditPurchaseModel model, PurchaseGrid initialPurchaseGrid)
         {
             InitializeComponent();
             _viewModel = App.Container.Resolve(typeof(EditPurchasePopUpViewModel), "editPurchasePopUpViewModel") as EditPurchasePopUpViewModel;
             MapViewModels(_viewModel, model);
+            _viewModel.InitialPurchaseGrid = initialPurchaseGrid;
             BindingContext = _viewModel;
         }
 
@@ -65,7 +68,7 @@ namespace ListOfGoods.Views.PopUps
             viewModel.Id = source.Id;
             viewModel.SelectedCurrency = source.SelectedCurrency;
             viewModel.SelectedIndexCurrency = source.SelectedIndexCurrency;
-            viewModel.PurchaseIconSource = ImageSource.FromFile(source.ImageIconIsCustom 
+            viewModel.PurchaseIconSource = ImageSource.FromFile(source.ImageIconIsCustom
                 ? source.PurchaseIconImagePath
                 : source.PurchaseIconImagePath.ToPlatformImagePath());
         }

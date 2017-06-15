@@ -121,10 +121,10 @@ namespace ListOfGoods.Services.Purchase
             }
         }
 
-        public void MarkAsPurchased(int purchaseId, int listId)
+        public void MarkPurchasedStatus(int purchaseId, int listId, bool isAlreadyPurchased)
         {
             var entity = GetUsersPurchaseByPurchaseAndListId(purchaseId, listId);
-            entity.IsAlreadyPurchased = true;
+            entity.IsAlreadyPurchased = isAlreadyPurchased;
             _usersPurchaseRepository.Update(entity);
         }
         public void AddPurchasedToListAgain(int purchaseId, int listId)

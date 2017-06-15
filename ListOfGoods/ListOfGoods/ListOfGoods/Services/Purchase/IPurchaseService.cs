@@ -16,7 +16,7 @@ namespace ListOfGoods.Services.Purchase
         int SaveUsersPurchase(UsersPurchaseEntity entity);
         List<PurchasesInListModel> GetPurchasesByListId(int listId);
         void DeletePurchaseFromUserList(int purchaseId, int listId);
-        void MarkAsPurchased(int purchaseId, int listId);
+        void MarkPurchasedStatus(int purchaseId, int listId, bool isAlreadyPurchased);
         void AddPurchasedToListAgain(int purchaseId, int listId);
     }
 }

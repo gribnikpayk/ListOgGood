@@ -14,6 +14,7 @@ namespace ListOfGoods.Infrastructure.Constants
         public const string InternetActionName = "Internet";
 
         public const string MarkAsPurchased = "Mark as purchased";
+        public const string BackToTheList = "To the list";
 
         public static Dictionary<Categories, string> CategoriesDictionary = new Dictionary<Categories, string>
         {

@@ -5,6 +5,7 @@ using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Infrastructure.Enums;
 using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.ViewModels;
+using ListOfGoods.ViewModels.PopUps;
 using ListOfGoods.Views.PopUps;
 using Xamarin.Forms;
 
@@ -38,6 +39,8 @@ namespace ListOfGoods.Views
                     MarkAsPurchased(sender, grid);
                     _viewModel.MarkAsPurchased(grid.UsersPurchase.PurchaseId, grid.UsersPurchase.PurchasesListId);
                 });
+            MessagingCenter.Subscribe<PurchaseActionsPopUp, PurchaseGrid>(this, MessagingCenterConstants.BackToList, BackPurchaseToList);
+            MessagingCenter.Subscribe<EditPurchasePopUpViewModel, EditPurchasePostActionModel>(this, MessagingCenterConstants.EditAction, EditPurchase);
         }
         protected override void OnDisappearing()
         {
@@ -45,6 +48,8 @@ namespace ListOfGoods.Views
             MessagingCenter.Unsubscribe<PurchaseActionsPopUp, PurchaseGrid>(this, MessagingCenterConstants.DeleteAction);
             MessagingCenter.Unsubscribe<PurchaseActionsPopUp, PurchaseGrid>(this, MessagingCenterConstants.MarkAsPurchased);
             MessagingCenter.Unsubscribe<PurchaseGrid, PurchaseGrid>(this, MessagingCenterConstants.MarkAsPurchased);
+            MessagingCenter.Unsubscribe<PurchaseActionsPopUp, PurchaseGrid>(this, MessagingCenterConstants.BackToList);
+            MessagingCenter.Unsubscribe<EditPurchasePopUpViewModel, EditPurchasePostActionModel>(this, MessagingCenterConstants.EditAction);
         }
         #endregion
 
@@ -60,6 +65,23 @@ namespace ListOfGoods.Views
             }
         }
 
+        private async void EditPurchase(object sender, EditPurchasePostActionModel editPurchasePostActionModel)
+        {
+            var old_wrapper = GetWrapperForPurchaseGrid(editPurchasePostActionModel.InitialPurchaseGrid);
+            var new_wrapper = GetWrapperForPurchaseGrid(editPurchasePostActionModel.NewPurchaseGrid);
+            if (old_wrapper != null && new_wrapper != null)
+            {
+                await editPurchasePostActionModel.InitialPurchaseGrid.FadeTo(0, _speed);
+                old_wrapper.Children.Remove(editPurchasePostActionModel.InitialPurchaseGrid);
+                old_wrapper.IsVisible = old_wrapper.Children.Count(control => control is PurchaseGrid) > 0;
+
+                editPurchasePostActionModel.NewPurchaseGrid.Opacity = 0;
+                new_wrapper.Children.Add(editPurchasePostActionModel.NewPurchaseGrid);
+                new_wrapper.IsVisible = true;
+                await editPurchasePostActionModel.NewPurchaseGrid.FadeTo(1, _speed);
+            }
+        }
+
         private async void MarkAsPurchased(object sender, PurchaseGrid grid)
         {
             var wrapper = GetWrapperForPurchaseGrid(grid);
@@ -72,6 +94,21 @@ namespace ListOfGoods.Views
                 grid.Opacity = 0;
                 IsAlreadyPurchasedWrapper.Children.Add(grid);
                 IsAlreadyPurchasedWrapper.IsVisible = true;
+                await grid.FadeTo(1, _speed);
+            }
+        }
+
+        private async void BackPurchaseToList(object sender, PurchaseGrid grid)
+        {
+            var wrapper = GetWrapperForPurchaseGrid((Categories)grid.UsersPurchase.CategoryType);
+            if (wrapper != null)
+            {
+                await grid.FadeTo(0, _speed);
+                IsAlreadyPurchasedWrapper.Children.Remove(grid);
+                grid.UsersPurchase.IsAlreadyPurchased = false;
+                grid.Opacity = 0;
+                wrapper.Children.Add(grid);
+                wrapper.IsVisible = true;
                 await grid.FadeTo(1, _speed);
             }
         }
@@ -129,7 +166,7 @@ namespace ListOfGoods.Views
                 StackLayout wrapper = null;
                 switch (grid.UsersPurchase.CategoryType)
                 {
-                    case (int) Categories.Bakery:
+                    case (int)Categories.Bakery:
                         return BakeryCategoryWrapper;
                     case (int)Categories.WithoutСategory:
                         return WithoutСategoryCategoryWrapper;
@@ -155,6 +192,36 @@ namespace ListOfGoods.Views
             }
             return null;
         }
-        #endregion
+        private StackLayout GetWrapperForPurchaseGrid(Categories category)
+        {
+            StackLayout wrapper = null;
+            switch (category)
+            {
+                case Categories.Bakery:
+                    return BakeryCategoryWrapper;
+                case Categories.WithoutСategory:
+                    return WithoutСategoryCategoryWrapper;
+                case Categories.Chicken:
+                    return ChickenCategoryWrapper;
+                case Categories.Cosmetics:
+                    return CosmeticsCategoryWrapper;
+                case Categories.Dairy:
+                    return DairyCategoryWrapper;
+                case Categories.Drinks:
+                    return DrinksCategoryWrapper;
+                case Categories.Fish:
+                    return FishCategoryWrapper;
+                case Categories.Fruit:
+                    return FruitCategoryWrapper;
+                case Categories.Meat:
+                    return MeatCategoryWrapper;
+                case Categories.Vegetables:
+                    return VegetablesCategoryWrapper;
+                case Categories.Other:
+                    return OtherCategoryWrapper;
+            }
+            return wrapper;
+        }
     }
+    #endregion
 }
