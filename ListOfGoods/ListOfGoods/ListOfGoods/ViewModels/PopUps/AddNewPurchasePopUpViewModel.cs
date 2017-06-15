@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ListOfGoods.CustomControls;
 using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Services.Purchase;
@@ -115,37 +116,36 @@ namespace ListOfGoods.ViewModels.PopUps
 
         private void AddPurchase()
         {
-            Task.Run(() =>
+            var DB_Purchase = _purchaseService.FindPurchaseById(PurchasesId);
+            var newPurchase = new PurchaseEntity
             {
-                var DB_Purchase = _purchaseService.FindPurchaseById(PurchasesId);
-                var newPurchase = new PurchaseEntity
-                {
-                    Name = NewPurchase,
-                    IsCustomImage = ImageIconIsCustom //если картинка была загружена пользователем , то сохр. ImageIsCustom 
-                        ? ImageIconIsCustom           //если нет - то проверить была ли картинка в базе сохранена с ImageIsCustom
-                        : DB_Purchase != null
-                            ? DB_Purchase.IsCustomImage
-                            : ImageIconIsCustom,
-                    Id = DB_Purchase?.Id ?? 0,
-                    ImagePath = ImageIconIsCustom  //если картинка загружена пользователем, то сохранить как есть
-                        ? PurchaseIconImagePath    //если нет - то загрузить либо иконку, либо картинку которая уже была в DB
-                        : string.IsNullOrEmpty(PurchaseIconImagePath)
-                                ? $"{SelectedCategory.Replace(" ", string.Empty)}_icon.png"
-                                : DB_Purchase?.ImagePath,
-                    CategoryType = (int)CommonNameConstants.CategoriesDictionary.FirstOrDefault(x => x.Value == SelectedCategory).Key
-                };
-                _purchaseService.SavePurchase(newPurchase); //добавить / обновить продукт в общую базу товаров
-                _purchaseService.SaveUsersPurchase(new UsersPurchaseEntity
-                {
-                    PurchaseId = newPurchase.Id,
-                    PurchasesListId = PurchasesListId,
-                    Quantity = Quantity,
-                    Price = Price,
-                    MesurementType = (int)CommonNameConstants.MeasurementsDictionary.FirstOrDefault(x => x.Value == SelectedMesurement).Key,
-                    CurrencyType = (int)CommonNameConstants.CurrencyDictionary.FirstOrDefault(x => x.Value == SelectedCurrency).Key,
-                    CategoryType = (int)CommonNameConstants.CategoriesDictionary.FirstOrDefault(x => x.Value == SelectedCategory).Key
-                });
-            });
+                Name = NewPurchase,
+                IsCustomImage = ImageIconIsCustom //если картинка была загружена пользователем , то сохр. ImageIsCustom 
+                    ? ImageIconIsCustom           //если нет - то проверить была ли картинка в базе сохранена с ImageIsCustom
+                    : DB_Purchase != null
+                        ? DB_Purchase.IsCustomImage
+                        : ImageIconIsCustom,
+                Id = DB_Purchase?.Id ?? 0,
+                ImagePath = ImageIconIsCustom  //если картинка загружена пользователем, то сохранить как есть
+                    ? PurchaseIconImagePath    //если нет - то загрузить либо иконку, либо картинку которая уже была в DB
+                    : string.IsNullOrEmpty(PurchaseIconImagePath)
+                            ? $"{SelectedCategory.Replace(" ", string.Empty)}_icon.png"
+                            : DB_Purchase?.ImagePath,
+                CategoryType = (int)CommonNameConstants.CategoriesDictionary.FirstOrDefault(x => x.Value == SelectedCategory).Key
+            };
+            _purchaseService.SavePurchase(newPurchase); //добавить / обновить продукт в общую базу товаров
+            var usersPurchase = new UsersPurchaseEntity
+            {
+                PurchaseId = newPurchase.Id,
+                PurchasesListId = PurchasesListId,
+                Quantity = Quantity,
+                Price = Price,
+                MesurementType = (int)CommonNameConstants.MeasurementsDictionary.FirstOrDefault(x => x.Value == SelectedMesurement).Key,
+                CurrencyType = (int)CommonNameConstants.CurrencyDictionary.FirstOrDefault(x => x.Value == SelectedCurrency).Key,
+                CategoryType = (int)CommonNameConstants.CategoriesDictionary.FirstOrDefault(x => x.Value == SelectedCategory).Key
+            };
+            _purchaseService.SaveUsersPurchase(usersPurchase);
+            MessagingCenter.Send<AddNewPurchasePopUpViewModel, PurchaseGrid>(this, MessagingCenterConstants.AddNewPurchase, new PurchaseGrid(newPurchase, usersPurchase));
             PopupNavigation.PopAllAsync();
         }
     }

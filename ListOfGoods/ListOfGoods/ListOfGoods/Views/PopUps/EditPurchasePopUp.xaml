@@ -65,7 +65,7 @@
         <customControls:CustomEntry Text="{Binding Quantity}"
                                     Placeholder="0.0"
                                     FontSize="Medium"
-                                    HorizontalOptions="FillAndExpand"
+                                    WidthRequest="100"
                                     PlaceholderColor="{x:Static commonColor:ColorResourses.Placeholder}"
                                     TextColor="{x:Static commonColor:ColorResourses.EntryText}"
                                     BackgroundColor="{x:Static commonColor:ColorResourses.LiteGreyEntryBackground}"

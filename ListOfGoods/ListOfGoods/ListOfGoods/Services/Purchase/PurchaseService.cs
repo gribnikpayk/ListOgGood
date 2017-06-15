@@ -121,7 +121,7 @@ namespace ListOfGoods.Services.Purchase
             }
         }
 
-        public void MarkPurchasedStatus(int purchaseId, int listId, bool isAlreadyPurchased)
+        public void SetPurchasedStatus(int purchaseId, int listId, bool isAlreadyPurchased)
         {
             var entity = GetUsersPurchaseByPurchaseAndListId(purchaseId, listId);
             entity.IsAlreadyPurchased = isAlreadyPurchased;

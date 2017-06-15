@@ -15,7 +15,7 @@ using Xamarin.Forms;
 
 namespace ListOfGoods.ViewModels
 {
-    public class PurchasesListViewModel:BaseViewModel
+    public class PurchasesListViewModel : BaseViewModel
     {
         private bool _noListsMessageIsVisible;
         public List<PurchasesListEntity> PurchasesLists { get; set; }
@@ -24,13 +24,13 @@ namespace ListOfGoods.ViewModels
         private IPurchaseService _purchaseService;
         private INavigationService _navigation;
         private ISearchService _searchService;
-        
+
         public PurchasesListViewModel(INavigationService navigation, IPurchaseService purchaseService, ISearchService searchService)
         {
             _navigation = navigation;
             _purchaseService = purchaseService;
             _searchService = searchService;
-            AddNewList = new Command(async ()=> { await PopupNavigation.PushAsync(new AddNewPurchaseListPopUp()); });
+            AddNewList = new Command(async () => { await PopupNavigation.PushAsync(new AddNewPurchaseListPopUp()); });
 
             _searchService.SearchImagesAsync("фасоль");
         }
@@ -44,7 +44,7 @@ namespace ListOfGoods.ViewModels
             if (PurchasesLists.Any())
             {
                 NoListsMessageIsVisible = false;
-                MessagingCenter.Send<PurchasesListViewModel>(this,MessagingCenterConstants.InitLists);
+                MessagingCenter.Send<PurchasesListViewModel>(this, MessagingCenterConstants.InitLists);
             }
             else
             {

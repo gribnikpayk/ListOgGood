@@ -12,5 +12,6 @@
         public static readonly string EditAction = "EditAction";
         public static readonly string MarkAsPurchased = "MarkAsPurchased";
         public static readonly string BackToList = "BackToList";
+        public static readonly string AddNewPurchase = "AddNewPurchase";
     }
 }

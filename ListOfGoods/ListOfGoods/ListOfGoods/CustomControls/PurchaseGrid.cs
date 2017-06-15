@@ -87,7 +87,9 @@ namespace ListOfGoods.CustomControls
             {
                 Command = new Command(() =>
                 {
-                    MessagingCenter.Send<PurchaseGrid, PurchaseGrid>(this, MessagingCenterConstants.MarkAsPurchased, this);
+                    MessagingCenter.Send<PurchaseGrid, PurchaseGrid>(this, UsersPurchase.IsAlreadyPurchased
+                            ? MessagingCenterConstants.BackToList
+                            : MessagingCenterConstants.MarkAsPurchased, this);
                 })
             });
 

@@ -33,14 +33,19 @@ namespace ListOfGoods.Views
             InitPage();
             MessagingCenter.Subscribe<PurchaseActionsPopUp, PurchaseGrid>(this, MessagingCenterConstants.DeleteAction, DeletePurchase);
             MessagingCenter.Subscribe<PurchaseActionsPopUp, PurchaseGrid>(this, MessagingCenterConstants.MarkAsPurchased, MarkAsPurchased);
-            MessagingCenter.Subscribe<PurchaseGrid, PurchaseGrid>(this, MessagingCenterConstants.MarkAsPurchased,
-                (sender, grid) =>
+            MessagingCenter.Subscribe<PurchaseGrid, PurchaseGrid>(this, MessagingCenterConstants.MarkAsPurchased, (sender, grid) =>
                 {
                     MarkAsPurchased(sender, grid);
-                    _viewModel.MarkAsPurchased(grid.UsersPurchase.PurchaseId, grid.UsersPurchase.PurchasesListId);
+                    _viewModel.SetPurchasedStatus(grid.UsersPurchase.PurchaseId, grid.UsersPurchase.PurchasesListId, isAlreadyPurchased: true);
+                });
+            MessagingCenter.Subscribe<PurchaseGrid, PurchaseGrid>(this, MessagingCenterConstants.BackToList, (sender, grid) =>
+                {
+                    BackPurchaseToList(sender, grid);
+                    _viewModel.SetPurchasedStatus(grid.UsersPurchase.PurchaseId, grid.UsersPurchase.PurchasesListId, isAlreadyPurchased: false);
                 });
             MessagingCenter.Subscribe<PurchaseActionsPopUp, PurchaseGrid>(this, MessagingCenterConstants.BackToList, BackPurchaseToList);
             MessagingCenter.Subscribe<EditPurchasePopUpViewModel, EditPurchasePostActionModel>(this, MessagingCenterConstants.EditAction, EditPurchase);
+            MessagingCenter.Subscribe<AddNewPurchasePopUpViewModel, PurchaseGrid>(this, MessagingCenterConstants.AddNewPurchase, AddPurchase);
         }
         protected override void OnDisappearing()
         {
@@ -50,18 +55,24 @@ namespace ListOfGoods.Views
             MessagingCenter.Unsubscribe<PurchaseGrid, PurchaseGrid>(this, MessagingCenterConstants.MarkAsPurchased);
             MessagingCenter.Unsubscribe<PurchaseActionsPopUp, PurchaseGrid>(this, MessagingCenterConstants.BackToList);
             MessagingCenter.Unsubscribe<EditPurchasePopUpViewModel, EditPurchasePostActionModel>(this, MessagingCenterConstants.EditAction);
+            MessagingCenter.Unsubscribe<PurchaseGrid, PurchaseGrid>(this, MessagingCenterConstants.BackToList);
+            MessagingCenter.Unsubscribe<AddNewPurchasePopUpViewModel, PurchaseGrid>(this, MessagingCenterConstants.AddNewPurchase);
         }
         #endregion
 
         #region privateMethods
 
+        private void AddPurchase(object sender, PurchaseGrid grid)
+        {
+           AddPurchaseGridToPage(grid);
+        }
         private void DeletePurchase(object sender, PurchaseGrid grid)
         {
             var wrapper = GetWrapperForPurchaseGrid(grid);
             if (wrapper != null)
             {
                 wrapper.Children.Remove(grid);
-                wrapper.IsVisible = wrapper.Children.Count(control => control is PurchaseGrid) > 0;
+                wrapper.IsVisible = wrapper.Children.Any(control => control is PurchaseGrid);
             }
         }
 
@@ -73,7 +84,7 @@ namespace ListOfGoods.Views
             {
                 await editPurchasePostActionModel.InitialPurchaseGrid.FadeTo(0, _speed);
                 old_wrapper.Children.Remove(editPurchasePostActionModel.InitialPurchaseGrid);
-                old_wrapper.IsVisible = old_wrapper.Children.Count(control => control is PurchaseGrid) > 0;
+                old_wrapper.IsVisible = old_wrapper.Children.Any(control => control is PurchaseGrid);
 
                 editPurchasePostActionModel.NewPurchaseGrid.Opacity = 0;
                 new_wrapper.Children.Add(editPurchasePostActionModel.NewPurchaseGrid);
@@ -87,9 +98,10 @@ namespace ListOfGoods.Views
             var wrapper = GetWrapperForPurchaseGrid(grid);
             if (wrapper != null)
             {
+                _viewModel.AlreadyPurchasedFrameIsVisible = true;
                 await grid.FadeTo(0, _speed);
                 wrapper.Children.Remove(grid);
-                wrapper.IsVisible = wrapper.Children.Count(control => control is PurchaseGrid) > 0;
+                wrapper.IsVisible = wrapper.Children.Any(control => control is PurchaseGrid);
                 grid.UsersPurchase.IsAlreadyPurchased = true;
                 grid.Opacity = 0;
                 IsAlreadyPurchasedWrapper.Children.Add(grid);
@@ -103,6 +115,7 @@ namespace ListOfGoods.Views
             var wrapper = GetWrapperForPurchaseGrid((Categories)grid.UsersPurchase.CategoryType);
             if (wrapper != null)
             {
+                _viewModel.PurchasesFrameIsVisible = true;
                 await grid.FadeTo(0, _speed);
                 IsAlreadyPurchasedWrapper.Children.Remove(grid);
                 grid.UsersPurchase.IsAlreadyPurchased = false;
@@ -128,6 +141,7 @@ namespace ListOfGoods.Views
             Device.BeginInvokeOnMainThread(async () =>
             {
                 var purchases = await _viewModel.LoadPurchases();
+                _viewModel.NoPurchasesLabelIsVisible = !purchases.Any();
                 foreach (var purchase in purchases)
                 {
                     var control = new PurchaseGrid(purchase.Purchase, purchase.UsersPurchaseEntity);

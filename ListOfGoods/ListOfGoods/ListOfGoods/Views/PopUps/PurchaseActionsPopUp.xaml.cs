@@ -26,8 +26,8 @@ namespace ListOfGoods.Views.PopUps
                 new ListViewItem {Name = CommonNameConstants.DeleteActionName},
                 new ListViewItem {
                     Name = grid.UsersPurchase.IsAlreadyPurchased
-                        ? CommonNameConstants.MarkAsPurchased
-                        : CommonNameConstants.BackToTheList
+                        ? CommonNameConstants.BackToTheList
+                        : CommonNameConstants.MarkAsPurchased
                 }
             };
         }

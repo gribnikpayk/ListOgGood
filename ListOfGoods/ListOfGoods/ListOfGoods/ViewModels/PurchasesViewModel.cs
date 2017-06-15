@@ -18,7 +18,7 @@ namespace ListOfGoods.ViewModels
     public class PurchasesViewModel : BaseViewModel
     {
         private string _newPurchase;
-        private bool _autoCompleteIsVisible, _purchasesFrameIsVisible, _alreadyPurchasedFrameIsVisible;
+        private bool _autoCompleteIsVisible, _purchasesFrameIsVisible, _alreadyPurchasedFrameIsVisible, _noPurchasesLabelIsVisible;
         private List<AutocompletePurchaseModel> _autocompleteItems;
         private CancellationTokenSource _autoCompleteCancelTokenSource;
         private string _tempAutoCompleteSearchPhrase = string.Empty;
@@ -26,19 +26,23 @@ namespace ListOfGoods.ViewModels
         private const short _minValueForAutocomplete = 2;
 
         private IPurchaseService _purchaseService;
-        private IMediaService _mediaService;
 
         public int PurchasesListId { get; set; }
 
         public ICommand AddNewPurchaseCommand => new Command(AddNewPurchaseAsync);
 
-        public PurchasesViewModel(IPurchaseService purchaseService, IMediaService mediaService)
+        public PurchasesViewModel(IPurchaseService purchaseService)
         {
             _purchaseService = purchaseService;
-            _mediaService = mediaService;
         }
 
         #region BindableProperties
+
+        public bool NoPurchasesLabelIsVisible
+        {
+            set { SetProperty(ref _noPurchasesLabelIsVisible, value); }
+            get { return _noPurchasesLabelIsVisible; }
+        }
         public List<AutocompletePurchaseModel> AutocompleteItems
         {
             set { SetProperty(ref _autocompleteItems, value); }
@@ -78,9 +82,9 @@ namespace ListOfGoods.ViewModels
 
         #endregion
 
-        public void MarkAsPurchased(int purchaseId, int listId)
+        public void SetPurchasedStatus(int purchaseId, int listId, bool isAlreadyPurchased)
         {
-            Task.Run(() => { _purchaseService.MarkPurchasedStatus(purchaseId, listId, TODO); });
+            Task.Run(() => { _purchaseService.SetPurchasedStatus(purchaseId, listId, isAlreadyPurchased); });
         }
         public async Task<List<PurchasesInListModel>> LoadPurchases()
         {
@@ -127,6 +131,7 @@ namespace ListOfGoods.ViewModels
         {
             Task.Delay(50, token).ContinueWith(tsk =>
             {
+                NoPurchasesLabelIsVisible = false;
                 if (!_autoCompleteCancelTokenSource.IsCancellationRequested && _tempAutoCompleteSearchPhrase != NewPurchase)
                 {
                     _tempAutoCompleteSearchPhrase = NewPurchase;

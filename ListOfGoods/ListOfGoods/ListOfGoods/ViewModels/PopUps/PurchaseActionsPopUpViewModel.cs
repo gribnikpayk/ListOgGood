@@ -22,7 +22,7 @@ namespace ListOfGoods.ViewModels.PopUps
         {
             Task.Run(() =>
             {
-                _purchaseService.MarkPurchasedStatus(purchaseId, listId, isAlreadyPurchased: true);
+                _purchaseService.SetPurchasedStatus(purchaseId, listId, isAlreadyPurchased: true);
             });
         }
 
@@ -30,7 +30,7 @@ namespace ListOfGoods.ViewModels.PopUps
         {
             Task.Run(() =>
             {
-                _purchaseService.MarkPurchasedStatus(purchaseId, listId, isAlreadyPurchased: false);
+                _purchaseService.SetPurchasedStatus(purchaseId, listId, isAlreadyPurchased: false);
             });
         }
     }
