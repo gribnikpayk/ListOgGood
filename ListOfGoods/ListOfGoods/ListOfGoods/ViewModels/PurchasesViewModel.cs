@@ -3,7 +3,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ListOfGoods.Infrastructure.DependencyService;
 using ListOfGoods.Infrastructure.Enums;
+using ListOfGoods.Infrastructure.Helpers;
 using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.Infrastructure.Navigation;
 using ListOfGoods.Services.Purchase;
@@ -22,11 +24,13 @@ namespace ListOfGoods.ViewModels
         private CancellationTokenSource _autoCompleteCancelTokenSource;
         private string _tempAutoCompleteSearchPhrase = string.Empty;
 
+        private List<PurchasesInListModel> _userPurchases;
+
         private const short _minValueForAutocomplete = 2;
 
         private IPurchaseService _purchaseService;
         private INavigationService _navigation;
-
+        private IShareService _shareService;
         public int PurchasesListId { get; set; }
 
         public ICommand AddNewPurchaseCommand => new Command(AddNewPurchaseAsync);
@@ -35,6 +39,7 @@ namespace ListOfGoods.ViewModels
         {
             _purchaseService = purchaseService;
             _navigation = navigation;
+            _shareService = DependencyService.Get<IShareService>();
         }
 
         #region BindableProperties
@@ -95,13 +100,13 @@ namespace ListOfGoods.ViewModels
         public async Task<List<PurchasesInListModel>> LoadPurchases()
         {
             IsBusy = true;
-            var userPurchases = new List<PurchasesInListModel>();
+            _userPurchases = new List<PurchasesInListModel>();
             await Task.Run(() =>
             {
-                userPurchases = _purchaseService.GetPurchasesByListId(PurchasesListId);
+                _userPurchases = _purchaseService.GetPurchasesByListId(PurchasesListId);
             });
             IsBusy = false;
-            return userPurchases;
+            return _userPurchases;
         }
         public async Task SelectedAutocompleteItemProcess(AutocompletePurchaseModel purchase)
         {
@@ -118,6 +123,12 @@ namespace ListOfGoods.ViewModels
                 Category = purchase.Category
             };
             await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel), false);
+        }
+
+        public void Share(string title)
+        {
+            var body = ShareHelper.CreatePurchasesListBodyForShare(_userPurchases);
+            _shareService.Share(title, body);
         }
 
         public void PopToRoot()

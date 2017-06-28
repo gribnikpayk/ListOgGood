@@ -48,6 +48,9 @@ namespace ListOfGoods.Views.PopUps
                         CountOfAlreadyPurchased = _selectedList.ListModel.CountOfAlreadyPurchased
                     }));
                     break;
+                case CommonNameConstants.ShareActionName:
+                    _viewModel.Share(_selectedList.ListModel);
+                    break;
                 default:
                     break;
 

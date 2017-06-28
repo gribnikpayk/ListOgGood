@@ -76,6 +76,7 @@
     <Compile Include="Infrastructure\Extensions\DateTimeExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\ImageSourceExtensions.cs" />
     <Compile Include="Infrastructure\GoogleSearch\SearchResponse.cs" />
+    <Compile Include="Infrastructure\Helpers\ShareHelper.cs" />
     <Compile Include="Infrastructure\Models\EditPurchaseModel.cs" />
     <Compile Include="Infrastructure\Models\EditPurchasePostActionModel.cs" />
     <Compile Include="Infrastructure\Models\ListModel.cs" />

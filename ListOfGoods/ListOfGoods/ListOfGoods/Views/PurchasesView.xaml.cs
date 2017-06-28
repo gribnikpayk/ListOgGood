@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using ListOfGoods.CustomControls;
 using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Infrastructure.Enums;
+using ListOfGoods.Infrastructure.Extensions;
 using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.Infrastructure.Resourses;
 using ListOfGoods.ViewModels;
@@ -24,6 +25,12 @@ namespace ListOfGoods.Views
             InitializeComponent();
             _viewModel = App.Container.Resolve(typeof(PurchasesViewModel), "purchasesViewModel") as PurchasesViewModel;
             Title = title;
+            ToolbarItems.Add(new ToolbarItem
+            {
+                Text = "Share",
+                Icon = "shareIcon.png".ToPlatformImagePath(),
+                Command = new Command(() => { _viewModel.Share(title); })
+            });
             BindingContext = _viewModel;
             _viewModel.PurchasesListId = purchasesListId;
         }
@@ -74,8 +81,8 @@ namespace ListOfGoods.Views
 
         private void AddPurchase(object sender, PurchaseGrid grid)
         {
-           _viewModel.NewPurchase = string.Empty;
-           AddPurchaseGridToPage(grid);
+            _viewModel.NewPurchase = string.Empty;
+            AddPurchaseGridToPage(grid);
         }
         private void DeletePurchase(object sender, PurchaseGrid grid)
         {
