@@ -19,7 +19,7 @@ namespace ListOfGoods.Infrastructure.Animations
             Device.BeginInvokeOnMainThread(() =>
             {
                 view.FadeTo(0);
-                view.TranslateTo(0, 150);
+                view.TranslateTo(0, 100);
             });
         }
 
@@ -27,8 +27,8 @@ namespace ListOfGoods.Infrastructure.Animations
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                view.FadeTo(1);
-                view.TranslateTo(0, 0);
+                view.FadeTo(1,100);
+                view.TranslateTo(0, 0,100);
             });
         }
     }

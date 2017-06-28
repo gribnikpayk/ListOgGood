@@ -34,6 +34,11 @@ namespace ListOfGoods.ViewModels
         public int PurchasesListId { get; set; }
 
         public ICommand AddNewPurchaseCommand => new Command(AddNewPurchaseAsync);
+        public ICommand HideAutocompleteCommand => new Command(() =>
+        {
+            AutoCompleteIsVisible = false;
+            NewPurchase = string.Empty;
+        });
 
         public PurchasesViewModel(IPurchaseService purchaseService, INavigationService navigation)
         {
@@ -47,7 +52,7 @@ namespace ListOfGoods.ViewModels
         public double ContentWrapperOpacity
         {
             set { SetProperty(ref _contentWrapperOpacity, value); }
-            get { return _autoCompleteIsVisible ? 0.5 : 1; }
+            get { return AutoCompleteIsVisible ? 0.05 : 1; }
         }
         public bool NoPurchasesLabelIsVisible
         {
@@ -75,7 +80,11 @@ namespace ListOfGoods.ViewModels
 
         public bool AutoCompleteIsVisible
         {
-            set { SetProperty(ref _autoCompleteIsVisible, value); }
+            set
+            {
+                SetProperty(ref _autoCompleteIsVisible, value);
+                ContentWrapperOpacity = _autoCompleteIsVisible ? 0.05 : 1;
+            }
             get { return _autoCompleteIsVisible; }
         }
 

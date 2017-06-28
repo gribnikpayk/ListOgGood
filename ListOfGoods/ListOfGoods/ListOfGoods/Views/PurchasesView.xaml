@@ -42,10 +42,9 @@
              Text="{Binding NewPurchase}"
              TextColor="{x:Static commonResorces:ColorResourses.EntryText}">
       </customControls:CustomEntry>
-      <Image Source="Assets/acceptIcon.png"
+      <Image Source="Assets/acceptIcon_3.png"
              BackgroundColor="{x:Static commonResorces:ColorResourses.Green}"
              VerticalOptions="Center"
-             HeightRequest="40"
              HorizontalOptions="End">
         <Image.GestureRecognizers>
           <TapGestureRecognizer Command="{Binding AddNewPurchaseCommand}"></TapGestureRecognizer>
@@ -53,117 +52,123 @@
       </Image>
     </StackLayout>
     <AbsoluteLayout VerticalOptions="FillAndExpand">
-      <ScrollView AbsoluteLayout.LayoutFlags="All"
-                  Opacity="{Binding ContentWrapperOpacity}"
-                  AbsoluteLayout.LayoutBounds="0,0,1,1">
-        <StackLayout VerticalOptions="Start">
-          <Label TextColor="{x:Static commonResorces:ColorResourses.EntryText}"
-                 FontSize="Large"
-                 IsVisible="{Binding PurchasesFrameIsVisible}"
-                 Text="My Purchases">
-            <Label.Margin>
-              <Thickness>10,20,10,0</Thickness>
-            </Label.Margin>
-          </Label>
-          <customControls:CustomFrame InlineColor="{x:Static commonResorces:ColorResourses.FrameBackground}"
-                                      VerticalOptions="Start"
-                                      IsVisible="{Binding PurchasesFrameIsVisible}">
-            <customControls:CustomFrame.Margin>
-              <Thickness>10,10,10,10</Thickness>
-            </customControls:CustomFrame.Margin>
-            <StackLayout>
-              <StackLayout x:Name="ChickenCategoryWrapper"
-                           Style="{StaticResource CategoryWrapper}">
-                <Label Text="Chicken"
-                       Style="{StaticResource CategoryLabel}">
-                </Label>
-              </StackLayout>
-              <StackLayout x:Name="MeatCategoryWrapper"
-                           Style="{StaticResource CategoryWrapper}">
-                <Label Text="Meat"
-                       Style="{StaticResource CategoryLabel}">
-                </Label>
-              </StackLayout>
-              <StackLayout x:Name="FishCategoryWrapper"
-                           Style="{StaticResource CategoryWrapper}">
-                <Label Text="Fish"
-                       Style="{StaticResource CategoryLabel}">
-                </Label>
-              </StackLayout>
-              <StackLayout x:Name="BakeryCategoryWrapper"
-                                 Style="{StaticResource CategoryWrapper}">
-                <Label Text="Bakery"
-                       Style="{StaticResource CategoryLabel}">
-                </Label>
-              </StackLayout>
-              <StackLayout x:Name="DairyCategoryWrapper"
-                     Style="{StaticResource CategoryWrapper}">
-                <Label Text="Dairy"
-                       Style="{StaticResource CategoryLabel}">
-                </Label>
-              </StackLayout>
-              <StackLayout x:Name="VegetablesCategoryWrapper"
+      <StackLayout AbsoluteLayout.LayoutFlags="All"
+                   AbsoluteLayout.LayoutBounds="0,0,1,1">
+          <ScrollView AbsoluteLayout.LayoutFlags="All"
+                      Opacity="{Binding ContentWrapperOpacity}"
+                      AbsoluteLayout.LayoutBounds="0,0,1,1">
+              <StackLayout VerticalOptions="Start">
+                  <Label TextColor="{x:Static commonResorces:ColorResourses.EntryText}"
+                         FontSize="Large"
+                         IsVisible="{Binding PurchasesFrameIsVisible}"
+                         Text="My Purchases">
+                      <Label.Margin>
+                          <Thickness>10,20,10,0</Thickness>
+                      </Label.Margin>
+                  </Label>
+                  <customControls:CustomFrame InlineColor="{x:Static commonResorces:ColorResourses.FrameBackground}"
+                                              VerticalOptions="Start"
+                                              IsVisible="{Binding PurchasesFrameIsVisible}">
+                      <customControls:CustomFrame.Margin>
+                          <Thickness>10,10,10,10</Thickness>
+                      </customControls:CustomFrame.Margin>
+                      <StackLayout>
+                          <StackLayout x:Name="ChickenCategoryWrapper"
                                        Style="{StaticResource CategoryWrapper}">
-                <Label Text="Vegetables"
-                       Style="{StaticResource CategoryLabel}">
-                </Label>
-              </StackLayout>
-              <StackLayout x:Name="FruitCategoryWrapper"
+                              <Label Text="Chicken"
+                                     Style="{StaticResource CategoryLabel}">
+                              </Label>
+                          </StackLayout>
+                          <StackLayout x:Name="MeatCategoryWrapper"
                                        Style="{StaticResource CategoryWrapper}">
-                <Label Text="Fruit"
-                       Style="{StaticResource CategoryLabel}">
-                </Label>
-              </StackLayout>
-              <StackLayout x:Name="DrinksCategoryWrapper"
-            Style="{StaticResource CategoryWrapper}">
-                <Label Text="Drinks"
-                       Style="{StaticResource CategoryLabel}">
-                </Label>
-              </StackLayout>
-              <StackLayout x:Name="CosmeticsCategoryWrapper"
-              Style="{StaticResource CategoryWrapper}">
-                <Label Text="Cosmetics"
-                       Style="{StaticResource CategoryLabel}">
-                </Label>
-              </StackLayout>
-              <StackLayout x:Name="OtherCategoryWrapper"
-                                     Style="{StaticResource CategoryWrapper}">
-                <Label Text="Other"
-                       Style="{StaticResource CategoryLabel}">
-                </Label>
-              </StackLayout>
-              <StackLayout x:Name="WithoutСategoryCategoryWrapper"
-                           Style="{StaticResource CategoryWrapper}">
-                <Label Text="Without Сategory"
-                       Style="{StaticResource CategoryLabel}">
-                </Label>
-              </StackLayout>
-            </StackLayout>
-          </customControls:CustomFrame>
+                              <Label Text="Meat"
+                                     Style="{StaticResource CategoryLabel}">
+                              </Label>
+                          </StackLayout>
+                          <StackLayout x:Name="FishCategoryWrapper"
+                                       Style="{StaticResource CategoryWrapper}">
+                              <Label Text="Fish"
+                                     Style="{StaticResource CategoryLabel}">
+                              </Label>
+                          </StackLayout>
+                          <StackLayout x:Name="BakeryCategoryWrapper"
+                                       Style="{StaticResource CategoryWrapper}">
+                              <Label Text="Bakery"
+                                     Style="{StaticResource CategoryLabel}">
+                              </Label>
+                          </StackLayout>
+                          <StackLayout x:Name="DairyCategoryWrapper"
+                                       Style="{StaticResource CategoryWrapper}">
+                              <Label Text="Dairy"
+                                     Style="{StaticResource CategoryLabel}">
+                              </Label>
+                          </StackLayout>
+                          <StackLayout x:Name="VegetablesCategoryWrapper"
+                                       Style="{StaticResource CategoryWrapper}">
+                              <Label Text="Vegetables"
+                                     Style="{StaticResource CategoryLabel}">
+                              </Label>
+                          </StackLayout>
+                          <StackLayout x:Name="FruitCategoryWrapper"
+                                       Style="{StaticResource CategoryWrapper}">
+                              <Label Text="Fruit"
+                                     Style="{StaticResource CategoryLabel}">
+                              </Label>
+                          </StackLayout>
+                          <StackLayout x:Name="DrinksCategoryWrapper"
+                                       Style="{StaticResource CategoryWrapper}">
+                              <Label Text="Drinks"
+                                     Style="{StaticResource CategoryLabel}">
+                              </Label>
+                          </StackLayout>
+                          <StackLayout x:Name="CosmeticsCategoryWrapper"
+                                       Style="{StaticResource CategoryWrapper}">
+                              <Label Text="Cosmetics"
+                                     Style="{StaticResource CategoryLabel}">
+                              </Label>
+                          </StackLayout>
+                          <StackLayout x:Name="OtherCategoryWrapper"
+                                       Style="{StaticResource CategoryWrapper}">
+                              <Label Text="Other"
+                                     Style="{StaticResource CategoryLabel}">
+                              </Label>
+                          </StackLayout>
+                          <StackLayout x:Name="WithoutСategoryCategoryWrapper"
+                                       Style="{StaticResource CategoryWrapper}">
+                              <Label Text="Without Сategory"
+                                     Style="{StaticResource CategoryLabel}">
+                              </Label>
+                          </StackLayout>
+                      </StackLayout>
+                  </customControls:CustomFrame>
 
-          <Label TextColor="{x:Static commonResorces:ColorResourses.EntryText}"
-                 FontSize="Large"
-                 IsVisible="{Binding AlreadyPurchasedFrameIsVisible}"
-                 Text="Card">
-            <Label.Margin>
-              <Thickness>10,20,10,0</Thickness>
-            </Label.Margin>
-          </Label>
-          <customControls:CustomFrame InlineColor="#343537"
-                                      VerticalOptions="Start"
-                                      IsVisible="{Binding AlreadyPurchasedFrameIsVisible}">
-            <customControls:CustomFrame.Margin>
-              <Thickness>10,10,10,10</Thickness>
-            </customControls:CustomFrame.Margin>
-            <StackLayout x:Name="IsAlreadyPurchasedWrapper" Spacing="0">
+                  <Label TextColor="{x:Static commonResorces:ColorResourses.EntryText}"
+                         FontSize="Large"
+                         IsVisible="{Binding AlreadyPurchasedFrameIsVisible}"
+                         Text="Card">
+                      <Label.Margin>
+                          <Thickness>10,20,10,0</Thickness>
+                      </Label.Margin>
+                  </Label>
+                  <customControls:CustomFrame InlineColor="#343537"
+                                              VerticalOptions="Start"
+                                              IsVisible="{Binding AlreadyPurchasedFrameIsVisible}">
+                      <customControls:CustomFrame.Margin>
+                          <Thickness>10,10,10,10</Thickness>
+                      </customControls:CustomFrame.Margin>
+                      <StackLayout x:Name="IsAlreadyPurchasedWrapper" Spacing="0">
 
-            </StackLayout>
-          </customControls:CustomFrame>
-        </StackLayout>
-      </ScrollView>
+                      </StackLayout>
+                  </customControls:CustomFrame>
+              </StackLayout>
+          </ScrollView>
+      </StackLayout>
       <StackLayout AbsoluteLayout.LayoutFlags="All"
                    AbsoluteLayout.LayoutBounds="0,0,1,1"
                    IsVisible="{Binding AutoCompleteIsVisible}">
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding HideAutocompleteCommand}"></TapGestureRecognizer>
+        </StackLayout.GestureRecognizers>
         <ListView VerticalOptions="Start"
                   CachingStrategy="RecycleElement"
                   ItemSelected="ListView_OnItemSelected"

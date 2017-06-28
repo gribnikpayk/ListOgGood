@@ -122,6 +122,7 @@
     <Content Include="Assets\aboutIcon.png" />
     <Content Include="Assets\acceptIcon.png" />
     <Content Include="Assets\acceptIcon_2.png" />
+    <Content Include="Assets\acceptIcon_3.png" />
     <Content Include="Assets\addIcon.png" />
     <Content Include="Assets\addIcon_2.png" />
     <Content Include="Assets\apples.jpg" />

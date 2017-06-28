@@ -96,8 +96,8 @@ namespace ListOfGoods.Views
             var deletedFrames = ContentWrapper.Children.Where(x => (x is ListFrame) && !purchasesListsIds.Contains((x as ListFrame).ListModel.Id)).ToList();
             foreach (var deletedFrame in deletedFrames)
             {
-                deletedFrame.FadeTo(0);
-                await deletedFrame.TranslateTo(0, 150);
+                deletedFrame.FadeTo(0,100);
+                await deletedFrame.TranslateTo(0, 100);
                 ContentWrapper.Children.Remove(deletedFrame);
             }
         }
@@ -109,10 +109,10 @@ namespace ListOfGoods.Views
             {
                 if (!ContentWrapper.Children.Any(x => (x as ListFrame) != null && (x as ListFrame).ListModel.Id == listFrame.ListModel.Id))
                 {
-                    listFrame.Opacity = 0;
-                    listFrame.TranslationY = -150;
+                    //listFrame.Opacity = 0;
+                    //listFrame.TranslationY = -150;
                     ContentWrapper.Children.Add(listFrame);
-                    listFrame.ItemAddToListAffect();
+                    //listFrame.ItemAddToListAffect();
                 }
             }
         }
@@ -129,8 +129,8 @@ namespace ListOfGoods.Views
                 ContentWrapper.Children.Insert(targetIndex, updatedFrame);
             });
             updatedFrame.ItemAddToListAffect();
-            targetFrame.FadeTo(0);
-            await targetFrame.TranslateTo(0, 150);
+            targetFrame.FadeTo(0,100);
+            await targetFrame.TranslateTo(0, 100);
             ContentWrapper.Children.Remove(targetFrame);
         }
 
