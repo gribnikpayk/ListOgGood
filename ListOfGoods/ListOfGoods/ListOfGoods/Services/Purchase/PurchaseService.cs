@@ -28,9 +28,27 @@ namespace ListOfGoods.Services.Purchase
             return _purchaseRepository.GetQuery().ToList();
         }
 
-        public List<PurchasesListEntity> GetAllPurchasesLists()
+        public List<ListModel> GetAllPurchasesLists()
         {
-            return _purchasesListRepository.GetQuery().ToList();
+            var allLists = _purchasesListRepository.GetQuery().ToList();
+            var listIds = allLists.Select(l => l.Id);
+            var usersPurchases = _usersPurchaseRepository.GetQuery(x => listIds.Contains(x.PurchasesListId)).ToList();
+            var groups = usersPurchases.GroupBy(x => x.PurchasesListId);
+            var listModels = new List<ListModel>();
+            foreach (var list in allLists)
+            {
+                var allPurchase = groups.FirstOrDefault(x => x.Key == list.Id);
+                var model = new ListModel
+                {
+                    Id = list.Id,
+                    CreationDate = list.CreationDate,
+                    Name = list.Name,
+                    CountOfPurchases = allPurchase?.Count() ?? 0,
+                    CountOfAlreadyPurchased = allPurchase?.Count(x => x.IsAlreadyPurchased) ?? 0
+                };
+                listModels.Add(model);
+            }
+            return listModels;
         }
 
         public void DeleteList(int id)

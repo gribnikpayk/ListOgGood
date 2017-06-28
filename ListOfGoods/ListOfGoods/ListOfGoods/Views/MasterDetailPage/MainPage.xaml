@@ -7,36 +7,115 @@
     <ContentPage Title="Menu"
                  BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
                  Icon="MenuIcon.png">
-
-      <ListView x:Name="navigationDrawerList"
-                RowHeight="60"
-                SeparatorVisibility="None"
-                BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
-                ItemSelected="OnMenuItemSelected">
-
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <ViewCell>
-              <!-- Main design for our menu items -->
+      <StackLayout>
+        <Image Source="Assets/logo_menu.png"
+               HorizontalOptions="Center"
+               IsOpaque="True">
+          <Image.Margin>
+            <Thickness>0,40,0,40</Thickness>
+          </Image.Margin>
+        </Image>
+        <ListView x:Name="navigationDrawerList"
+                  RowHeight="60"
+                  CachingStrategy="RecycleElement"
+                  BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
+                  ItemsSource="{Binding AllLists}"
+                  ItemSelected="OnMenuItemSelected">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <!-- Main design for our menu items -->
                 <StackLayout VerticalOptions="FillAndExpand"
                              Orientation="Horizontal"
-                             Padding="20,10,0,10"
-                             Spacing="20">
-
-                  <Image Source="{Binding Icon}"
-                         WidthRequest="40"
-                         HeightRequest="40"
-                         VerticalOptions="Center" />
-
+                             Padding="20,0,20,0"
+                             Spacing="10" >
+                  <StackLayout.Margin>
+                    <Thickness>0,5,0,5</Thickness>
+                  </StackLayout.Margin>
+                  <BoxView WidthRequest="2"
+                           BackgroundColor="#f96d56"></BoxView>
                   <Label Text="{Binding Title}"
                          FontSize="Medium"
                          VerticalOptions="Center"
                          TextColor="White"/>
-              </StackLayout>
-            </ViewCell>
-          </DataTemplate>
-        </ListView.ItemTemplate>
-      </ListView>
+                </StackLayout>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Orientation="Horizontal"
+                     Padding="20,0,20,0"
+                     Spacing="10">
+          <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="CreateNewList_OnTapped"></TapGestureRecognizer>
+          </StackLayout.GestureRecognizers>
+          <StackLayout.Margin>
+            <Thickness>0,5,5,40</Thickness>
+          </StackLayout.Margin>
+          <Image Source="Assets/addIcon_2.png"
+                 WidthRequest="17"
+                 HeightRequest="17"
+                 VerticalOptions="CenterAndExpand"></Image>
+          <Label Text="Create list"
+                 FontSize="Medium"
+                 VerticalOptions="Center"
+                 TextColor="White"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal"
+                     Padding="20,0,20,0"
+                     Spacing="10">
+          <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Share_OnTapped"></TapGestureRecognizer>
+          </StackLayout.GestureRecognizers>
+          <StackLayout.Margin>
+            <Thickness>0,5,0,5</Thickness>
+          </StackLayout.Margin>
+            <Image Source="Assets/shareIcon.png"
+                   WidthRequest="17"
+                   HeightRequest="17"
+                   VerticalOptions="CenterAndExpand"></Image>
+          <Label Text="Share"
+                 FontSize="Medium"
+                 VerticalOptions="Center"
+                 TextColor="White"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal"
+                     Padding="20,0,20,0"
+                     Spacing="10">
+          <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Feedback_OnTapped"></TapGestureRecognizer>
+          </StackLayout.GestureRecognizers>
+          <StackLayout.Margin>
+            <Thickness>0,5,0,5</Thickness>
+          </StackLayout.Margin>
+            <Image Source="Assets/feedbackIcon.png"
+                   WidthRequest="17"
+                   HeightRequest="17"
+                   VerticalOptions="CenterAndExpand"></Image>
+          <Label Text="Feedback"
+                 FontSize="Medium"
+                 VerticalOptions="Center"
+                 TextColor="White"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal"
+                     Padding="20,0,20,0"
+                     Spacing="10">
+          <StackLayout.Margin>
+            <Thickness>0,5,5,30</Thickness>
+          </StackLayout.Margin>
+          <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="AboutUs_OnTapped"></TapGestureRecognizer>
+          </StackLayout.GestureRecognizers>
+            <Image Source="Assets/aboutIcon.png"
+                   WidthRequest="17"
+                   HeightRequest="17"
+                   VerticalOptions="CenterAndExpand"></Image>
+          <Label Text="About us"
+                 FontSize="Medium"
+                 VerticalOptions="Center"
+                 TextColor="White"/>
+        </StackLayout>
+      </StackLayout>
     </ContentPage>
   </MasterDetailPage.Master>
 

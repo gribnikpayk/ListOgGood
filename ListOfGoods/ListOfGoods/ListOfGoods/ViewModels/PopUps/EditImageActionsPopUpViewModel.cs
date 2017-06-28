@@ -43,14 +43,14 @@ namespace ListOfGoods.ViewModels.PopUps
             catch (Exception ex)
             {
                 photo = null;
-            } 
+            }
             await ImageProcessor(photo);
         });
 
         public ICommand TakePhotoFromInternet => new Command(async () =>
         {
             var deviceWidth = DependencyService.Get<IDisplay>().Width;
-            await PopupNavigation.PushAsync(new SearchPicturePopUp(PurchaseName, deviceWidth));
+            await PopupNavigation.PushAsync(new SearchPicturePopUp(PurchaseName, deviceWidth), false);
         });
 
         public EditImageActionsPopUpViewModel(IMediaService mediaService)

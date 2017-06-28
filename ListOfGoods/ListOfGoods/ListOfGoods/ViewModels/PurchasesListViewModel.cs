@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Constants;
+using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.Infrastructure.Navigation;
 using ListOfGoods.Services.Purchase;
 using ListOfGoods.Services.Search;
@@ -18,7 +19,21 @@ namespace ListOfGoods.ViewModels
     public class PurchasesListViewModel : BaseViewModel
     {
         private bool _noListsMessageIsVisible;
-        public List<PurchasesListEntity> PurchasesLists { get; set; }
+        private List<ListModel> _purchasesLists;
+
+        public List<ListModel> PurchasesLists
+        {
+            get
+            {
+                return _purchasesLists;
+            }
+            set
+            {
+                _purchasesLists = value;
+                CommonConstants.AllLists = value;
+            }
+        }
+
         public ICommand AddNewList { get; set; }
 
         private IPurchaseService _purchaseService;
@@ -31,14 +46,13 @@ namespace ListOfGoods.ViewModels
             _purchaseService = purchaseService;
             _searchService = searchService;
             AddNewList = new Command(async () => { await PopupNavigation.PushAsync(new AddNewPurchaseListPopUp()); });
-
-            _searchService.SearchImagesAsync("фасоль");
         }
 
         public void SetPageState()
         {
-            if (PurchasesLists == null)
+            if (PurchasesLists == null || CommonConstants.IsNeedToLoadPurchasesLists) //IsNeedToLoadPurchasesLists устанавливается когда пользователь жмет "back" на странице purchasesView
             {
+                CommonConstants.IsNeedToLoadPurchasesLists = false;
                 PurchasesLists = _purchaseService.GetAllPurchasesLists();
             }
             if (PurchasesLists.Any())
@@ -59,9 +73,9 @@ namespace ListOfGoods.ViewModels
             get { return _noListsMessageIsVisible; }
         }
 
-        public async Task NavigateToPurchasePage(int id)
+        public async Task NavigateToPurchasePage(ListModel model)
         {
-            await _navigation.PushAsync(new PurchasesView(id));
+            await _navigation.PushAsync(new PurchasesView(model.Id, model.Name));
         }
     }
 }

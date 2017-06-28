@@ -1,19 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using ListOfGoods.CustomControls;
-using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Animations;
 using ListOfGoods.Infrastructure.Constants;
-using ListOfGoods.Infrastructure.DependencyService;
 using ListOfGoods.Infrastructure.Extensions;
-using ListOfGoods.Infrastructure.Helpers;
+using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.ViewModels;
 using ListOfGoods.ViewModels.PopUps;
 using ListOfGoods.Views.PopUps;
-using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 
 namespace ListOfGoods.Views
 {
@@ -29,7 +24,7 @@ namespace ListOfGoods.Views
             ToolbarItems.Add(new ToolbarItem
             {
                 Text = "Add a new list",
-                Icon = "addIcon.png".ToPlatformImagePath(),
+                Icon = "addIcon_2.png".ToPlatformImagePath(),
                 Command = _viewModel.AddNewList
             });
         }
@@ -37,7 +32,7 @@ namespace ListOfGoods.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<AddNewPurchaseListPopUpViewModel, PurchasesListEntity>(this, MessagingCenterConstants.NewListWasCreated,
+            MessagingCenter.Subscribe<AddNewPurchaseListPopUpViewModel, ListModel>(this, MessagingCenterConstants.NewListWasCreated,
                 (e, list) =>
                 {
                     if (_viewModel.PurchasesLists.All(x => x.Id != list.Id))
@@ -57,9 +52,9 @@ namespace ListOfGoods.Views
                  _viewModel.PurchasesLists.Remove(entity);
                  InitPage(sender);
              });
-            MessagingCenter.Subscribe<ListFrame, int>(this, MessagingCenterConstants.NavigateTo, async (sender, id) =>
+            MessagingCenter.Subscribe<ListFrame, ListModel>(this, MessagingCenterConstants.NavigateTo, async (sender, listModel) =>
             {
-                await _viewModel.NavigateToPurchasePage(id);
+                await _viewModel.NavigateToPurchasePage(listModel);
             });
             Task.Run(() => { _viewModel.SetPageState(); });
         }
@@ -67,14 +62,19 @@ namespace ListOfGoods.Views
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Unsubscribe<AddNewPurchaseListPopUpViewModel, PurchasesListEntity>(this, MessagingCenterConstants.NewListWasCreated);
+            MessagingCenter.Unsubscribe<AddNewPurchaseListPopUpViewModel, ListModel>(this, MessagingCenterConstants.NewListWasCreated);
             MessagingCenter.Unsubscribe<PurchasesListViewModel>(this, MessagingCenterConstants.InitLists);
             MessagingCenter.Unsubscribe<ListActions, int>(this, MessagingCenterConstants.InitLists);
-            MessagingCenter.Unsubscribe<ListFrame, int>(this, MessagingCenterConstants.NavigateTo);
+            MessagingCenter.Unsubscribe<ListFrame, ListModel>(this, MessagingCenterConstants.NavigateTo);
         }
 
         private void InitPage(object sender)
         {
+            if (CommonConstants.IsNeedToClearChildrenOnLayout)
+            {
+                ClearFrames();
+                CommonConstants.IsNeedToClearChildrenOnLayout = false;
+            }
             var renderedFrames = ContentWrapper.Children.Where(x => (x as ListFrame) != null);
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -93,7 +93,7 @@ namespace ListOfGoods.Views
         private async void RemoveDeletedFrames()
         {
             var purchasesListsIds = _viewModel.PurchasesLists.Select(x => x.Id);
-            var deletedFrames = ContentWrapper.Children.Where(x => (x is ListFrame) && !purchasesListsIds.Contains((x as ListFrame).Id)).ToList();
+            var deletedFrames = ContentWrapper.Children.Where(x => (x is ListFrame) && !purchasesListsIds.Contains((x as ListFrame).ListModel.Id)).ToList();
             foreach (var deletedFrame in deletedFrames)
             {
                 deletedFrame.FadeTo(0);
@@ -107,7 +107,7 @@ namespace ListOfGoods.Views
             var frames = _viewModel.PurchasesLists.Select(x => x.ToListFrame());
             foreach (var listFrame in frames)
             {
-                if (!ContentWrapper.Children.Any(x => (x as ListFrame) != null && (x as ListFrame).Id == listFrame.Id))
+                if (!ContentWrapper.Children.Any(x => (x as ListFrame) != null && (x as ListFrame).ListModel.Id == listFrame.ListModel.Id))
                 {
                     listFrame.Opacity = 0;
                     listFrame.TranslationY = -150;
@@ -117,9 +117,9 @@ namespace ListOfGoods.Views
             }
         }
 
-        private async void UpdateFrame(PurchasesListEntity listEntity)
+        private async void UpdateFrame(ListModel listEntity)
         {
-            var targetFrame = ContentWrapper.Children.FirstOrDefault(x => (x is ListFrame) && (x as ListFrame).Id == listEntity.Id);
+            var targetFrame = ContentWrapper.Children.FirstOrDefault(x => (x is ListFrame) && (x as ListFrame).ListModel.Id == listEntity.Id);
             var targetIndex = ContentWrapper.Children.IndexOf(targetFrame);
             var updatedFrame = new ListFrame(listEntity);
             updatedFrame.Opacity = 0;
@@ -132,6 +132,14 @@ namespace ListOfGoods.Views
             targetFrame.FadeTo(0);
             await targetFrame.TranslateTo(0, 150);
             ContentWrapper.Children.Remove(targetFrame);
+        }
+
+        private void ClearFrames()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                ContentWrapper.Children.Clear();
+            });
         }
     }
 }

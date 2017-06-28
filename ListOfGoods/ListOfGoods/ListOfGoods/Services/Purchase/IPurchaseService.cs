@@ -7,7 +7,7 @@ namespace ListOfGoods.Services.Purchase
     public interface IPurchaseService
     {
         List<PurchaseEntity> GetAllPurchases();
-        List<PurchasesListEntity> GetAllPurchasesLists();
+        List <ListModel> GetAllPurchasesLists();
         void DeleteList(int id);
         List<AutocompletePurchaseModel> FindAutocompletePurchases(string searchKey);
         PurchaseEntity FindPurchaseById(int id);

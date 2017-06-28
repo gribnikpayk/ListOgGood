@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using AngleSharp.Dom.Css;
 using FFImageLoading.Forms;
 using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Animations;
@@ -15,11 +16,15 @@ namespace ListOfGoods.CustomControls
     {
         public PurchaseEntity Purchase { get; set; }
         public UsersPurchaseEntity UsersPurchase { get; set; }
+
+        private Label _count, _priceDescription, _name;
+        private CachedImage _icon;
+        private Grid _grid;
         public PurchaseGrid(PurchaseEntity purchase, UsersPurchaseEntity usersPurchase)
         {
-            BackgroundColor = ColorResourses.Grey;
             Purchase = purchase;
             UsersPurchase = usersPurchase;
+            _grid = this;
 
             ColumnDefinitions = new ColumnDefinitionCollection
             {
@@ -34,7 +39,7 @@ namespace ListOfGoods.CustomControls
                 new RowDefinition {Height = 30}
             };
 
-            var icon = new CachedImage
+            _icon = new CachedImage
             {
                 IsOpaque = false,
                 WidthRequest = 50,
@@ -42,28 +47,25 @@ namespace ListOfGoods.CustomControls
                 VerticalOptions = LayoutOptions.Center,
                 Source = purchase.IsCustomImage ? purchase.ImagePath : purchase.ImagePath.ToPlatformImagePath()
             };
-            var count = string.IsNullOrEmpty(usersPurchase.Quantity)
+            _count = string.IsNullOrEmpty(usersPurchase.Quantity)
                 ? null
                 : new Label
                 {
                     Text = $"{usersPurchase.Quantity} {CommonNameConstants.MeasurementsDictionary.FirstOrDefault(x => (int)x.Key == usersPurchase.MesurementType).Value}",
-                    TextColor = Color.White,
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.End
                 };
-            var priceDescription = string.IsNullOrEmpty(usersPurchase.Price)
+            _priceDescription = string.IsNullOrEmpty(usersPurchase.Price)
                 ? null
                 : new Label
                 {
                     Text = $"{usersPurchase.Price} {CommonNameConstants.CurrencyDictionary.FirstOrDefault(x => (int)x.Key == usersPurchase.CurrencyType).Value}",
-                    TextColor = Color.White,
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Start
                 };
-            var name = new Label
+            _name = new Label
             {
                 Text = purchase.Name,
-                TextColor = Color.White,
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 VerticalOptions = LayoutOptions.Center
             };
@@ -93,20 +95,78 @@ namespace ListOfGoods.CustomControls
                 })
             });
 
-            Children.Add(icon, 0, 0);
-            SetRowSpan(icon, 2);
-            Children.Add(name, 1, 0);
-            SetRowSpan(name, 2);
+            Children.Add(_icon, 0, 0);
+            SetRowSpan(_icon, 2);
+            Children.Add(_name, 1, 0);
+            SetRowSpan(_name, 2);
             Children.Add(moreIcon, 3, 0);
             SetRowSpan(moreIcon, 2);
-            if (count != null)
+            if (_count != null)
             {
-                Children.Add(count, 2, 0);
+                Children.Add(_count, 2, 0);
             }
-            if (priceDescription != null)
+            if (_priceDescription != null)
             {
-                Children.Add(priceDescription, 2, 1);
+                Children.Add(_priceDescription, 2, 1);
+            }
+            LabelColor = UsersPurchase.IsAlreadyPurchased ? ColorResourses.TextColorPurchasedName : Color.White;
+            IconOpacity = UsersPurchase.IsAlreadyPurchased ? 0.8 : 1;
+            BackgroundColorOfGrid = UsersPurchase.IsAlreadyPurchased ? ColorResourses.BackgroundPurchased : ColorResourses.Grey;
+        }
+
+
+        #region LabelColor
+        private Color _labelColor;
+        public Color LabelColor
+        {
+            get { return _labelColor; }
+            set
+            {
+                _labelColor = value;
+                LabelColorChanged(value);
             }
         }
+
+        private void LabelColorChanged(Color newValue)
+        {
+            if (_count != null)
+            {
+                _count.TextColor = newValue;
+            }
+            if (_priceDescription != null)
+            {
+                _priceDescription.TextColor = newValue;
+            }
+            _name.TextColor = newValue;
+        }
+        #endregion
+
+        #region IconOpacity
+
+        private double _iconOpacity;
+        public double IconOpacity
+        {
+            get { return _iconOpacity; }
+            set
+            {
+                _iconOpacity = value;
+                _icon.Opacity = value;
+            }
+        }
+
+        #endregion
+
+        #region BackgroundColorOfGrid
+        private Color _backgroundColorOfGrid;
+        public Color BackgroundColorOfGrid
+        {
+            get { return _backgroundColorOfGrid; }
+            set
+            {
+                _backgroundColorOfGrid = value;
+                _grid.BackgroundColor = value;
+            }
+        }
+        #endregion
     }
 }

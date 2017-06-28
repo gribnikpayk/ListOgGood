@@ -16,6 +16,8 @@ namespace ListOfGoods.Infrastructure.Constants
         public const string MarkAsPurchased = "Mark as purchased";
         public const string BackToTheList = "To the list";
 
+        public const string AllListsTitle = "All lists";
+
         public static Dictionary<Categories, string> CategoriesDictionary = new Dictionary<Categories, string>
         {
             [Categories.WithoutСategory] = "Without category",

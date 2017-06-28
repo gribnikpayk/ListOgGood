@@ -101,9 +101,12 @@
     <Compile Include="CustomRendererControls\CustomPickerRenderer.cs" />
     <Compile Include="CustomRendererControls\RoundedButtonRenderer.cs" />
     <Compile Include="DependencyServices\ImageProcessor.cs" />
+    <Compile Include="DependencyServices\ShareService.cs" />
     <Compile Include="DependencyServices\SQLite.cs" />
     <Compile Include="DependencyServices\DeviceInfo.cs" />
     <Compile Include="DependencyServices\Display.cs" />
+    <Compile Include="DependencyServices\StoreServicesFeedback.cs" />
+    <Compile Include="DependencyServices\URI_Launcher.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -116,8 +119,11 @@
     <None Include="Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\aboutIcon.png" />
     <Content Include="Assets\acceptIcon.png" />
+    <Content Include="Assets\acceptIcon_2.png" />
     <Content Include="Assets\addIcon.png" />
+    <Content Include="Assets\addIcon_2.png" />
     <Content Include="Assets\apples.jpg" />
     <Content Include="Assets\background.jpg" />
     <Content Include="Assets\Bakery_icon.png" />
@@ -143,6 +149,7 @@
     <Content Include="Assets\diapers.jpg" />
     <Content Include="Assets\Drinks_icon.png" />
     <Content Include="Assets\eggs.jpg" />
+    <Content Include="Assets\feedbackIcon.png" />
     <Content Include="Assets\fish.jpg" />
     <Content Include="Assets\Fish_icon.png" />
     <Content Include="Assets\fruit.jpg" />
@@ -154,6 +161,9 @@
     <Content Include="Assets\ketchup.jpg" />
     <Content Include="Assets\lemon.jpg" />
     <Content Include="Assets\lemonade.jpg" />
+    <Content Include="Assets\likeIcon.png" />
+    <Content Include="Assets\Logo_TopFacts.png" />
+    <Content Include="Assets\logo_menu.png" />
     <Content Include="Assets\meat.jpg" />
     <Content Include="Assets\Meat_icon.png" />
     <Content Include="Assets\melon.jpg" />
@@ -182,6 +192,7 @@
     <Content Include="Assets\salad.jpg" />
     <Content Include="Assets\sausage.jpg" />
     <Content Include="Assets\search_icon.png" />
+    <Content Include="Assets\shareIcon.png" />
     <Content Include="Assets\shrimp.jpg" />
     <Content Include="Assets\soap.jpg" />
     <Content Include="Assets\spice.jpg" />
@@ -220,6 +231,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="Microsoft.Services.Store.Engagement, Version=10.0">
+      <Name>Microsoft Engagement Framework</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
     <SDKReference Include="WindowsMobile, Version=10.0.10586.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>

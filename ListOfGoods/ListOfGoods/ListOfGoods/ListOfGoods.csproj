@@ -59,12 +59,16 @@
     <Compile Include="DataManagers\Local\Purchase\UsersPurchaseEntity.cs" />
     <Compile Include="DataManagers\Local\Purchase\UsersPurchaseRepository.cs" />
     <Compile Include="Infrastructure\Animations\AnimationExtensions.cs" />
+    <Compile Include="Infrastructure\Constants\CommonConstants.cs" />
     <Compile Include="Infrastructure\Constants\CommonNameConstants.cs" />
     <Compile Include="Infrastructure\Constants\MessagingCenterConstants.cs" />
     <Compile Include="Infrastructure\Converters\BoolInverseConverter.cs" />
     <Compile Include="Infrastructure\DependencyService\IDisplay.cs" />
     <Compile Include="Infrastructure\DependencyService\IImageProcessor.cs" />
+    <Compile Include="Infrastructure\DependencyService\IShareService.cs" />
     <Compile Include="Infrastructure\DependencyService\ISQLite.cs" />
+    <Compile Include="Infrastructure\DependencyService\IStoreServicesFeedback.cs" />
+    <Compile Include="Infrastructure\DependencyService\URILauncher.cs" />
     <Compile Include="Infrastructure\Enums\Categories.cs" />
     <Compile Include="Infrastructure\Enums\Currency.cs" />
     <Compile Include="Infrastructure\Enums\Measurements.cs" />
@@ -74,6 +78,7 @@
     <Compile Include="Infrastructure\GoogleSearch\SearchResponse.cs" />
     <Compile Include="Infrastructure\Models\EditPurchaseModel.cs" />
     <Compile Include="Infrastructure\Models\EditPurchasePostActionModel.cs" />
+    <Compile Include="Infrastructure\Models\ListModel.cs" />
     <Compile Include="Infrastructure\Models\PurchasesInListModel.cs" />
     <Compile Include="Services\Search\ISearchService.cs" />
     <Compile Include="Services\Search\SearchService.cs" />
@@ -90,6 +95,7 @@
     <Compile Include="Services\Purchase\IPurchaseService.cs" />
     <Compile Include="Services\Purchase\PurchaseService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\MasterDetailPage\MasterPageViewModel.cs" />
     <Compile Include="ViewModels\PopUps\AddNewPurchaseListPopUpViewModel.cs" />
     <Compile Include="ViewModels\PopUps\AddNewPurchasePopUpViewModel.cs" />
     <Compile Include="ViewModels\PopUps\EditImageActionsPopUpViewModel.cs" />
@@ -99,13 +105,16 @@
     <Compile Include="ViewModels\PopUps\SearchPicturePopUpViewModel.cs" />
     <Compile Include="ViewModels\PurchasesListViewModel.cs" />
     <Compile Include="ViewModels\PurchasesViewModel.cs" />
+    <Compile Include="Views\AboutUs.xaml.cs">
+      <DependentUpon>AboutUs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PopUps\AddNewPurchaseListPopUp.xaml.cs">
       <DependentUpon>AddNewPurchaseListPopUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterDetailPage\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterDetailPage\MasterPageItem.cs" />
+    <Compile Include="Infrastructure\Models\MasterPageItemModel.cs" />
     <Compile Include="Views\PopUps\AddNewPurchasePopUp.xaml.cs">
       <DependentUpon>AddNewPurchasePopUp.xaml</DependentUpon>
     </Compile>
@@ -290,6 +299,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\PopUps\EditPurchasePopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AboutUs.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

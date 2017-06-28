@@ -2,6 +2,7 @@
 using ListOfGoods.CustomControls;
 using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Constants;
+using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.ViewModels.PopUps;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
@@ -34,15 +35,17 @@ namespace ListOfGoods.Views.PopUps
             switch (selectedItem.Name)
             {
                 case CommonNameConstants.DeleteActionName:
-                    _viewModel.DeleteList(_selectedList.Id);
-                    MessagingCenter.Send<ListActions, int>(this, MessagingCenterConstants.InitLists, _selectedList.Id);
+                    _viewModel.DeleteList(_selectedList.ListModel.Id);
+                    MessagingCenter.Send<ListActions, int>(this, MessagingCenterConstants.InitLists, _selectedList.ListModel.Id);
                     break;
                 case CommonNameConstants.EditActionName:
-                    await PopupNavigation.PushAsync(new AddNewPurchaseListPopUp(new PurchasesListEntity
+                    await PopupNavigation.PushAsync(new AddNewPurchaseListPopUp(new ListModel
                     {
-                        Id = _selectedList.Id,
-                        Name = _selectedList.Name,
-                        CreationDate = _selectedList.CreationDate
+                        Id = _selectedList.ListModel.Id,
+                        Name = _selectedList.ListModel.Name,
+                        CreationDate = _selectedList.ListModel.CreationDate,
+                        CountOfPurchases = _selectedList.ListModel.CountOfPurchases,
+                        CountOfAlreadyPurchased = _selectedList.ListModel.CountOfAlreadyPurchased
                     }));
                     break;
                 default:

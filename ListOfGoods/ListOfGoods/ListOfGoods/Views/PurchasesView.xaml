@@ -54,6 +54,7 @@
     </StackLayout>
     <AbsoluteLayout VerticalOptions="FillAndExpand">
       <ScrollView AbsoluteLayout.LayoutFlags="All"
+                  Opacity="{Binding ContentWrapperOpacity}"
                   AbsoluteLayout.LayoutBounds="0,0,1,1">
         <StackLayout VerticalOptions="Start">
           <Label TextColor="{x:Static commonResorces:ColorResourses.EntryText}"
@@ -145,16 +146,16 @@
                  IsVisible="{Binding AlreadyPurchasedFrameIsVisible}"
                  Text="Card">
             <Label.Margin>
-              <Thickness>10,20,0,10</Thickness>
+              <Thickness>10,20,10,0</Thickness>
             </Label.Margin>
           </Label>
-          <customControls:CustomFrame InlineColor="{x:Static commonResorces:ColorResourses.FrameBackground}"
+          <customControls:CustomFrame InlineColor="#343537"
                                       VerticalOptions="Start"
                                       IsVisible="{Binding AlreadyPurchasedFrameIsVisible}">
             <customControls:CustomFrame.Margin>
               <Thickness>10,10,10,10</Thickness>
             </customControls:CustomFrame.Margin>
-            <StackLayout x:Name="IsAlreadyPurchasedWrapper">
+            <StackLayout x:Name="IsAlreadyPurchasedWrapper" Spacing="0">
 
             </StackLayout>
           </customControls:CustomFrame>

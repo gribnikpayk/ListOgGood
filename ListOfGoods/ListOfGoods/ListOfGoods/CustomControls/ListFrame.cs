@@ -4,9 +4,8 @@ using ListOfGoods.DataManagers.Local.Purchase;
 using ListOfGoods.Infrastructure.Animations;
 using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Infrastructure.Extensions;
-using ListOfGoods.Infrastructure.Navigation;
+using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.Infrastructure.Resourses;
-using ListOfGoods.Views;
 using ListOfGoods.Views.PopUps;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -19,14 +18,10 @@ namespace ListOfGoods.CustomControls
         private static readonly double _mediumFontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
         private static readonly double _smallFontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
 
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public DateTime CreationDate { get; set; }
-        public ListFrame(PurchasesListEntity listEntity)
+        public ListModel ListModel { get; set; }
+        public ListFrame(ListModel listEntity)
         {
-            Id = listEntity.Id;
-            Name = listEntity.Name;
-            CreationDate = listEntity.CreationDate;
+            ListModel = listEntity;
 
             InlineColor = ColorResourses.FrameBackground;
             var grid = new Grid
@@ -55,14 +50,16 @@ namespace ListOfGoods.CustomControls
                 Text = listEntity.CreationDate.ToStringFormat(),
                 FontSize = _smallFontSize
             };
-            var lbl_counter = new Label
-            {
-                TextColor = ColorResourses.TextColorWithOpacity,
-                Text = "0/2",
-                FontSize = _smallFontSize,
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.End
-            };
+            var lbl_counter = listEntity.CountOfPurchases == 0
+                ? null
+                : new Label
+                {
+                    TextColor = ColorResourses.TextColorWithOpacity,
+                    Text = $"{listEntity.CountOfPurchases}/{listEntity.CountOfAlreadyPurchased}",
+                    FontSize = _smallFontSize,
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.End
+                };
             var img_actions = new Image
             {
                 Source = "more_icon.png".ToPlatformImagePath(),
@@ -82,16 +79,22 @@ namespace ListOfGoods.CustomControls
                 Command = new Command(() =>
                 {
                     this.ScaleEffect();
-                    MessagingCenter.Send<ListFrame, int>(this, MessagingCenterConstants.NavigateTo, Id);
+                    MessagingCenter.Send<ListFrame, ListModel>(this, MessagingCenterConstants.NavigateTo, ListModel);
                 })
             });
 
             grid.Children.Add(lbl_name, 0, 0);
-            grid.Children.Add(lbl_counter, 2, 0);
+            if (lbl_counter != null)
+            {
+                grid.Children.Add(lbl_counter, 2, 0);
+            }
             grid.Children.Add(img_actions, 3, 0);
             grid.Children.Add(lbl_date, 0, 1);
 
-            Grid.SetRowSpan(lbl_counter, 2);
+            if (lbl_counter != null)
+            {
+                Grid.SetRowSpan(lbl_counter, 2);
+            }
             Grid.SetRowSpan(img_actions, 2);
 
             Content = grid;

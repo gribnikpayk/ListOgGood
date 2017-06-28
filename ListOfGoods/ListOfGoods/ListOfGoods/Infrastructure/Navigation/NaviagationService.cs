@@ -23,5 +23,10 @@ namespace ListOfGoods.Infrastructure.Navigation
         {
             await _navPage.Navigation.PushAsync(page, false);
         }
+
+        public async Task PopToRootAsync()
+        {
+            await _navPage.Navigation.PopToRootAsync();
+        }
     }
 }

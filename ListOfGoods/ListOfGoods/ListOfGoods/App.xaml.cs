@@ -9,6 +9,7 @@ using ListOfGoods.Views.MasterDetailPage;
 using Microsoft.Practices.Unity;
 using SQLite;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.WindowsSpecific;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -26,6 +27,7 @@ namespace ListOfGoods
 
             ResolveDependency();
             MainPage = new MainPage();
+            MainPage.On<Xamarin.Forms.PlatformConfiguration.Windows>().SetToolbarPlacement(ToolbarPlacement.Top);
         }
 
         private static void ResolveDependency()

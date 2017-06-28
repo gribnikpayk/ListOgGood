@@ -3,11 +3,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using ListOfGoods.CustomControls;
-using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Infrastructure.Enums;
 using ListOfGoods.Infrastructure.Models;
-using ListOfGoods.Services.Media;
+using ListOfGoods.Infrastructure.Navigation;
 using ListOfGoods.Services.Purchase;
 using ListOfGoods.Views.PopUps;
 using Rg.Plugins.Popup.Services;
@@ -18,6 +16,7 @@ namespace ListOfGoods.ViewModels
     public class PurchasesViewModel : BaseViewModel
     {
         private string _newPurchase;
+        private double _contentWrapperOpacity;
         private bool _autoCompleteIsVisible, _purchasesFrameIsVisible, _alreadyPurchasedFrameIsVisible, _noPurchasesLabelIsVisible;
         private List<AutocompletePurchaseModel> _autocompleteItems;
         private CancellationTokenSource _autoCompleteCancelTokenSource;
@@ -26,18 +25,25 @@ namespace ListOfGoods.ViewModels
         private const short _minValueForAutocomplete = 2;
 
         private IPurchaseService _purchaseService;
+        private INavigationService _navigation;
 
         public int PurchasesListId { get; set; }
 
         public ICommand AddNewPurchaseCommand => new Command(AddNewPurchaseAsync);
 
-        public PurchasesViewModel(IPurchaseService purchaseService)
+        public PurchasesViewModel(IPurchaseService purchaseService, INavigationService navigation)
         {
             _purchaseService = purchaseService;
+            _navigation = navigation;
         }
 
         #region BindableProperties
 
+        public double ContentWrapperOpacity
+        {
+            set { SetProperty(ref _contentWrapperOpacity, value); }
+            get { return _autoCompleteIsVisible ? 0.5 : 1; }
+        }
         public bool NoPurchasesLabelIsVisible
         {
             set { SetProperty(ref _noPurchasesLabelIsVisible, value); }
@@ -111,7 +117,12 @@ namespace ListOfGoods.ViewModels
                 PurchaseId = purchase.PurchaseId,
                 Category = purchase.Category
             };
-            await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel));
+            await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel), false);
+        }
+
+        public void PopToRoot()
+        {
+            _navigation.PopToRootAsync();
         }
 
         #region privateMethods
@@ -125,7 +136,7 @@ namespace ListOfGoods.ViewModels
                 PurchasesListId = PurchasesListId,
                 Category = Categories.WithoutСategory
             };
-            await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel));
+            await PopupNavigation.PushAsync(new AddNewPurchasePopUp(newPurchaseModel), false);
         }
         private void SearchTextChanged(CancellationToken token)
         {

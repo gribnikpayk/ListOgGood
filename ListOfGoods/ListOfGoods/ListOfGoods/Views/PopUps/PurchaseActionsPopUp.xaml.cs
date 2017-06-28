@@ -42,7 +42,7 @@ namespace ListOfGoods.Views.PopUps
                     MessagingCenter.Send<PurchaseActionsPopUp, PurchaseGrid>(this, MessagingCenterConstants.DeleteAction, _grid);
                     break;
                 case CommonNameConstants.EditActionName:
-                    await PopupNavigation.PushAsync(new EditPurchasePopUp(GetEditPurchaseModel(), _grid));
+                    await PopupNavigation.PushAsync(new EditPurchasePopUp(GetEditPurchaseModel(), _grid), false);
                     break;
                 case CommonNameConstants.MarkAsPurchased:
                     _viewModel.MarkAsPurchased(_grid.UsersPurchase.PurchaseId, _grid.UsersPurchase.PurchasesListId);

@@ -9,8 +9,8 @@ namespace ListOfGoods.Infrastructure.Animations
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await view.ScaleTo(0.95);
-                await view.ScaleTo(1);
+                await view.ScaleTo(0.95, 100);
+                await view.ScaleTo(1, 100);
             });
         }
 

@@ -4,6 +4,7 @@ using ListOfGoods.CustomControls;
 using ListOfGoods.Infrastructure.Constants;
 using ListOfGoods.Infrastructure.Enums;
 using ListOfGoods.Infrastructure.Models;
+using ListOfGoods.Infrastructure.Resourses;
 using ListOfGoods.ViewModels;
 using ListOfGoods.ViewModels.PopUps;
 using ListOfGoods.Views.PopUps;
@@ -16,14 +17,23 @@ namespace ListOfGoods.Views
         private PurchasesViewModel _viewModel;
         private readonly int _translation_x = 1000;
         private readonly int _translation_y = 0;
-        private readonly uint _speed = 250;
+        private readonly uint _speed = 100;
 
-        public PurchasesView(int purchasesListId)
+        public PurchasesView(int purchasesListId, string title)
         {
             InitializeComponent();
             _viewModel = App.Container.Resolve(typeof(PurchasesViewModel), "purchasesViewModel") as PurchasesViewModel;
+            Title = title;
             BindingContext = _viewModel;
             _viewModel.PurchasesListId = purchasesListId;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            CommonConstants.IsNeedToLoadPurchasesLists = true;
+            CommonConstants.IsNeedToClearChildrenOnLayout = true;
+            _viewModel.PopToRoot();
+            return false;
         }
 
         #region Appearing_Disapearing
@@ -64,6 +74,7 @@ namespace ListOfGoods.Views
 
         private void AddPurchase(object sender, PurchaseGrid grid)
         {
+           _viewModel.NewPurchase = string.Empty;
            AddPurchaseGridToPage(grid);
         }
         private void DeletePurchase(object sender, PurchaseGrid grid)
@@ -104,6 +115,9 @@ namespace ListOfGoods.Views
                 wrapper.IsVisible = wrapper.Children.Any(control => control is PurchaseGrid);
                 grid.UsersPurchase.IsAlreadyPurchased = true;
                 grid.Opacity = 0;
+                grid.LabelColor = ColorResourses.TextColorPurchasedName;
+                grid.IconOpacity = 0.8;
+                grid.BackgroundColorOfGrid = ColorResourses.BackgroundPurchased;
                 IsAlreadyPurchasedWrapper.Children.Add(grid);
                 IsAlreadyPurchasedWrapper.IsVisible = true;
                 await grid.FadeTo(1, _speed);
@@ -120,6 +134,9 @@ namespace ListOfGoods.Views
                 IsAlreadyPurchasedWrapper.Children.Remove(grid);
                 grid.UsersPurchase.IsAlreadyPurchased = false;
                 grid.Opacity = 0;
+                grid.LabelColor = ColorResourses.White;
+                grid.IconOpacity = 1;
+                grid.BackgroundColorOfGrid = ColorResourses.Grey;
                 wrapper.Children.Add(grid);
                 wrapper.IsVisible = true;
                 await grid.FadeTo(1, _speed);

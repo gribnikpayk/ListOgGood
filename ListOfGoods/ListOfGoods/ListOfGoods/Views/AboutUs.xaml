@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:commonResorces="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
+             x:Class="ListOfGoods.Views.AboutUs"
+             Title="About us">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style TargetType="Label"
+             x:Key="DefaulLabel">
+        <Setter Property="TextColor" Value="White"/>
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ScrollView>
+    <StackLayout BackgroundColor="{x:Static commonResorces:ColorResourses.Grey}">
+      <StackLayout.Padding>
+        <Thickness>10,20,10,20</Thickness>
+      </StackLayout.Padding>
+      <Label TextColor="White"
+             Text="Shopping list!"
+             FontSize="Medium">
+        <Label.Margin>
+          <Thickness>0,20,0,20</Thickness>
+        </Label.Margin>
+      </Label>
+      <Label Style="{StaticResource DefaulLabel}"
+             Text="Shopping list! helps people to plan and manage their grocery shopping."></Label>
+      <Label Style="{StaticResource DefaulLabel}"
+             Text="Your Shopping List stays with you everywhere you go and you'll have it on-hand once you're ready to go grocery shopping."></Label>
+
+      <Label Style="{StaticResource DefaulLabel}"
+             FontAttributes="Bold"
+             Text="Our Features:">
+        <Label.Margin>
+          <Thickness>0,20,0,0</Thickness>
+        </Label.Margin>
+      </Label>
+      <Label Style="{StaticResource DefaulLabel}"
+             Text="- Multiple shopping lists"></Label>
+      <Label Style="{StaticResource DefaulLabel}"
+             Text="- Save time by grouping items into categories"></Label>
+      <Label Style="{StaticResource DefaulLabel}"
+             Text="- Easily enter items in your shopping lists"></Label>
+      <Label Style="{StaticResource DefaulLabel}"
+             Text="- Share lists by text or email"></Label>
+      <Label Style="{StaticResource DefaulLabel}"
+             Text="- Shopping list! is optimized for smartphones, tablets and desktop"></Label>
+      <Label Style="{StaticResource DefaulLabel}"
+             Text="- Add product photos to the items on the shopping list, so you always buy the right brand"></Label>
+      <Label TextColor="{x:Static commonResorces:ColorResourses.Blue}"
+             Text="More"
+             FontAttributes="Bold">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="MoreCurrentApp_OnTapped"></TapGestureRecognizer>
+        </Label.GestureRecognizers>
+      </Label>
+      <Label Style="{StaticResource DefaulLabel}"
+             FontSize="Large"
+             Text="Other applications">
+        <Label.Margin>
+          <Thickness>0,30,0,0</Thickness>
+        </Label.Margin>
+      </Label>
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+          <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition></RowDefinition>
+          <RowDefinition></RowDefinition>
+          <RowDefinition></RowDefinition>
+          <RowDefinition></RowDefinition>
+          <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Grid.Column="1"
+               Grid.RowSpan="4"
+               WidthRequest="150"
+               HeightRequest="150"
+               Source="Assets/Logo_TopFacts.png"
+               HorizontalOptions="Start"
+               VerticalOptions="Start">
+        </Image>
+        <Label Style="{StaticResource DefaulLabel}"
+               FontSize="Medium"
+               Text="Top 1000+ Facts"
+               Grid.Column="0"
+               Grid.Row="0"></Label>
+        <Label Style="{StaticResource DefaulLabel}"
+               Text="DID YOU KNOW?"
+               Grid.Column="0"
+               Grid.Row="1"></Label>
+        <Label Style="{StaticResource DefaulLabel}"
+               Text="“Butterflies cannot fly if their body temperature is less than 86 degrees.”"
+               Grid.Column="0"
+               Grid.Row="2"></Label>
+        <Label Style="{StaticResource DefaulLabel}"
+               Text="“Fish that live more than 800 meters below the ocean surface don't have eyes.”"
+               Grid.Column="0"
+               Grid.Row="3"></Label>
+        <Label Style="{StaticResource DefaulLabel}"
+               Text="“Mercury is the only planet whose orbit is coplanar with its equator.”"
+               Grid.Column="0"
+               Grid.Row="4"></Label>
+      </Grid>
+      <Label TextColor="{x:Static commonResorces:ColorResourses.Blue}"
+             Text="More"
+             FontAttributes="Bold">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="MoreToFacts_OnTapped"></TapGestureRecognizer>
+        </Label.GestureRecognizers>
+      </Label>
+      <Label Style="{StaticResource DefaulLabel}"
+             Text="Author"
+             FontAttributes="Bold">
+        <Label.Margin>
+          <Thickness>0,30,0,0</Thickness>
+        </Label.Margin>
+      </Label>
+      <Label Style="{StaticResource DefaulLabel}"
+             Text="Denis Chaykin">
+        <Label.Margin>
+          <Thickness>0,0,0,30</Thickness>
+        </Label.Margin>
+      </Label>
+    </StackLayout>
+  </ScrollView>
+</ContentPage>
