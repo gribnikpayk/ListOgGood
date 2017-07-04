@@ -142,7 +142,7 @@ namespace ListOfGoods.ViewModels
 
         public void PopToRoot()
         {
-            _navigation.PopToRootAsync();
+            _navigation.PopToRoot();
         }
 
         #region privateMethods

@@ -31,7 +31,7 @@ namespace ListOfGoods.Infrastructure.Helpers
                 body += "\n";
             }
 
-            body += purchasesInCard.Any() ? "\nCard\n" : string.Empty;
+            body += purchasesInCard.Any() ? "\nCart\n" : string.Empty;
             foreach (var purchase in purchasesInCard)
             {
                 body += $"- {purchase.Purchase.Name}";

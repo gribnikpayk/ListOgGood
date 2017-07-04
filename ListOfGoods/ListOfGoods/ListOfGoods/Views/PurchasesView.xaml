@@ -145,7 +145,7 @@
                   <Label TextColor="{x:Static commonResorces:ColorResourses.EntryText}"
                          FontSize="Large"
                          IsVisible="{Binding AlreadyPurchasedFrameIsVisible}"
-                         Text="Card">
+                         Text="Cart">
                       <Label.Margin>
                           <Thickness>10,20,10,0</Thickness>
                       </Label.Margin>

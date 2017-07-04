@@ -6,6 +6,6 @@ namespace ListOfGoods.Infrastructure.Navigation
     public interface INavigationService
     {
         Task PushAsync(Page page);
-        Task PopToRootAsync();
+        void PopToRoot();
     }
 }

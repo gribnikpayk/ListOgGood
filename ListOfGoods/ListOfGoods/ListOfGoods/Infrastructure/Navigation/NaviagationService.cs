@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using ListOfGoods.Infrastructure.Resourses;
+using ListOfGoods.Views.MasterDetailPage;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.WindowsSpecific;
+using Page = Xamarin.Forms.Page;
 
 namespace ListOfGoods.Infrastructure.Navigation
 {
@@ -24,9 +27,11 @@ namespace ListOfGoods.Infrastructure.Navigation
             await _navPage.Navigation.PushAsync(page, false);
         }
 
-        public async Task PopToRootAsync()
+        public void PopToRoot()
         {
-            await _navPage.Navigation.PopToRootAsync(false);
+            App.Current.MainPage = new MainPage();
+            App.Current.MainPage.On<Xamarin.Forms.PlatformConfiguration.Windows>().SetToolbarPlacement(ToolbarPlacement.Top);
+            GC.Collect();
         }
     }
 }
