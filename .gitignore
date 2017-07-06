@@ -16,3 +16,11 @@
 /ListOfGoods/ListOfGoods/ListOfGoods.UWP/obj/ARM/Debug
 /ListOfGoods/ListOfGoods/ListOfGoods.Windows/obj/ARM/Debug
 /ListOfGoods/ListOfGoods/ListOfGoods.WinPhone/obj/ARM/Debug
+/ListOfGoods/ListOfGoods/ListOfGoods/bin/Release
+/ListOfGoods/ListOfGoods/ListOfGoods/obj/Release
+/ListOfGoods/ListOfGoods/ListOfGoods.UWP/AppPackages
+/ListOfGoods/ListOfGoods/ListOfGoods.Droid/obj/Release
+/ListOfGoods/ListOfGoods/ListOfGoods.WinPhone/obj
+/ListOfGoods/ListOfGoods/ListOfGoods.Windows/obj
+/ListOfGoods/ListOfGoods/ListOfGoods.UWP/obj
+/ListOfGoods/ListOfGoods/ListOfGoods.UWP/BundleArtifacts

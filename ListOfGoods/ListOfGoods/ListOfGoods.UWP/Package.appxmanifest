@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="b3e8a92b-f234-4fdd-85e1-f8a6382798f6" Publisher="CN=Denis Chaykin" Version="1.0.0.0" />
+  <Identity Name="34589DenisChaykin.ShoppingList" Publisher="CN=4B82504F-6445-42A2-A46C-A7F5D41ED84E" Version="1.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="b3e8a92b-f234-4fdd-85e1-f8a6382798f6" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>ListOfGoods.UWP</DisplayName>
-    <PublisherDisplayName>Denis Chaykin</PublisherDisplayName>
+    <DisplayName>Shopping List!</DisplayName>
+    <PublisherDisplayName>DenisChaykin</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
