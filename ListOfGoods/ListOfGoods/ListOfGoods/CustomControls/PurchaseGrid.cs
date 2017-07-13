@@ -18,7 +18,7 @@ namespace ListOfGoods.CustomControls
         public UsersPurchaseEntity UsersPurchase { get; set; }
 
         private Label _count, _priceDescription, _name;
-        private CachedImage _icon;
+        private Image _icon;
         private Grid _grid;
         public PurchaseGrid(PurchaseEntity purchase, UsersPurchaseEntity usersPurchase)
         {
@@ -39,7 +39,7 @@ namespace ListOfGoods.CustomControls
                 new RowDefinition {Height = 30}
             };
 
-            _icon = new CachedImage
+            _icon = new Image
             {
                 IsOpaque = false,
                 WidthRequest = 50,
@@ -69,7 +69,7 @@ namespace ListOfGoods.CustomControls
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 VerticalOptions = LayoutOptions.Center
             };
-            var moreIcon = new CachedImage
+            var moreIcon = new Image
             {
                 Source = "more_icon.png".ToPlatformImagePath(),
                 VerticalOptions = LayoutOptions.Center,

@@ -1,1 +1,1 @@
-D:\Work Folder\ListOfGoods\ListOfGoods\ListOfGoods\ListOfGoods.UWP\AppPackages\ListOfGoods.UWP_1.1.0.0\ListOfGoods.UWP_1.1.0.0_x86_x64_arm.appxbundle
+D:\Work Folder\ListOfGoods\ListOfGoods\ListOfGoods\ListOfGoods.UWP\AppPackages\ListOfGoods.UWP_1.2.1.0\ListOfGoods.UWP_1.2.1.0_x86_x64_arm.appxbundle

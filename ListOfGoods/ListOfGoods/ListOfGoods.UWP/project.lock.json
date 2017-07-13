@@ -2280,7 +2280,7 @@
           "lib/UAP10/Plugin.Media.dll": {}
         }
       },
-      "Xamarin.FFImageLoading/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading/2.2.9": {
         "dependencies": {
           "Microsoft.Net.Http": "2.2.29"
         },
@@ -2293,9 +2293,9 @@
           "lib/portable-netcore45+wpa81/FFImageLoading.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Forms/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Forms/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391",
+          "Xamarin.FFImageLoading": "2.2.9",
           "Xamarin.Forms": "1.4.4.6392"
         },
         "compile": {
@@ -2307,9 +2307,9 @@
           "lib/uap10.0/FFImageLoading.Forms.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Transformations/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Transformations/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391"
+          "Xamarin.FFImageLoading": "2.2.9"
         },
         "compile": {
           "lib/portable-netcore45+wpa81/FFImageLoading.Transformations.dll": {}
@@ -4689,7 +4689,7 @@
           "lib/UAP10/Plugin.Media.dll": {}
         }
       },
-      "Xamarin.FFImageLoading/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading/2.2.9": {
         "dependencies": {
           "Microsoft.Net.Http": "2.2.29"
         },
@@ -4702,9 +4702,9 @@
           "lib/portable-netcore45+wpa81/FFImageLoading.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Forms/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Forms/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391",
+          "Xamarin.FFImageLoading": "2.2.9",
           "Xamarin.Forms": "1.4.4.6392"
         },
         "compile": {
@@ -4716,9 +4716,9 @@
           "lib/uap10.0/FFImageLoading.Forms.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Transformations/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Transformations/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391"
+          "Xamarin.FFImageLoading": "2.2.9"
         },
         "compile": {
           "lib/portable-netcore45+wpa81/FFImageLoading.Transformations.dll": {}
@@ -7137,7 +7137,7 @@
           "lib/UAP10/Plugin.Media.dll": {}
         }
       },
-      "Xamarin.FFImageLoading/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading/2.2.9": {
         "dependencies": {
           "Microsoft.Net.Http": "2.2.29"
         },
@@ -7150,9 +7150,9 @@
           "lib/portable-netcore45+wpa81/FFImageLoading.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Forms/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Forms/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391",
+          "Xamarin.FFImageLoading": "2.2.9",
           "Xamarin.Forms": "1.4.4.6392"
         },
         "compile": {
@@ -7164,9 +7164,9 @@
           "lib/uap10.0/FFImageLoading.Forms.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Transformations/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Transformations/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391"
+          "Xamarin.FFImageLoading": "2.2.9"
         },
         "compile": {
           "lib/portable-netcore45+wpa81/FFImageLoading.Transformations.dll": {}
@@ -9551,7 +9551,7 @@
           "lib/UAP10/Plugin.Media.dll": {}
         }
       },
-      "Xamarin.FFImageLoading/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading/2.2.9": {
         "dependencies": {
           "Microsoft.Net.Http": "2.2.29"
         },
@@ -9564,9 +9564,9 @@
           "lib/portable-netcore45+wpa81/FFImageLoading.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Forms/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Forms/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391",
+          "Xamarin.FFImageLoading": "2.2.9",
           "Xamarin.Forms": "1.4.4.6392"
         },
         "compile": {
@@ -9578,9 +9578,9 @@
           "lib/uap10.0/FFImageLoading.Forms.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Transformations/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Transformations/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391"
+          "Xamarin.FFImageLoading": "2.2.9"
         },
         "compile": {
           "lib/portable-netcore45+wpa81/FFImageLoading.Transformations.dll": {}
@@ -12004,7 +12004,7 @@
           "lib/UAP10/Plugin.Media.dll": {}
         }
       },
-      "Xamarin.FFImageLoading/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading/2.2.9": {
         "dependencies": {
           "Microsoft.Net.Http": "2.2.29"
         },
@@ -12017,9 +12017,9 @@
           "lib/portable-netcore45+wpa81/FFImageLoading.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Forms/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Forms/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391",
+          "Xamarin.FFImageLoading": "2.2.9",
           "Xamarin.Forms": "1.4.4.6392"
         },
         "compile": {
@@ -12031,9 +12031,9 @@
           "lib/uap10.0/FFImageLoading.Forms.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Transformations/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Transformations/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391"
+          "Xamarin.FFImageLoading": "2.2.9"
         },
         "compile": {
           "lib/portable-netcore45+wpa81/FFImageLoading.Transformations.dll": {}
@@ -14422,7 +14422,7 @@
           "lib/UAP10/Plugin.Media.dll": {}
         }
       },
-      "Xamarin.FFImageLoading/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading/2.2.9": {
         "dependencies": {
           "Microsoft.Net.Http": "2.2.29"
         },
@@ -14435,9 +14435,9 @@
           "lib/portable-netcore45+wpa81/FFImageLoading.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Forms/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Forms/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391",
+          "Xamarin.FFImageLoading": "2.2.9",
           "Xamarin.Forms": "1.4.4.6392"
         },
         "compile": {
@@ -14449,9 +14449,9 @@
           "lib/uap10.0/FFImageLoading.Forms.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Transformations/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Transformations/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391"
+          "Xamarin.FFImageLoading": "2.2.9"
         },
         "compile": {
           "lib/portable-netcore45+wpa81/FFImageLoading.Transformations.dll": {}
@@ -16879,7 +16879,7 @@
           "lib/UAP10/Plugin.Media.dll": {}
         }
       },
-      "Xamarin.FFImageLoading/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading/2.2.9": {
         "dependencies": {
           "Microsoft.Net.Http": "2.2.29"
         },
@@ -16892,9 +16892,9 @@
           "lib/portable-netcore45+wpa81/FFImageLoading.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Forms/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Forms/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391",
+          "Xamarin.FFImageLoading": "2.2.9",
           "Xamarin.Forms": "1.4.4.6392"
         },
         "compile": {
@@ -16906,9 +16906,9 @@
           "lib/uap10.0/FFImageLoading.Forms.dll": {}
         }
       },
-      "Xamarin.FFImageLoading.Transformations/2.2.10-pre-391": {
+      "Xamarin.FFImageLoading.Transformations/2.2.9": {
         "dependencies": {
-          "Xamarin.FFImageLoading": "2.2.10-pre-391"
+          "Xamarin.FFImageLoading": "2.2.9"
         },
         "compile": {
           "lib/portable-netcore45+wpa81/FFImageLoading.Transformations.dll": {}
@@ -23514,11 +23514,11 @@
         "readme.txt"
       ]
     },
-    "Xamarin.FFImageLoading/2.2.10-pre-391": {
-      "sha512": "nZffl4/7EDX+6Qqxapki/fgkpLf9w9E7AZ1VoI3s2iO6oOZCTcUCxxI5PMvYi6sEwS7anXKwOE3pdqqbQuxS8A==",
+    "Xamarin.FFImageLoading/2.2.9": {
+      "sha512": "+ynlYKS42vQdVUzBTydlw+DyyagQ2GOqjaHjMI7ekHD21ituiRwljkepphAi5YXFepNEODXsuRBEFOF+714fgg==",
       "type": "package",
       "files": [
-        "Xamarin.FFImageLoading.2.2.10-pre-391.nupkg.sha512",
+        "Xamarin.FFImageLoading.2.2.9.nupkg.sha512",
         "Xamarin.FFImageLoading.nuspec",
         "lib/MonoAndroid10/FFImageLoading.Platform.dll",
         "lib/MonoAndroid10/FFImageLoading.Platform.pdb",
@@ -23545,11 +23545,11 @@
         "lib/portable-netcore45+wpa81/FFImageLoading.xml"
       ]
     },
-    "Xamarin.FFImageLoading.Forms/2.2.10-pre-391": {
-      "sha512": "vAiZmCC27Q+bZrKrQGpCs8mOkLwOi5OjXYGyTLgy+iWDj6FJFBjp4vd/9caTn5UX0aHuoDXUs3vl949+JbS0zg==",
+    "Xamarin.FFImageLoading.Forms/2.2.9": {
+      "sha512": "B0P2HABxBT8vLiiTjVVtCUG/iSc/MmDsEDgaU52xYzhu/PwwOD+9dFp/pLoQSfS1sRBKnMEjvgLCei07zjul7A==",
       "type": "package",
       "files": [
-        "Xamarin.FFImageLoading.Forms.2.2.10-pre-391.nupkg.sha512",
+        "Xamarin.FFImageLoading.Forms.2.2.9.nupkg.sha512",
         "Xamarin.FFImageLoading.Forms.nuspec",
         "lib/MonoAndroid10/FFImageLoading.Forms.Droid.dll",
         "lib/MonoAndroid10/FFImageLoading.Forms.Droid.pdb",
@@ -23580,11 +23580,11 @@
         "lib/uap10.0/FFImageLoading.Forms.xml"
       ]
     },
-    "Xamarin.FFImageLoading.Transformations/2.2.10-pre-391": {
-      "sha512": "//F9P2HBc+z6uspmZhNnRwmBGQn4aCJAFW9pjkfbDea75EseCPFt9Z6MBydneoFqE4uRtLPqHWk3VMIiLBrqYw==",
+    "Xamarin.FFImageLoading.Transformations/2.2.9": {
+      "sha512": "HSI3jmO1LkNQlB0vTtoYWGmRqQYg0oJ3wATRipaH94OMI0cDeA43fZYFgBOUPjTEDsIB6eH2xllUFmTlMIxE2Q==",
       "type": "package",
       "files": [
-        "Xamarin.FFImageLoading.Transformations.2.2.10-pre-391.nupkg.sha512",
+        "Xamarin.FFImageLoading.Transformations.2.2.9.nupkg.sha512",
         "Xamarin.FFImageLoading.Transformations.nuspec",
         "lib/MonoAndroid10/FFImageLoading.Transformations.dll",
         "lib/MonoAndroid10/FFImageLoading.Transformations.pdb",
@@ -23766,9 +23766,9 @@
       "Rg.Plugins.Popup >= 1.0.4",
       "Unity >= 4.0.1",
       "Xam.Plugin.Media >= 2.6.3.14-beta",
-      "Xamarin.FFImageLoading >= 2.2.10-pre-391",
-      "Xamarin.FFImageLoading.Forms >= 2.2.10-pre-391",
-      "Xamarin.FFImageLoading.Transformations >= 2.2.10-pre-391",
+      "Xamarin.FFImageLoading >= 2.2.9",
+      "Xamarin.FFImageLoading.Forms >= 2.2.9",
+      "Xamarin.FFImageLoading.Transformations >= 2.2.9",
       "Xamarin.Forms >= 2.3.4.231",
       "modernhttpclient >= 2.4.2",
       "sqlite-net-pcl >= 1.3.1"

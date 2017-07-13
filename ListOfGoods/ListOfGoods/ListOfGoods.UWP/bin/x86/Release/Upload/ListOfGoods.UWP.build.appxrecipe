@@ -427,19 +427,19 @@
     <AppxPackagedFile Include="C:\Users\d.chaykin\.nuget\packages\Xam.Plugin.Media\2.6.3.14-beta\lib\UAP10\Plugin.Media.dll">
       <PackagePath>Plugin.Media.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\d.chaykin\.nuget\packages\Xamarin.FFImageLoading\2.2.10-pre-391\lib\portable-netcore45+wpa81\FFImageLoading.Platform.dll">
+    <AppxPackagedFile Include="C:\Users\d.chaykin\.nuget\packages\Xamarin.FFImageLoading\2.2.9\lib\portable-netcore45+wpa81\FFImageLoading.Platform.dll">
       <PackagePath>FFImageLoading.Platform.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\d.chaykin\.nuget\packages\Xamarin.FFImageLoading\2.2.10-pre-391\lib\portable-netcore45+wpa81\FFImageLoading.dll">
+    <AppxPackagedFile Include="C:\Users\d.chaykin\.nuget\packages\Xamarin.FFImageLoading\2.2.9\lib\portable-netcore45+wpa81\FFImageLoading.dll">
       <PackagePath>FFImageLoading.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\d.chaykin\.nuget\packages\Xamarin.FFImageLoading.Forms\2.2.10-pre-391\lib\uap10.0\FFImageLoading.Forms.WinUWP.dll">
+    <AppxPackagedFile Include="C:\Users\d.chaykin\.nuget\packages\Xamarin.FFImageLoading.Forms\2.2.9\lib\uap10.0\FFImageLoading.Forms.WinUWP.dll">
       <PackagePath>FFImageLoading.Forms.WinUWP.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\d.chaykin\.nuget\packages\Xamarin.FFImageLoading.Forms\2.2.10-pre-391\lib\uap10.0\FFImageLoading.Forms.dll">
+    <AppxPackagedFile Include="C:\Users\d.chaykin\.nuget\packages\Xamarin.FFImageLoading.Forms\2.2.9\lib\uap10.0\FFImageLoading.Forms.dll">
       <PackagePath>FFImageLoading.Forms.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\d.chaykin\.nuget\packages\Xamarin.FFImageLoading.Transformations\2.2.10-pre-391\lib\portable-netcore45+wpa81\FFImageLoading.Transformations.dll">
+    <AppxPackagedFile Include="C:\Users\d.chaykin\.nuget\packages\Xamarin.FFImageLoading.Transformations\2.2.9\lib\portable-netcore45+wpa81\FFImageLoading.Transformations.dll">
       <PackagePath>FFImageLoading.Transformations.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\d.chaykin\.nuget\packages\Xamarin.Forms\2.3.4.231\lib\uap10.0\Xamarin.Forms.Core.dll">

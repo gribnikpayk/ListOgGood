@@ -183,10 +183,9 @@
                     <StackLayout.Padding>
                       <Thickness>10</Thickness>
                     </StackLayout.Padding>
-                    <forms:CachedImage Source="{Binding ImageSource}"
-                                       IsOpaque="False"
-                                       BitmapOptimizations="True">
-                    </forms:CachedImage>
+                    <Image Source="{Binding ImageSource}"
+                           IsOpaque="False">
+                    </Image>
                     <Label HorizontalOptions="Start"
                            Text="{Binding Name}"
                            VerticalOptions="CenterAndExpand"
