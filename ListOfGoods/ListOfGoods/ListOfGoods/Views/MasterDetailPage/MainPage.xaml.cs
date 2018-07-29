@@ -9,6 +9,7 @@ using ListOfGoods.Infrastructure.Models;
 using ListOfGoods.Infrastructure.Navigation;
 using ListOfGoods.ViewModels.MasterDetailPage;
 using ListOfGoods.Views.PopUps;
+using ListOfGoods.Views.v_2;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
@@ -24,7 +25,9 @@ namespace ListOfGoods.Views.MasterDetailPage
             BindingContext = _viewModel;
             SetMenuPanel();
             IsPresentedChanged += (sender, args) => { SetMenuPanel(); };
-            Detail = NaviagationService.CreateNavigationPage(typeof(PurchasesListView));
+            //Detail = NaviagationService.CreateNavigationPage(typeof(PurchasesListView_Table));
+            Detail = NaviagationService.CreateNavigationPage(typeof(Page1));
+
             MasterBehavior = MasterBehavior.Popover;
         }
         private void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)

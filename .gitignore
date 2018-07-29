@@ -24,3 +24,6 @@
 /ListOfGoods/ListOfGoods/ListOfGoods.Windows/obj
 /ListOfGoods/ListOfGoods/ListOfGoods.UWP/obj
 /ListOfGoods/ListOfGoods/ListOfGoods.UWP/BundleArtifacts
+/ListOfGoods/.vs/ListOfGoods/DesignTimeBuild
+/ListOfGoods/.vs/ListOfGoods/v15
+/ListOfGoods/ListOfGoods/ListOfGoods.Droid

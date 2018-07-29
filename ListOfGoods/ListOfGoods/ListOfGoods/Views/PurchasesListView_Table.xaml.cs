@@ -10,16 +10,17 @@ using ListOfGoods.ViewModels;
 using ListOfGoods.ViewModels.PopUps;
 using ListOfGoods.Views.PopUps;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace ListOfGoods.Views
 {
-    public partial class PurchasesListView : ContentPage
+    public partial class PurchasesListView_Table : ContentPage
     {
         private PurchasesListViewModel _viewModel;
-        public PurchasesListView()
+        public PurchasesListView_Table()
         {
             InitializeComponent();
-            
+
             _viewModel = App.Container.Resolve(typeof(PurchasesListViewModel), "purchasesListViewModel") as PurchasesListViewModel;
             _viewModel.IsBusy = true;
             BindingContext = _viewModel;
@@ -33,10 +34,9 @@ namespace ListOfGoods.Views
             ToolbarItems.Add(new ToolbarItem
             {
                 Text = "Сhange view",
-                Icon = "tableViewIcon.png".ToPlatformImagePath(),
-                Command = new Command(() => { _viewModel.UpdateSettings(new SettingsEntity { IsTableView = true }); })
+                Icon = "listViewIcon.png".ToPlatformImagePath(),
+                Command = new Command(() => { _viewModel.UpdateSettings(new SettingsEntity { IsTableView = false }); })
             });
-
         }
 
         protected override void OnAppearing()
@@ -57,11 +57,11 @@ namespace ListOfGoods.Views
                 });
             MessagingCenter.Subscribe<PurchasesListViewModel>(this, MessagingCenterConstants.InitLists, InitPage);
             MessagingCenter.Subscribe<ListActions, int>(this, MessagingCenterConstants.InitLists, (sender, args) =>
-             {
-                 var entity = _viewModel.PurchasesLists.FirstOrDefault(x => x.Id == args);
-                 _viewModel.PurchasesLists.Remove(entity);
-                 InitPage(sender);
-             });
+            {
+                var entity = _viewModel.PurchasesLists.FirstOrDefault(x => x.Id == args);
+                _viewModel.PurchasesLists.Remove(entity);
+                InitPage(sender);
+            });
             MessagingCenter.Subscribe<ListFrame, ListModel>(this, MessagingCenterConstants.NavigateTo, async (sender, listModel) =>
             {
                 await _viewModel.NavigateToPurchasePage(listModel);

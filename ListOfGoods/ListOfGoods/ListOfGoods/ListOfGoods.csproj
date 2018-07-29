@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\AcrylicRectangle.cs" />
     <Compile Include="CustomControls\CustomPicker.cs" />
     <Compile Include="CustomControls\PurchaseGrid.cs" />
     <Compile Include="CustomControls\RoundedButton.cs" />
@@ -58,6 +59,9 @@
     <Compile Include="DataManagers\Local\Purchase\PurchasesListRepository.cs" />
     <Compile Include="DataManagers\Local\Purchase\UsersPurchaseEntity.cs" />
     <Compile Include="DataManagers\Local\Purchase\UsersPurchaseRepository.cs" />
+    <Compile Include="DataManagers\Local\Settings\ISettingsRepository.cs" />
+    <Compile Include="DataManagers\Local\Settings\SettingsEntity.cs" />
+    <Compile Include="DataManagers\Local\Settings\SettingsRepository.cs" />
     <Compile Include="Infrastructure\Animations\AnimationExtensions.cs" />
     <Compile Include="Infrastructure\Constants\CommonConstants.cs" />
     <Compile Include="Infrastructure\Constants\CommonNameConstants.cs" />
@@ -95,6 +99,8 @@
     <Compile Include="Services\Media\MediaService.cs" />
     <Compile Include="Services\Purchase\IPurchaseService.cs" />
     <Compile Include="Services\Purchase\PurchaseService.cs" />
+    <Compile Include="Services\Settings\ISettingsService.cs" />
+    <Compile Include="Services\Settings\SettingsService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MasterDetailPage\MasterPageViewModel.cs" />
     <Compile Include="ViewModels\PopUps\AddNewPurchaseListPopUpViewModel.cs" />
@@ -137,8 +143,17 @@
     <Compile Include="Views\PurchasesListView.xaml.cs">
       <DependentUpon>PurchasesListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PurchasesListView_Table.xaml.cs">
+      <DependentUpon>PurchasesListView_Table.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PurchasesView.xaml.cs">
       <DependentUpon>PurchasesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\v_2\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\v_2\PurchasesList.xaml.cs">
+      <DependentUpon>PurchasesList.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -306,6 +321,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\AboutUs.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PurchasesListView_Table.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\v_2\PurchasesList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\v_2\Page1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

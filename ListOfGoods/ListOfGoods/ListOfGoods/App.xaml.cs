@@ -1,10 +1,12 @@
 ﻿using ListOfGoods.DataManagers.Local.Purchase;
+using ListOfGoods.DataManagers.Local.Settings;
 using ListOfGoods.Infrastructure.DependencyService;
 using ListOfGoods.Infrastructure.Helpers;
 using ListOfGoods.Infrastructure.Navigation;
 using ListOfGoods.Services.Media;
 using ListOfGoods.Services.Purchase;
 using ListOfGoods.Services.Search;
+using ListOfGoods.Services.Settings;
 using ListOfGoods.Views.MasterDetailPage;
 using Microsoft.Practices.Unity;
 using SQLite;
@@ -37,9 +39,11 @@ namespace ListOfGoods
             Container.RegisterType<IPurchaseRepository, PurchaseRepository>();
             Container.RegisterType<IPurchasesListRepository, PurchasesListRepository>();
             Container.RegisterType<IUsersPurchaseRepository, UsersPurchaseRepository>();
+            Container.RegisterType<ISettingsRepository, SettingsRepository>();
             Container.RegisterType<IPurchaseService, PurchaseService>();
             Container.RegisterType<IMediaService, MediaService>();
             Container.RegisterType<ISearchService, SearchService>();
+            Container.RegisterType<ISettingsService, SettingsService>();
             var deploymentHelper = Container.Resolve<LocalDbDeploymentHelper>();
         }
 

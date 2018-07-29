@@ -6,6 +6,7 @@
              xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
              Title="All lists"
              BackgroundColor="{x:Static commonResorces:ColorResourses.Background}">
+    
   <ScrollView>
     <StackLayout x:Name="ContentWrapper">
       <StackLayout.Padding>

@@ -2,23 +2,28 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:commonColor="clr-namespace:ListOfGoods.Infrastructure.Resourses;assembly=ListOfGoods"
+             xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
              x:Class="ListOfGoods.Views.MasterDetailPage.MainPage">
   <MasterDetailPage.Master>
     <ContentPage Title="Menu"
                  BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
                  Icon="MenuIcon.png">
-      <StackLayout>
-        <Image Source="Assets/logo_menu.png"
+        <Grid>
+            <customControls:AcrylicRectangle
+                TintColor="{x:Static commonColor:ColorResourses.Grey}"
+                FallbackColor="{x:Static commonColor:ColorResourses.Grey}"/>
+            <StackLayout>
+        <!--<Image Source="Assets/logo_menu.png"
                HorizontalOptions="Center"
                IsOpaque="True">
           <Image.Margin>
             <Thickness>0,40,0,40</Thickness>
           </Image.Margin>
-        </Image>
+        </Image>-->
         <ListView x:Name="navigationDrawerList"
                   RowHeight="60"
                   CachingStrategy="RecycleElement"
-                  BackgroundColor="{x:Static commonColor:ColorResourses.Grey}"
+                  BackgroundColor="Transparent"
                   ItemsSource="{Binding AllLists}"
                   ItemSelected="OnMenuItemSelected">
           <ListView.ItemTemplate>
@@ -116,6 +121,7 @@
                  TextColor="White"/>
         </StackLayout>
       </StackLayout>
+        </Grid>
     </ContentPage>
   </MasterDetailPage.Master>
 

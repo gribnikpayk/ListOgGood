@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customControls="clr-namespace:ListOfGoods.CustomControls;assembly=ListOfGoods"
+             x:Class="ListOfGoods.Views.v_2.Page1">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Black">
+        <StackLayout Orientation="Horizontal">
+                <StackLayout>
+                    <Grid>
+                        <Image Source="https://www.w3schools.com/bootstrap/paris.jpg" Aspect="Fill"></Image>
+                        <customControls:AcrylicRectangle BackSource="Backdrop" TintOpacity="0.2"/>
+                        <Label Text="Hello Xamarin.Forms!" TextColor="Black"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                <Grid>
+                        <Image Source="https://www.w3schools.com/bootstrap/paris.jpg" Aspect="Fill"></Image>
+                        <customControls:AcrylicRectangle BackSource="Backdrop" TintOpacity="0.4"/>
+                    <Label Text="Hello Xamarin.Forms!" TextColor="Black"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <StackLayout>
+                <Grid>
+                        <Image Source="https://www.w3schools.com/bootstrap/paris.jpg" Aspect="Fill"></Image>
+                        <!--<customControls:AcrylicRectangle WidthRequest="100" HeightRequest="100"/>-->
+                    <Label Text="Hello Xamarin.Forms!" TextColor="Black"/>
+                </Grid>
+            </StackLayout>
+            <StackLayout>
+                <Grid>
+                        <Image Source="https://www.w3schools.com/bootstrap/paris.jpg" Aspect="Fill"></Image>
+                        <customControls:AcrylicRectangle BackSource="Backdrop"/>
+                    <Label Text="Hello Xamarin.Forms!" TextColor="Black"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

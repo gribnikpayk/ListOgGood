@@ -4,6 +4,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using ListOfGoods.CustomControls;
 using ListOfGoods.UWP.CustomRendererControls;
+using ListOfGoods.UWP.Extensions;
 using Xamarin.Forms.Platform.UWP;
 using Color = Xamarin.Forms.Color;
 
@@ -26,7 +27,7 @@ namespace ListOfGoods.UWP.CustomRendererControls
             _control = e.NewElement as CustomFrame;
             if (_control != null)
             {
-                var border = new Border {Background = new SolidColorBrush(ToMediaColor(_control.InlineColor))};
+                var border = new Border {Background = new SolidColorBrush(ColorExtensions.ToUwpColor(_control.InlineColor))};
 
                 base.SetNativeControl(border);
                 this.PackChild();
@@ -75,12 +76,8 @@ namespace ListOfGoods.UWP.CustomRendererControls
 
         public static Brush ToBrush(Xamarin.Forms.Color color)
         {
-            return new SolidColorBrush(ToMediaColor(color));
+            return new SolidColorBrush(ColorExtensions.ToUwpColor(color));
         }
-
-        public static Windows.UI.Color ToMediaColor(Xamarin.Forms.Color color)
-        {
-            return Windows.UI.Color.FromArgb(((byte)(color.A * 255)), (byte)(color.R * 255), (byte)(color.G * 255), (byte)(color.B * 255));
-        }
+        
     }
 }

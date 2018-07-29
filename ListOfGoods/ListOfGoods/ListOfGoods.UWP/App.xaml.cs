@@ -1,10 +1,14 @@
 ﻿using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using FFImageLoading.Forms.WinUWP;
+using ListOfGoods.UWP.Extensions;
 using Microsoft.Services.Store.Engagement;
 
 namespace ListOfGoods.UWP
@@ -70,6 +74,8 @@ namespace ListOfGoods.UWP
             }
             // Ensure the current window is active
             Window.Current.Activate();
+
+            ExtendTitleBar();
         }
 
         /// <summary>
@@ -94,6 +100,24 @@ namespace ListOfGoods.UWP
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        private void ExtendTitleBar()
+        {
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
+            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+
+            var greenColor = "#22a86d".ToUwpColor();
+            var darkGreenColor = "#1d8656".ToUwpColor();
+
+            titleBar.ButtonBackgroundColor = darkGreenColor;
+            titleBar.ButtonInactiveBackgroundColor = darkGreenColor;
+            titleBar.BackgroundColor = greenColor;
+            titleBar.ButtonForegroundColor = Colors.White;
+            titleBar.ButtonHoverForegroundColor = "#2e2f31".ToUwpColor();
+            titleBar.ForegroundColor = Colors.White;
+            titleBar.InactiveBackgroundColor = greenColor;
+            titleBar.ButtonHoverBackgroundColor = greenColor;
         }
     }
 }
